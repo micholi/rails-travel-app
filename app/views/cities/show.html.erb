@@ -1,1 +1,5 @@
 <h1>Cities - Show Placeholder</h1>
+<%= @city.name %><br>
+<% @city.trips.each do |trip| %>
+<%= trip.comment %>
+<% end %>
