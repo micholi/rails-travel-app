@@ -1,1 +1,5 @@
 <h1>Trips - Index Placeholder</h1>
+<% @trips.each do |t| %>
+  <%= t.city.name %><br>
+  <%= t.fave_attraction %><br>
+<% end %>
