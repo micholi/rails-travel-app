@@ -4,4 +4,7 @@ Rails.application.routes.draw do
   resources :users
   resources :cities
   resources :trips
+
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
 end
