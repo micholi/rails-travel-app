@@ -1,0 +1,6 @@
+<h1>User Placeholder</h1>
+<%= @user.name %>
+<h3>My Trips</h3>
+<% @user.trips.each do |trip| %>
+  <%= trip.city.name %>
+<% end %>
