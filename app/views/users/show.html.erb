@@ -4,3 +4,6 @@
 <% @user.trips.each do |trip| %>
   <%= trip.city.name %><br>
 <% end %>
+<br>
+
+<%= link_to "Add New Trip", new_trip_url %>
