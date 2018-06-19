@@ -3,9 +3,9 @@ class Trip < ApplicationRecord
   belongs_to :city
 
   def city_attributes=(attributes)
-    #if !attributes[:name].empty?
-    #  city = City.find_or_create_by(name: attributes[:name])
-    city = City.find_or_create_by(name: attributes[:name]) unless attributes[:name].empty?
+    if !attributes[:name].empty?
+      city = City.find_or_create_by(name: attributes[:name])
+    # city = City.find_or_create_by(name: attributes[:name]) unless attributes[:name].empty?
 
     if !attributes[:country].empty?
       country = Country.find_or_create_by(name: attributes[:country])
@@ -18,7 +18,7 @@ class Trip < ApplicationRecord
     country.cities << city if !city.nil? && !country.nil?
     country.save if !country.nil?
     self.city_id = city.id
-    #end
+    end
   end
 
 
