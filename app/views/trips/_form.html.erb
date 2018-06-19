@@ -1,13 +1,13 @@
 <%= form_for :trip, url: trips_path do |f| %>
   <%= f.hidden_field :user_id, value: @user.id %>
 
-  <%= f.label :city, "Select City" %><br>
-  <%= f.collection_select :city_id, City.order('name ASC'), :id, :name, :include_blank => true %><br><br>
+  <%= f.label :city, "Select City" %>
+  <%= f.collection_select :city_id, City.order('name ASC'), :id, :city_country, :include_blank => true %>
 
-  Or Add New City:<br><br>
+  Or Add New City Below:<br><br>
   <%= f.fields_for :city_attributes do |city_attr| %>
 
-    Name:
+    City Name:
     <%= city_attr.text_field :name %>
 
     Select Country:
@@ -23,7 +23,7 @@
   <%= f.label :fave_attraction, "Must See Attraction" %><br><br>
   <%= f.text_field :fave_attraction %><br><br>
 
-  <%= f.label :comment %><br><br>
+  <%= f.label :comment, "Review" %><br><br>
 
   <%= f.text_area :comment, :size => "35x5" %><br><br>
 
