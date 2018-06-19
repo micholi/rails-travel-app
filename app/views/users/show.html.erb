@@ -1,7 +1,7 @@
 <h1><%= @user.name %>'s Trips</h1>
 <% @user.trips.each do |trip| %>
-  <%= link_to trip.city.name, trip_path(trip) %><br>
+  <%= link_to trip.city.name, user_trip_path(trip) %><br>
 <% end %>
 <br>
 
-<%= link_to "Add New Trip", new_trip_url %>
+<%= link_to "Add New Trip", new_user_trip_url(@user) %>
