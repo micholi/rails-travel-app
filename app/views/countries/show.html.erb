@@ -1,4 +1,4 @@
 <h1><%= @country.name %></h1>
 <% @country.cities.each do |city| %>
-  <%= city.name %>
+  <%= link_to city.name, city_path(city) %>
 <% end %>
