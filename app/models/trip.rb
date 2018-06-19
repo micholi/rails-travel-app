@@ -3,35 +3,23 @@ class Trip < ApplicationRecord
   belongs_to :city
 
   def city_attributes=(attributes)
-    if !attributes[:name].blank?
-    city = City.find_or_create_by(name: attributes[:name])
-    if !attributes[:country].blank?
-    country = Country.find_or_create_by(country: attributes[:country])
+    #if !attributes[:name].empty?
+    #  city = City.find_or_create_by(name: attributes[:name])
+    city = City.find_or_create_by(name: attributes[:name]) unless attributes[:name].empty?
+
+    if !attributes[:country].empty?
+      country = Country.find_or_create_by(name: attributes[:country])
+    else
+      country = Country.find_by(id: attributes[:country_id])
     #self.city_id = city.id
     #@country = Country.find_or_create_by(attributes: name)
-  end
-  end
+    end
+
+    country.cities << city if !city.nil? && !country.nil?
+    country.save if !country.nil?
+    self.city_id = city.id
+    #end
   end
 
-  def city_name
-    self.city.name if self.city
-  end
-#  def city_name=(name)
-#    self.city = City.find_or_create_by(name: name)
-#  end
-
-#  def city_name
-#    self.city.name if self.city
-  #  self.city_id = city.id
-#  end
-
-  def country_name=(name)
-    @country = Country.find_or_create_by(name: name)
-    #country.cities << @city
-  end
-
-  def country_name
-    @country.name
-  end
 
 end

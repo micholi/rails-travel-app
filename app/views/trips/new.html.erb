@@ -1,7 +1,6 @@
 <h1>New Trip Placeholder</h1>
 <%= form_for :trip, url: trips_path do |f| %>
-
-  <%= f.hidden_field :user_id %>
+  <%= f.hidden_field :user_id, value: @user.id %>
 
   <%= f.label :city, "Select City" %><br>
   <%= f.collection_select :city_id, City.all, :id, :name, :include_blank => true %><br>
@@ -9,12 +8,13 @@
   Or Add a New City:
   <%= f.fields_for :city_attributes do |city_attr| %>
 
-  Name:
-  <%= city_attr.text_field :name %>
+    Name:
+    <%= city_attr.text_field :name %><br>
 
-  Country:
-  <%= city_attr.collection_select :country_id, Country.all, :id, :name, :include_blank => true %><br>
-  <%= city_attr.text_field :country %>
+    Select Country:
+    <%= city_attr.collection_select :country_id, Country.all, :id, :name, :include_blank => true %><br>
+    Add New Country:
+    <%= city_attr.text_field :country %><br>
 
   <% end %>
 
