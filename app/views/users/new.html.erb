@@ -1,12 +1,9 @@
+<h1>Sign Up</h1>
 <%= form_for :user, url: '/users' do |f| %>
-  <%= f.label :email %>
-  <%= f.text_field :email %></br>
 
-  <%= f.label :name %>
-  <%= f.text_field :name %><br>
+  <%= f.text_field :email, placeholder: "email" %></br>
+  <%= f.text_field :name, placeholder: "username" %><br>
+  <%= f.password_field :password, placeholder: "password" %>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-
-  <%= f.submit %>
+  <%= f.submit, "Create Account" %>
 <% end %>
