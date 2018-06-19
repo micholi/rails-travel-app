@@ -3,9 +3,12 @@ Rails.application.routes.draw do
 
   root 'welcome#home'
 
-  resources :users
+  resources :users do
+    resources :trips
+  end
+
   resources :cities
-  resources :trips
+#  resources :trips
 
   get '/signup' => 'users#new'
   post '/signup' => 'users#create'
