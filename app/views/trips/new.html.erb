@@ -2,9 +2,10 @@
 <%= form_for :trip do |f| %>
 
   <%= f.label :city, "Choose City" %><br>
-  <%= f.collection_select :city, City.all, :name, :name, :include_blank => true %><br>
+  <%= f.collection_select :city_id, City.all, :name, :name, :include_blank => true %><br>
 
   <%= f.label :city, "Or Add New City" %><br>
+  
   <%= f.text_field :city %><br>
 
   <%= f.label :rating, "Rating (Scale of 1-5, where 5 = Best Trip Ever!)" %><br>
