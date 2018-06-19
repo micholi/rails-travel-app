@@ -9,6 +9,8 @@ class TripsController < ApplicationController
   end
 
   def new
+    @user = User.find_by(id: session[:user_id])
+    @trip = @user.trips.build
   end
 
   def create
