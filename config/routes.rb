@@ -5,9 +5,8 @@ Rails.application.routes.draw do
 
   resources :users
   resources :trips
-
-
   resources :cities
+  resources :countries
 #  resources :trips
 
   get '/signup' => 'users#new'
