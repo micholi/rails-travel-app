@@ -5,7 +5,7 @@ class CountriesController < ApplicationController
   end
 
   def show
-    @country = Country.find(id: params[:id])
+    @country = Country.find(params[:id])
   end
 
 end

@@ -1,1 +1,4 @@
 <h1><%= @country.name %></h1>
+<% @country.cities.each do |city| %>
+  <%= city.name %>
+<% end %>
