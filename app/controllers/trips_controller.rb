@@ -14,7 +14,7 @@ class TripsController < ApplicationController
   end
 
   def create
-    binding.pry
+    #binding.pry
     @trip = Trip.new(trip_params)
     if @trip.save
       redirect_to user_path(@user)
@@ -25,7 +25,7 @@ class TripsController < ApplicationController
 
   private
   def trip_params
-    params.require(:trip).permit(:user_id, :city_id, :rating, :fave_attraction, :comment, city_attributes: [:name, :country_id, :country])
+    params.require(:trip).permit(:user_id, :city_id, :rating, :fave_attraction, :comment)
   end
 
 end
