@@ -4,5 +4,5 @@
 
 <% @city.trips.each do |trip| %>
   <%= trip.comment %>
-  <p>- <%= trip.user.name %></p>
+  <p>- <%= trip.user.name %> (<%= trip.rating %> stars) <p>
 <% end %>
