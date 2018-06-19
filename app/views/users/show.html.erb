@@ -4,4 +4,7 @@
 <% end %>
 <br>
 
+  <p><%= @user.trips.count %> Trips Added</p>
+
+
 <%= link_to "Add New Trip", new_user_trip_url(@user) %>
