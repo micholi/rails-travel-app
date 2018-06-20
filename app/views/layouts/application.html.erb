@@ -11,11 +11,19 @@
 
   <body>
     <div class="topnav">
-      <li><%= link_to("Home", user_path(@user)) %></li>
-      <li><%= link_to("My Trips", user_trips_path(@user)) %></li>
-      <li><%= link_to("Destinations", cities_path) %></li>
-      <li><%= link_to("Travelers", users_path) %></li>
-      <li><%= link_to("Log Out", logout_path) %></li>
+      <% if !!session[:user_id] %>
+
+      <%= link_to("Home", user_path(@user)) %>
+      <%= link_to("My Trips", user_trips_path(@user)) %>
+      <%= link_to("Destinations", cities_path) %>
+      <%= link_to("Travelers", users_path) %>
+      <%= link_to("Log Out", logout_path) %>
+
+      <% else %>
+      <%= link_to("Log In", login_path) %>
+      <%= link_to("Sign Up", signup_path) %>
+      <% end %>
+
     </div>
 
     <%= yield %>
