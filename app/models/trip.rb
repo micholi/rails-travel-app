@@ -3,6 +3,7 @@ class Trip < ApplicationRecord
   belongs_to :city
 
   validates :rating, presence: true
+  # validates :city or city_id ? look up 
 
   def city_attributes=(attributes)
     if !attributes[:name].empty?
