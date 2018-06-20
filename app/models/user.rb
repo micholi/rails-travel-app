@@ -5,6 +5,7 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
 
   def most_recent
+    # check this - what happens when you update trip?
     self.trips.last
   end
 end
