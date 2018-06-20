@@ -1,7 +1,8 @@
 class TripsController < ApplicationController
 
   def index
-    @trips = Trip.all
+    @user = User.find_by(id: params[:user_id])
+    @trips = @user.trips.all
   end
 
   def show

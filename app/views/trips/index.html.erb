@@ -1,5 +1,4 @@
-<h1>Trips - Index Placeholder</h1>
-<% @trips.each do |t| %>
-  <%= t.city.name %><br>
-  <%= t.fave_attraction %><br>
+<h1><%= @user.name %>'s Trips</h1>
+<% @trips.each do |trip| %>
+  <%= link_to trip.city.name, user_trip_path(@user, trip) %><br>
 <% end %>
