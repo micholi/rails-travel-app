@@ -11,11 +11,11 @@
 
   <body>
     <div class="topnav">
-      <a class="active" href="#">Home</a>
-      <a href="#">My Trips</a>
-      <a href="#">Destinations</a>
-      <a href="#">Travelers</a>
-      <a href="#">Logout</a>
+      <li><%= link_to("Home", user_path(@user)) %></li>
+      <li><%= link_to("My Trips", user_trips_path(@user)) %></li>
+      <li><%= link_to("Destinations", cities_path) %></li>
+      <li><%= link_to("Travelers", users_path) %></li>
+      <li><%= link_to("Log Out", logout_path) %></li>
     </div>
 
     <%= yield %>
