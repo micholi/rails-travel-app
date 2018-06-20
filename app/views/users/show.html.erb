@@ -1,3 +1,4 @@
+<% if @user.trips.count > 0 %>
 <h1><%= @user.name %>'s Trips</h1>
 <% @user.trips.each do |trip| %>
   <%= link_to trip.city.city_country, user_trip_path(@user, trip) %><br>
@@ -9,3 +10,10 @@
 
 <%= link_to "Add New Trip", new_user_trip_url(@user) %><br>
 <%= link_to "View All My Trips", user_trips_path(@user) %>
+
+<% else %>
+<h1>Welcome, <%= @user.name %>!</h1>
+<p>You haven't added any trips yet.</p>
+<%= link_to "Add New Trip", new_user_trip_url(@user) %><br>
+<%= link_to "Explore Destinations", cities_path %>
+<% end %>
