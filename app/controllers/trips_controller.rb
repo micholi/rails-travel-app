@@ -21,7 +21,7 @@ class TripsController < ApplicationController
     if @trip.save
       redirect_to user_path(@user)
     else
-      redirect_to new_user_trip_url
+      render :new
     end
   end
 

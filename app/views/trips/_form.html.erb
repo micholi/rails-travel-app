@@ -1,16 +1,3 @@
-<% if @trip.errors.any? %>
-  <div id="error-explanation">
-    <h3>
-      <%= pluralize(@trip.errors.count, "error") %>
-      prohibited this trip from being added.
-    </h3>
-    <ul>
-      <% @trip.errors.full_messages.each do |msg| %>
-      <li><%= msg %>
-        <% end %>
-    </ul>
-<% end %>
-
 <%= form_for :trip, url: user_trips_path do |f| %>
   <%= f.hidden_field :user_id, value: @user.id %>
 
@@ -48,4 +35,17 @@
   <%= f.text_area :comment, :size => "35x5" %><br><br>
 
   <%= f.submit %>
+<% end %>
+
+<% if @trip.errors.any? %>
+  <div id="error_explanation">
+    <h3>
+      <%= pluralize(@trip.errors.count, "error") %>
+      prohibited this trip from being added.
+    </h3>
+    <ul>
+      <% @trip.errors.full_messages.each do |msg| %>
+      <li><%= msg %>
+        <% end %>
+    </ul>
 <% end %>
