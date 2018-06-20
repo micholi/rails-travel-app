@@ -1,6 +1,6 @@
 <h1><%= @city.name %></h1>
 <h4>Total Reviews: <%= @city.trips.count %></h4>
-<h4>Average Rating: <%= @city.trips.average(:rating) %></h4>
+<h4>Average Rating: <%= @city.avg_rating %></h4>
 
 <% @city.trips.each do |trip| %>
   <%= trip.comment %>

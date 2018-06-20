@@ -7,4 +7,8 @@ class City < ApplicationRecord
     "#{self.name}, #{country.name}"
   end
 
+  def avg_rating
+    self.trips.average(:rating).to_f.round(2)
+  end
+
 end
