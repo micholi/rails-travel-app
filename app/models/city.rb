@@ -3,6 +3,8 @@ class City < ApplicationRecord
   has_many :trips
   has_many :users, through: :trips
 
+  validates :name, presence: true, uniqueness: true
+
   def city_country
     "#{self.name}, #{country.name}"
   end

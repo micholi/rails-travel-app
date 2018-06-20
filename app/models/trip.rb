@@ -2,6 +2,8 @@ class Trip < ApplicationRecord
   belongs_to :user
   belongs_to :city
 
+  validates :rating, presence: true
+
   def city_attributes=(attributes)
     if !attributes[:name].empty?
       city = City.find_or_create_by(name: attributes[:name])

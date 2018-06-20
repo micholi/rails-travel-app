@@ -1,3 +1,16 @@
+<% if @trip.errors.any? %>
+  <div id="error-explanation">
+    <h3>
+      <%= pluralize(@trip.errors.count, "error") %>
+      prohibited this trip from being added.
+    </h3>
+    <ul>
+      <% @trip.errors.full_messages.each do |msg| %>
+      <li><%= msg %>
+        <% end %>
+    </ul>
+<% end %>
+
 <%= form_for :trip, url: user_trips_path do |f| %>
   <%= f.hidden_field :user_id, value: @user.id %>
 
@@ -17,8 +30,15 @@
 
   <% end %>
 
+  <% if @trip.errors[:rating].empty? %>
+    <div class="field">
+    <% else %>
+    <div class="field_with_errors">
+      <% end %>
   <%= f.label :rating, "Rating (Scale of 1-5, where 5 = Best Trip Ever!)" %><br><br>
   <%= f.text_field :rating %><br><br>
+  "Please add a rating to save this trip."
+</div>
 
   <%= f.label :fave_attraction, "Must See Attraction" %><br><br>
   <%= f.text_field :fave_attraction %><br><br>

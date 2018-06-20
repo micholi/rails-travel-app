@@ -11,7 +11,7 @@ class TripsController < ApplicationController
 
   def new
     @user = User.find_by(id: session[:user_id])
-  #  @trip = @user.trips.build
+    @trip = @user.trips.build
   end
 
   def create
@@ -21,7 +21,7 @@ class TripsController < ApplicationController
     if @trip.save
       redirect_to user_path(@user)
     else
-      redirect_to new_trip_url
+      redirect_to new_user_trip_url
     end
   end
 
