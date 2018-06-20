@@ -1,7 +1,7 @@
 class TripsController < ApplicationController
 
   def index
-    @user = User.find_by(id: params[:user_id])
+    set_user
     @trips = @user.trips.all
   end
 
@@ -16,7 +16,8 @@ class TripsController < ApplicationController
 
   def create
     #binding.pry
-    @user = User.find_by(id: session[:user_id])
+    # @user = User.find_by(id: session[:user_id])
+    set_user
     @trip = Trip.new(trip_params)
     if @trip.save
       redirect_to user_path(@user)
@@ -25,7 +26,21 @@ class TripsController < ApplicationController
     end
   end
 
+  def edit
+    set_user
+    # code here
+  end
+
+  def update
+    set_user
+    # code here
+  end
+
   private
+  def set_user
+    @user = User.find_by(id: params[:user_id])
+  end
+
   def trip_params
     params.require(:trip).permit(:user_id, :city_id, :rating, :fave_attraction, :comment, city_attributes:[:city, :country, :country_id])
   end
