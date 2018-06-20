@@ -1,3 +1,10 @@
-<h1>Edit Trip</h1>
+<h1>Edit <%= @trip.city.name %> Trip</h1>
 
-<%= render partial: 'form' %>
+<%= form_for :trip, url: user_trips_path do |f| %>
+
+  <%= f.hidden_field :city, value: @trip.city %>
+
+  <%= render partial: 'form', locals: { f: f} %>
+
+<%= f.submit "Update Trip" %>
+<% end %>
