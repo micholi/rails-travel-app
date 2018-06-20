@@ -8,7 +8,7 @@
   <%= f.fields_for :city_attributes do |city_attr| %>
 
     City Name:
-    <%= city_attr.text_field :name %>
+    <%= city_attr.text_field :city %>
 
     Select Country:
     <%= city_attr.collection_select :country_id, Country.order('name ASC'), :id, :name, :include_blank => true %>
@@ -17,15 +17,9 @@
 
   <% end %>
 
-  <% if @trip.errors[:rating].empty? %>
-    <div class="field">
-    <% else %>
-    <div class="field_with_errors">
-      <% end %>
   <%= f.label :rating, "Rating (Scale of 1-5, where 5 = Best Trip Ever!)" %><br><br>
   <%= f.text_field :rating %><br><br>
-  "Please add a rating to save this trip."
-</div>
+
 
   <%= f.label :fave_attraction, "Must See Attraction" %><br><br>
   <%= f.text_field :fave_attraction %><br><br>
