@@ -28,11 +28,13 @@ class TripsController < ApplicationController
 
   def edit
     set_user
+    @trip = Trip.find(params[:id])
     # code here
   end
 
   def update
     set_user
+    
     # code here
   end
 

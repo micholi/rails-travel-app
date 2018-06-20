@@ -1,7 +1,8 @@
 <%= form_for :trip, url: user_trips_path do |f| %>
+
   <%= f.hidden_field :user_id, value: @user.id %>
 
-  <%= f.label :city_name, "Select City" %>
+  <%= f.label :city, "Select City" %>
   <%= f.collection_select :city_id, City.order('name ASC'), :id, :city_country, :include_blank => true %>
 
   <p>Or Add New City Below:</p><br><br>
@@ -15,8 +16,10 @@
 
     <p>Or Add New Country:</p>
     <%= city_attr.text_field :country %><br><br>
-    
+
   <% end %>
+
+
 
   <%= f.label :rating, "Rating (Scale of 1-5, where 5 = Best Trip Ever!)" %><br><br>
   <%= f.text_field :rating %><br><br>
@@ -30,17 +33,16 @@
   <%= f.text_area :comment, :size => "35x5" %><br><br>
 
   <%= f.submit %>
-<% end %>
+  <% end %>
 
-<% if @trip.errors.any? %>
-  <div id="error_explanation">
-    <h3>
-      <%= pluralize(@trip.errors.count, "error") %>
-      prohibited this trip from being added.
-    </h3>
-    <ul>
-      <% @trip.errors.full_messages.each do |msg| %>
-      <li><%= msg %>
+  <% if @trip.errors.any? %>
+    <div id="error_explanation">
+      <h3>
+        <%= pluralize(@trip.errors.count, "error") %> prohibited this account from being created.</h3>
+      <ul>
+        <% @trip.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
         <% end %>
-    </ul>
-<% end %>
+      </ul>
+    </div>
+  <% end %>
