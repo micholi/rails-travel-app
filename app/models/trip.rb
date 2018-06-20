@@ -8,13 +8,11 @@ class Trip < ApplicationRecord
   def city_attributes=(attributes)
     if !attributes[:city].empty?
       city = City.find_or_create_by(name: attributes[:city])
-
     if !attributes[:country].empty?
       country = Country.find_or_create_by(name: attributes[:country])
     else
       country = Country.find_by(id: attributes[:country_id])
     end
-
     country.cities << city if !city.nil? && !country.nil?
     country.save if !country.nil?
     self.city_id = city.id

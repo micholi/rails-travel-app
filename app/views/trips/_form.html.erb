@@ -1,19 +1,19 @@
 <%= form_for :trip, url: user_trips_path do |f| %>
   <%= f.hidden_field :user_id, value: @user.id %>
 
-  <%= f.label :city, "Select City" %>
+  <%= f.label :city_name, "Select City" %>
   <%= f.collection_select :city_id, City.order('name ASC'), :id, :city_country, :include_blank => true %>
 
   Or Add New City Below:<br><br>
   <%= f.fields_for :city_attributes do |city_attr| %>
 
-    City Name:
-    <%= city_attr.text_field :city %>
+  City Name:
+  <%= city_attr.text_field :city %>
 
-    Select Country:
-    <%= city_attr.collection_select :country_id, Country.order('name ASC'), :id, :name, :include_blank => true %>
-    Or Add New Country:
-    <%= city_attr.text_field :country %><br><br>
+  Select Country:
+  <%= city_attr.collection_select :country_id, Country.order('name ASC'), :id, :name, :include_blank => true %>
+  Or Add New Country:
+  <%= city_attr.text_field :country %><br><br>
 
   <% end %>
 
