@@ -34,8 +34,13 @@ class TripsController < ApplicationController
 
   def update
     set_user
-    
-    # code here
+    @trip = Trip.find(params[:id])
+    @trip.update(trip_params)
+    if @trip.save
+      redirect_to user_path(@user)
+    else
+      render :edit
+    end
   end
 
   private
