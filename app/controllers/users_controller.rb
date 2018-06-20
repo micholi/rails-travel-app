@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-  end
+  ends
 
   def show
     # update with helper method
