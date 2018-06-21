@@ -4,7 +4,8 @@
 <% else %>
   <%= link_to("Home", user_path(current_user)) %>
   <%= link_to("My Trips", user_trips_path(current_user)) %>
-  <%= link_to("Destinations", cities_path) %>
+  <%= link_to("Cities", cities_path) %>
+  <%= link_to("Countries", countries_path) %>
   <%= link_to("Travelers", users_path) %>
   <%= link_to("Log Out", logout_path) %>
 <% end %>
