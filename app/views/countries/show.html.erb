@@ -1,6 +1,7 @@
 <h1><%= @country.name %></h1>
 
 Total Reviews: <%= @country.trips.count %><br><br>
+Total Cities Reviewed: <%= @country.cities.count %><br>
 
 <h3>Explore Cities</h3>
 <% @country.cities.each do |city| %>
