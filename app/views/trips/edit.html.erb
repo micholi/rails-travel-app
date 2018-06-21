@@ -1,8 +1,8 @@
 <h1>Edit <%= @trip.city.name %> Trip</h1>
 
-<%= form_for :trip, url: user_trips_path do |f| %>
+<%= form_for :trip, :html => { :method => patch } do |f| %>
 
-  <%= f.hidden_field :city, value: @trip.city %>
+  <%= f.hidden_field :city_id %>
 
   <%= render partial: 'form', locals: { f: f} %>
 
