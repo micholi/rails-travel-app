@@ -6,15 +6,15 @@ class Trip < ApplicationRecord
   validates :city, presence: true
 
   def city_attributes=(attributes)
-    if !attributes[:city].empty?
+    if attributes[:city] != ""
       city = City.find_or_create_by(name: attributes[:city])
-    if !attributes[:country].empty?
+    if attributes[:country] != ""
       country = Country.find_or_create_by(name: attributes[:country])
     else
       country = Country.find_by(id: attributes[:country_id])
     end
-    country.cities << city if !city.nil? && !country.nil?
-    country.save if !country.nil?
+    country.cities << city if city != "" && country != ""
+    country.save if country != ""
     self.city_id = city.id
     end
   end
