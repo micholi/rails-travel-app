@@ -1,4 +1,5 @@
 class TripsController < ApplicationController
+  before_action :require_login
 
   def index
     set_user
