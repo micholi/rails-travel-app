@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   def show
     #@user = User.find_by(id: params[:id])
     #set_user
-    current_user
+    set_user
   end
 
   def new
@@ -25,11 +25,6 @@ class UsersController < ApplicationController
   end
 
   private
-  def set_user
-    @user = User.find_by(id: session[:user_id])
-  end
-
-
   def user_params
     # need to add Omniauth
     params.require(:user).permit(:email, :name, :password)
