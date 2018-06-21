@@ -1,5 +1,5 @@
 <h1>Travelers</h1>
 <% @users.each do |user| %>
-  <%= user.name %> - <%= user.trip_count %> places rated<br>
+  <%= link_to user.name, user_path(user) %> - <%= user.trip_count %> places rated<br>
 
 <% end %>

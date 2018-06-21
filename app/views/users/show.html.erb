@@ -1,12 +1,8 @@
 <% if @user.trips.count > 0 %>
-<h1><%= @user.name %>'s Trips</h1>
-<% @user.trips.each do |trip| %>
-  <%= link_to trip.city.city_country, user_trip_path(@user, trip) %><br>
-<% end %>
-<br>
+<h1><%= @user.name %></h1>
 
-  <p><%= @user.trips.count %> Trips Added</p>
-  <p>Most Recent Trip Review: <%= link_to @user.most_recent.city.name, user_trip_path(@user, @user.most_recent) %><br><br>
+  <p><%= @user.trips.count %><%= " Trip".pluralize(@user.trip_count > 1) %> Added</p>
+  <p>Most Recent Trip: <%= link_to @user.most_recent.city.name, user_trip_path(@user, @user.most_recent) %><br><br>
 
 <%= link_to "Add New Trip", new_user_trip_url(@user) %><br>
 <%= link_to "View All My Trips", user_trips_path(@user) %>
