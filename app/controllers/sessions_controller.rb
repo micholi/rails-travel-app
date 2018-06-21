@@ -14,11 +14,10 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-  # need to add logged_in? method
-  #  if logged_in?
+    if logged_in?
       session.destroy
       redirect_to root_path
-  #  end
+    end
   end
 
 end
