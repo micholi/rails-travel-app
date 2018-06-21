@@ -57,3 +57,8 @@
 
    color: blue;
  }
+
+ .review-box {
+   border-bottom: 1px solid #C0C0C0;
+   margin: 10px auto;
+ }

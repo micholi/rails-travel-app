@@ -3,6 +3,8 @@
 <h4>Average Rating: <%= @city.avg_rating %></h4>
 
 <% @city.trips.each do |trip| %>
+<div class="review-box">
   <%= trip.comment %>
-  <p>- <%= trip.user.name %> (<%= trip.rating %> stars) <p>
+  <p><%= trip.user.name %> (<%= trip.rating %> stars)</p>
+</div>
 <% end %>
