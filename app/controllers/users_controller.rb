@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
 
   def index
-    @users = User.all
+  #  @users = User.all
+  #@users = User.joins(:trips).group('trips.user_id').order("count(trips.user_id) desc")
+  @users = User.sort_by_trip_count
   end
 
   def show
