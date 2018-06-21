@@ -1,6 +1,6 @@
 <h1>Edit <%= @trip.city.name %> Trip</h1>
 
-<%= form_for :trip, url: edit_user_trip_path(@user, @trip) do |f| %>
+<%= form_for :trip, url: user_trip_path, :method => 'patch' do |f| %>
 
   <%= f.hidden_field :city_id %>
 
