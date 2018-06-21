@@ -30,20 +30,19 @@ class TripsController < ApplicationController
   end
 
   def edit
+    set_user
     @trip = Trip.find(params[:id])
     if @trip.user != current_user
-      flash[:notice] = "You may not edit this trip."
-      redirect_to user_trips_path(current_user)
+      redirect_to user_trips_path(current_user), :flash => { :danger => "You may not edit another traveler's trip."}
     end
   end
 
   def update
     set_user
-    #@trip = Trip.find(params[:id])
     @trip = @user.trips.find(params[:id])
     @trip.update(trip_params)
     if @trip.save
-      redirect_to user_path(@user)
+      redirect_to user_path(@user), :flash => { success => "You've successfully updated this trip!"}
     else
       render :edit
     end
