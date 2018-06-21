@@ -5,14 +5,10 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :trips
-
   end
 
-
-
-  resources :cities
-  resources :countries
-#  resources :trips
+  resources :cities, only: [:index, :show]
+  resources :countries, only: [:index, :show]
 
   get '/signup' => 'users#new'
   post '/signup' => 'users#create'
@@ -20,4 +16,5 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
+
 end
