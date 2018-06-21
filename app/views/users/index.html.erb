@@ -1,4 +1,5 @@
-<h1>Users/Travelers</h1>
+<h1>Connect with Other Travelers</h1>
 <% @users.each do |user| %>
-  <%= user.name %><br>
+  <%= user.name %> - <%= user.trips.count %> places rated<br>
+
 <% end %>
