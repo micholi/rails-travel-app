@@ -15,6 +15,7 @@
  */
 
  body {
+   margin: 0;
    background-color: #F1F1F2;
    font-family: 'Lato', sans-serif;
  }
@@ -46,14 +47,21 @@
  }
 
  /* Links */
+
+ .list-view a: {
+   font-size: 1.05em;
+ }
  .list-view a:link {
    text-decoration: none;
    color: black;
  }
 
 .list-view a:hover {
-
    color: blue;
+ }
+
+ .list-view a:visited {
+   color: black;
  }
 
  .review-box {

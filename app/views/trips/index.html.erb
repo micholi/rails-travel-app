@@ -1,6 +1,6 @@
 <div class="list-view">
   <h1><%= @user.name %>'s Trips</h1>
   <% @trips.each do |trip| %>
-    <%= link_to trip.city.name, user_trip_path(@user, trip) %><br>
+    <p><%= link_to trip.city.name, user_trip_path(@user, trip) %></p>
   <% end %>
 </div>
