@@ -3,12 +3,12 @@ class UsersController < ApplicationController
   def index
   #  @users = User.all
   #@users = User.joins(:trips).group('trips.user_id').order("count(trips.user_id) desc")
-  @users = User.sort_by_trip_count
+    @users = User.sort_by_trip_count
   end
 
   def show
-    # @user = User.find_by(id: session[:user_id])
-    set_user
+     @user = User.find_by(id: params[:id])
+    #set_user
   end
 
   def new
@@ -38,6 +38,7 @@ class UsersController < ApplicationController
 
   private
   def set_user
+
     @user = User.find_by(id: session[:user_id])
   end
 
