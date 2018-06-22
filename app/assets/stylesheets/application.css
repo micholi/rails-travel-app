@@ -167,8 +167,9 @@ h4.box-heading {
  }
 
 /* CHANGE THIS */
- h1 {
+ h4.page-heading {
    text-align: center;
+   padding-bottom: 10px;
  }
 
 table {
