@@ -1,13 +1,13 @@
 <div class="list-details">
-<h1><%= @city.name %></h1>
-<h4>Total Reviews: <%= @city.trips.count %></h4>
-<h4>Average Rating: <%= @city.avg_rating %></h4>
+  <h4><%= @city.name %></h4>
+  <span class="bold-text">Average Rating: </span><%= @city.avg_rating %><br>
+  <span class="bold-text">Total Reviews: </span><%= @city.trips.count %>
 
-<% @city.trips.each do |trip| %>
-<div class="review-box">
-  <%= trip.comment %>
-  <p><%= trip.user.name %> (<%= trip.rating %> stars)</p>
-</div>
-<% end %>
+  <% @city.trips.each do |trip| %>
+  <div class="review-box">
+    <%= trip.comment %>
+    <p><%= trip.user.name %> (<%= trip.rating %> stars)</p>
+  </div>
+  <% end %>
 
 </div>
