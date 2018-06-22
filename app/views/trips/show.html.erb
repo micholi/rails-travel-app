@@ -1,10 +1,12 @@
-<h1><%= @user.name %>'s <%= @trip.city.name %> Trip</h1>
-Rating: <%= @trip.rating %><br><br>
-Must See Attraction: <%= @trip.fave_attraction %><br><br>
-Review: <%= @trip.comment %><br><br>
+<div class="home">
+  <h1><%= @user.name %>'s <%= @trip.city.name %> Trip</h1>
+  Rating: <%= @trip.rating %><br><br>
+  Must See Attraction: <%= @trip.fave_attraction %><br><br>
+  Review: <%= @trip.comment %><br><br>
 
-<% if @user == current_user %>
-  <%= link_to "Edit Trip", edit_user_trip_url %>
-<% end %>
+  <% if @user == current_user %>
+    <%= link_to "Edit Trip", edit_user_trip_url %>
+  <% end %>
+</div>
 
-<h1>PLACEHOLDER - ADD DELETE BUTTON</h1>
+<p>PLACEHOLDER - ADD DELETE BUTTON</p>

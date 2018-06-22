@@ -14,9 +14,11 @@
  *= require_self
  */
 
+
+/* background-color: #F1F1F2; */
  body {
    margin: 0;
-   background-color: #F1F1F2;
+   background-color: #ECECEB;
    font-family: 'Lato', sans-serif;
  }
 
@@ -104,6 +106,10 @@ h3.box-heading {
 
  .no-underline a:visited {
    color: black;
+ }
+
+ .no-underline a:visited:hover {
+   color: blue;
  }
 
  .review-box {
