@@ -78,6 +78,20 @@ h3.box-heading {
   padding-bottom: 10px;
 }
 
+/* NEED TO UPDATE - LOGIN/SIGNUP  #FDFCFC */
+.start-pages {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 275px;
+  height: 300px;
+  border: 1px solid #A9A9A9;
+  border-radius: 5px;
+  background-color: #FDFCFC;
+  text-align: center;
+}
+
 /* OK TO REMOVE ?
 .list-view {
   position: absolute;

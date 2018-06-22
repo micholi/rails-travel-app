@@ -1,6 +1,8 @@
-<h1>Log In</h1>
-<%= form_for :user do |f| %>
-  <%= f.email_field :email, placeholder: "email" %>
-  <%= f.password_field :password, placeholder: "password" %>
-  <%= f.submit "Log In"%>
-<% end %>
+<div class="start-pages">
+  <h3>Log In</h3>
+  <%= form_for :user do |f| %>
+    <%= f.email_field :email, placeholder: "email" %>
+    <%= f.password_field :password, placeholder: "password" %>
+    <%= f.submit "Log In"%>
+  <% end %>
+</div>
