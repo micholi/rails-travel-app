@@ -5,7 +5,7 @@
   <p><span class="bold-text">Review: </span><%= @trip.comment %></p>
 
   <% if @user == current_user %>
-    <%= button_to "Edit Trip", edit_user_trip_url, :class => 'btn btn-sm btn-info' %>
+    <%= link_to "Edit Trip", edit_user_trip_url, :class => 'btn btn-sm btn-info' %>
   <% end %>
 </div>
 

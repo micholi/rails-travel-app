@@ -13,6 +13,7 @@ class TripsController < ApplicationController
 
   def new
     set_user
+    @trip = @user.trips.build
   end
 
   def create

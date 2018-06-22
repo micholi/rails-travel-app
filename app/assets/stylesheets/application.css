@@ -96,6 +96,13 @@ h4.box-heading {
   padding-top: 20px;
 }
 
+.btn-sm {
+  margin: 10px 5px 10px 0;
+  padding: 0 auto;
+  display: inline;
+  border-radius: 25px;
+}
+
 .btn-md {
   display: block;
   margin: 0px auto;
@@ -156,7 +163,7 @@ h4.box-heading {
    width: 70%;
    margin-left: 15%;
    margin-right: 15%;
-   
+
    padding-bottom: 10px;
  }
 

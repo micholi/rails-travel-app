@@ -2,12 +2,12 @@
   <h4 class="box-heading"><%= @user.name %></h4>
   <% if @user.trips.count == 0 %>
     <p>You haven't added any trips yet.</p><br>
-    <span class="no-underline"<%= link_to "Explore Destinations", cities_path %></span><br>
+    <span class="no-underline"<%= link_to "Explore Destinations", cities_path %></span><br><br>
   <% else %>
     <p>You've added <%= @user.trip_count %><%= " trip".pluralize(@user.trip_count > 1) %>.</p>
-    <span class="bold-text">Last Trip Added:</span><br>
-      <span class="no-underline"><%= link_to @user.last_trip.city.name, user_trip_path(@user, @user.last_trip) %></span><br><br>
-    <%= link_to "View My Trips", user_trips_path(@user) %><br>
+    <span class="bold-text">Last Trip Added:</span>
+    <span class="no-underline"><%= link_to @user.last_trip.city.name, user_trip_path(@user, @user.last_trip) %></span><br><br>
+    <%= link_to "View My Trips", user_trips_path(@user), :class => 'btn btn-sm btn-secondary' %>
   <% end %>
-  <%= link_to "Add New Trip", new_user_trip_url(@user) %><br>
+    <%= link_to "Add New Trip", new_user_trip_url(@user), :class => 'btn btn-sm btn-info' %>
 </div>
