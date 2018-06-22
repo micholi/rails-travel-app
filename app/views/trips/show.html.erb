@@ -2,11 +2,10 @@
   <h4 class="box-heading"><%= @user.name %>'s <%= @trip.city.name %> Trip</h4>
   <p><span class="bold-text">Rating: </span><%= @trip.rating %></p>
   <p><span class="bold-text">Must See Attraction: </span><%= @trip.fave_attraction %></p>
-  <p><span class="bold-text">Review: </span><%= @trip.comment %></p>
+  <p><span class="bold-text">Review: </span><%= @trip.comment %></p><br>
 
   <% if @user == current_user %>
     <%= link_to "Edit Trip", edit_user_trip_url, :class => 'btn btn-sm btn-info btn-rounded' %>
+    <%= link_to "Delete Trip", user_trip_path, :method => 'delete', :class => 'btn btn-sm btn-dark btn-rounded' %>
   <% end %>
 </div>
-
-<p>PLACEHOLDER - ADD DELETE BUTTON</p>
