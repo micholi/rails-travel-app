@@ -13,7 +13,7 @@
       <td class="no-underline"><%= link_to trip.city.name, user_trip_path(@user, trip) %></td>
       <td><%= trip.rating %> stars</td>
       <% if @user == current_user %>
-        <td>edit / delete</td>
+        <td><%= link_to "Edit Trip", edit_user_trip_url(@user, trip), :method => 'get' %></td>
       <% else %>
         <td> </td>
       <% end %>
