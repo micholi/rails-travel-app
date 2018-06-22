@@ -1,6 +1,21 @@
-<div class="list-view">
-  <h1>Explore Cities</h1>
-  <% @cities.each do |city| %>
-    <p><%= link_to city.city_country, city_path(city) %></p>
-  <% end %>
+<div>
+<h1>Explore Cities</h1>
+<table>
+  <thead>
+    <tr>
+      <th>City</th>
+      <th>Total Trips</th>
+      <th>Average Rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cities.each do |city| %>
+    <tr class="border-bottom">
+      <td class="no-underline"><%= link_to city.city_country, city_path(city) %></td>
+      <td><%= city.trips.count %></td>
+      <td><%= city.avg_rating %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
 </div>

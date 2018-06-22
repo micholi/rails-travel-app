@@ -11,7 +11,7 @@ class City < ApplicationRecord
   end
 
   def avg_rating
-    self.trips.average(:rating).to_f.round(2)
+    self.trips.average(:rating).to_f.round(1)
   end
 
 end
