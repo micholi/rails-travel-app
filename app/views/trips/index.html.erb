@@ -1,6 +1,23 @@
-<div class="list-view">
-  <h1><%= @user.name %>'s Trips</h1>
-  <% @trips.each do |trip| %>
-    <p><%= link_to trip.city.name, user_trip_path(@user, trip) %></p>
-  <% end %>
-</div>
+<h2><%= @user.name %>'s Trips</h2>
+<table>
+  <thead>
+    <tr>
+      <th>City</th>
+      <th>Rating</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @trips.each do |trip| %>
+    <tr class="border-bottom">
+      <td class="no-underline"><%= link_to trip.city.name, user_trip_path(@user, trip) %></td>
+      <td><%= trip.rating %> stars</td>
+      <% if @user == current_user %>
+        <td>edit / delete</td>
+      <% else %>
+        <td> </td>
+      <% end %>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
