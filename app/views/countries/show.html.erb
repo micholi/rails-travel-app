@@ -1,9 +1,14 @@
-<h1><%= @country.name %></h1>
+<div class="list-details"
+  <h2><%= @country.name %></h2>
 
-Total Reviews: <%= @country.trips.count %><br><br>
-Total Cities Reviewed: <%= @country.cities.count %><br>
+  Total Reviews: <%= @country.trips.count %><br><br>
+  Total Cities Reviewed: <%= @country.cities.count %><br>
 
-<h3>Explore Cities</h3>
-<% @country.cities.each do |city| %>
-  <%= link_to city.name, city_path(city) %><br>
-<% end %>
+  <h3>Explore Cities</h3>
+  <div class="review-box">
+    <% @country.cities.each do |city| %>
+      <span class="no-underline bold-text"><%= link_to city.name, city_path(city) %></span>
+      <%= city.user.name %>
+  </div>
+  <% end %>
+</div>

@@ -97,6 +97,11 @@ h3.box-heading {
   font-weight: bold;
 }
 
+.list-details {
+  width: 70%;
+  margin: auto;
+}
+
 /* NEED TO UPDATE - LOGIN/SIGNUP  #FDFCFC */
 .start-pages {
   position: absolute;
