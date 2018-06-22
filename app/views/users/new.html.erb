@@ -1,11 +1,11 @@
 <div class="start-pages">
-<h3>Sign Up</h3>
+<h4>Sign Up</h4><br>
 
   <%= form_for @user do |f| %>
     <%= f.text_field :email, placeholder: "email" %></br>
     <%= f.text_field :name, placeholder: "username" %><br>
-    <%= f.password_field :password, placeholder: "password" %><br>
-    <%= f.submit "Create Account" %>
+    <%= f.password_field :password, placeholder: "password" %><br><br>
+    <%= f.submit "Create Account", :class => 'btn btn-sm btn-success auto' %>
   <% end %>
 
   <% if @user.errors.any? %>

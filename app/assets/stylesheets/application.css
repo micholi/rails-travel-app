@@ -24,9 +24,9 @@
 
 /* ----- TOP NAV ----- */
 /* Note: need different nav for home page */
-/* #333    */
+/* #333  #3778B0  */
  .topnav {
-   background-color: #3778B0;
+   background-color: #428FF4;
    overflow: hidden;
    margin-bottom: 25px;
  }
@@ -34,7 +34,7 @@
  .topnav a {
    float: left;
    padding: 14px 16px;
-   color: #f2f2f2;
+   color: #F2F2F2;
    text-align: center;
    text-decoration: none;
    font-size: .9em;
@@ -109,11 +109,18 @@ h3.box-heading {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 275px;
-  height: 300px;
+  height: 250px;
   border: 1px solid #A9A9A9;
   border-radius: 5px;
   background-color: #FDFCFC;
   text-align: center;
+  display: block;
+  padding-top: 20px;
+}
+
+.btn-sm {
+  display: block;
+  margin: 0px auto;
 }
 
 .form {
