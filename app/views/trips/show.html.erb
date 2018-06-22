@@ -1,8 +1,8 @@
-<div class="home">
-  <h1><%= @user.name %>'s <%= @trip.city.name %> Trip</h1>
-  Rating: <%= @trip.rating %><br><br>
-  Must See Attraction: <%= @trip.fave_attraction %><br><br>
-  Review: <%= @trip.comment %><br><br>
+<div class="med-info-box">
+  <h3 class="box-heading"><%= @user.name %>'s <%= @trip.city.name %> Trip</h3>
+  <p><span class="bold-text">Rating: </span><%= @trip.rating %></p>
+  <p><span class="bold-text">Must See Attraction: </span><%= @trip.fave_attraction %></p>
+  <p><span class="bold-text">Review: </span><%= @trip.comment %></p>
 
   <% if @user == current_user %>
     <%= link_to "Edit Trip", edit_user_trip_url %>

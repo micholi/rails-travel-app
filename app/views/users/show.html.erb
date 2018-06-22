@@ -4,8 +4,8 @@
     <p>You haven't added any trips yet.</p><br>
     <span class="no-underline"<%= link_to "Explore Destinations", cities_path %></span><br>
   <% else %>
-    <p><%= @user.trip_count %><%= " Trip".pluralize(@user.trip_count > 1) %></p>
-    Last Trip Added:<br>
+    <p>You've added <%= @user.trip_count %><%= " trip".pluralize(@user.trip_count > 1) %>.</p>
+    <span class="bold-text">Last Trip Added:</span><br>
       <span class="no-underline"><%= link_to @user.last_trip.city.name, user_trip_path(@user, @user.last_trip) %></span><br><br>
     <%= link_to "View My Trips", user_trips_path(@user) %><br>
   <% end %>
