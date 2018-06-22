@@ -1,25 +1,25 @@
 <div class="form">
-<h2>Add New Trip</h2>
+  <h3>Add New Trip</h3><br>
 
-  <%= form_for :trip, url: user_trips_path do |f| %>
-    <%= f.label :city, "Select City" %>
-    <%= f.collection_select :city_id, City.order('name ASC'), :id, :city_country, :include_blank => true %><br>
+    <%= form_for :trip, url: user_trips_path do |f| %>
+      <%= f.label :city, "Select City" %>
+      <%= f.collection_select :city_id, City.order('name ASC'), :id, :city_country, :include_blank => true %><br>
 
-    <p>* To add a new city, enter details below:</p>
-    <%= f.fields_for :city_attributes do |city_attr| %>
+      <p>* To add a new city, enter details below:</p>
+      <%= f.fields_for :city_attributes do |city_attr| %>
 
-    <%= f.label :city, "City Name" %>
-    <%= city_attr.text_field :city %><br><br>
+      <%= f.label :city, "City Name" %>
+      <%= city_attr.text_field :city %><br><br>
 
-    <%= f.label :country, "Select Country" %>
-    <%= city_attr.collection_select :country_id, Country.order('name ASC'), :id, :name, :include_blank => true %>
+      <%= f.label :country, "Select Country" %>
+      <%= city_attr.collection_select :country_id, Country.order('name ASC'), :id, :name, :include_blank => true %>
 
-    <%= f.label :country, "Add New Country" %>
-    <%= city_attr.text_field :country %><br><br>
+      <%= f.label :country, "Add New Country" %>
+      <%= city_attr.text_field :country %><br><br>
+    <% end %>
+
+    <%= render partial: 'form', locals: { f: f} %>
+
+    <%= f.submit "Add Trip", :class => 'btn btn-sm btn-success' %>
   <% end %>
-
-  <%= render partial: 'form', locals: { f: f} %>
-
-  <%= f.submit "Add Trip", :class => 'btn btn-sm btn-success' %>
-<% end %>
 </div>

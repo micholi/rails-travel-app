@@ -1,9 +1,11 @@
-<h1>Edit <%= @trip.city.name %> Trip</h1>
+<div class="form">
+  <h3>Edit <%= @trip.city.name %> Trip</h3><br>
 
-  <%= form_for :trip, url: user_trip_path, :method => 'patch' do |f| %>
-    <%= f.hidden_field :city_id %>
+    <%= form_for :trip, url: user_trip_path, :method => 'patch' do |f| %>
+      <%= f.hidden_field :city_id %>
 
-    <%= render partial: 'form', locals: { f: f} %>
+      <%= render partial: 'form', locals: { f: f} %>
 
-    <%= f.submit "Update Trip", :class => 'btn btn-sm btn-success auto' %>
-  <% end %>
+      <%= f.submit "Update Trip", :class => 'btn btn-sm btn-success auto' %>
+    <% end %>
+</div>
