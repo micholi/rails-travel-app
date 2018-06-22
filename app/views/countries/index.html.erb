@@ -1,6 +1,19 @@
-<div class="list-view">
-  <h1>Explore Countries</h1>
-  <% @countries.each do |country| %>
-    <p><%= link_to country.name, country_path(country) %></p>
-  <% end %>
-</div>
+<h1>Explore Countries</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Country</th>
+      <th>Total Trips</th>
+      <th>Cities to Explore</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @countries.each do |country| %>
+    <tr class="border-bottom">
+      <td class="no-underline"><%= link_to country.name, country_path(country) %></td>
+      <td><%= country.trips.count %></td>
+      <td><%= country.cities.count %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
