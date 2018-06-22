@@ -1,5 +1,5 @@
 <div class="info-box">
-  <h3 class="box-heading"><%= @user.name %></h3>
+  <h4 class="box-heading"><%= @user.name %></h4>
   <% if @user.trips.count == 0 %>
     <p>You haven't added any trips yet.</p><br>
     <span class="no-underline"<%= link_to "Explore Destinations", cities_path %></span><br>
