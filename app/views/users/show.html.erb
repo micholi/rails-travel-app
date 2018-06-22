@@ -1,15 +1,13 @@
-<% if @user.trips.count > 0 %>
-<h1><%= @user.name %></h1>
-
-  <p><%= @user.trips.count %><%= " Trip".pluralize(@user.trip_count > 1) %> Added</p>
-  <p>Most Recent Trip: <%= link_to @user.most_recent.city.name, user_trip_path(@user, @user.most_recent) %><br><br>
-
-<%= link_to "Add New Trip", new_user_trip_url(@user) %><br>
-<%= link_to "View All My Trips", user_trips_path(@user) %>
-
-<% else %>
-<h1>Welcome, <%= @user.name %>!</h1>
-<p>You haven't added any trips yet.</p>
-<%= link_to "Add New Trip", new_user_trip_url(@user) %><br>
-<%= link_to "Explore Destinations", cities_path %>
-<% end %>
+<div class="info-box">
+  <h3 class="box-heading"><%= @user.name %></h3>
+  <% if @user.trips.count == 0 %>
+    <p>You haven't added any trips yet.</p><br>
+    <span class="no-underline"<%= link_to "Explore Destinations", cities_path %></span><br>
+  <% else %>
+    <p><%= @user.trip_count %><%= " Trip".pluralize(@user.trip_count > 1) %></p>
+    Last Trip Added:<br>
+      <span class="no-underline"><%= link_to @user.last_trip.city.name, user_trip_path(@user, @user.last_trip) %></span><br><br>
+    <%= link_to "View My Trips", user_trips_path(@user) %><br>
+  <% end %>
+  <%= link_to "Add New Trip", new_user_trip_url(@user) %><br>
+</div>
