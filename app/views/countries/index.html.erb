@@ -3,16 +3,16 @@
   <thead>
     <tr>
       <th>Country</th>
-      <th>Total Trips</th>
-      <th>Cities to Explore</th>
+      <th>Total Cities</th>
+      <th>Sample Attraction</th>
     </tr>
   </thead>
   <tbody>
     <% @countries.each do |country| %>
     <tr class="border-bottom">
       <td class="no-underline"><%= link_to country.name, country_path(country) %></td>
-      <td><%= country.trips.count %></td>
       <td><%= country.cities.count %></td>
+      <td><%= country.random_attraction %></td>
     </tr>
     <% end %>
   </tbody>
