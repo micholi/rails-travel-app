@@ -1,14 +1,16 @@
-<div class="list-details"
+<div class="list-details">
   <h2><%= @country.name %></h2>
 
-  Total Reviews: <%= @country.trips.count %><br><br>
+  Total Trips: <%= @country.trips.count %><br><br>
   Total Cities Reviewed: <%= @country.cities.count %><br>
 
-  <h3>Explore Cities</h3>
-  <div class="review-box">
+
+
     <% @country.cities.each do |city| %>
-      <span class="no-underline bold-text"><%= link_to city.name, city_path(city) %></span>
-      <%= city.user.name %>
-  </div>
+    <div class="review-box">
+      <p class="no-underline bold-text"><%= link_to city.name, city_path(city) %></p>
+      <p><%= pluralize(city.users.count, "traveler") %></p>
+      <p>Last reviewed by <%= city.users.last.name %></p>
+    </div>
   <% end %>
 </div>
