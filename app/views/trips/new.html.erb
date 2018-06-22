@@ -1,19 +1,20 @@
-<h1>Add New Trip</h1>
+<div class="form">
+<h2>Add New Trip</h2>
 
   <%= form_for :trip, url: user_trips_path do |f| %>
     <%= f.label :city, "Select City" %>
-    <%= f.collection_select :city_id, City.order('name ASC'), :id, :city_country, :include_blank => true %>
+    <%= f.collection_select :city_id, City.order('name ASC'), :id, :city_country, :include_blank => true %><br>
 
-    <p>Or Add New City Below:</p><br><br>
+    <p>* To add a new city, enter details below:</p>
     <%= f.fields_for :city_attributes do |city_attr| %>
 
-    <p>City Name:</p>
-    <%= city_attr.text_field :city %>
+    <%= f.label :city, "City Name" %>
+    <%= city_attr.text_field :city %><br><br>
 
-    <p>Select Country:</p>
+    <%= f.label :country, "Select Country" %>
     <%= city_attr.collection_select :country_id, Country.order('name ASC'), :id, :name, :include_blank => true %>
 
-    <p>Or Add New Country:</p>
+    <%= f.label :country, "Add New Country" %>
     <%= city_attr.text_field :country %><br><br>
   <% end %>
 
@@ -21,3 +22,4 @@
 
   <%= f.submit "Add Trip" %>
 <% end %>
+</div>
