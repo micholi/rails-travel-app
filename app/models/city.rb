@@ -7,8 +7,12 @@ class City < ApplicationRecord
   validates :country_id, presence: true
 
   # TESTING
-  scope :highest_rated, -> { joins(:trips).group('trips.rating').order('AVG(trips.rating) desc').limit(1)}
-  scope :lowest_rated, -> { joins(:trips).group('trips.rating').order('AVG(trips.rating) asc').limit(1)}
+  scope :highest_rated, -> { joins(:trips).group('trips.city_id').order("AVG(trips.rating) desc").limit(1)}
+
+  scope :test_method, -> { joins(:trips).group('trips.city_id').order("AVG(trips.rating) desc") }
+  # where avgsal=(select  max(avgsal)
+          #    from (select worker_id, avg(salary) as avgsal
+          #          from workers group by worker_id))
 
 #  scope :most_trips, -> { joins(:trips).group('trips.user_id').order("count(trips.user_id) desc").limit(1)}
 
@@ -19,5 +23,6 @@ class City < ApplicationRecord
   def avg_rating
     self.trips.average(:rating).to_f.round(1)
   end
+
 
 end
