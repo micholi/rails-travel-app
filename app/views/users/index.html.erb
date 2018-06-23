@@ -1,5 +1,8 @@
 <div class="list-details">
   <h2>Travelers</h2>
+
+  Most Reviews: <%= User.most_trips.first.name %>
+
   <% @users.each do |user| %>
   <div class="review-box">
     <span class="no-underline bold-text"><%= link_to user.name, user_trips_path(user) %> </span><br>

@@ -4,6 +4,10 @@ class User < ApplicationRecord
   has_secure_password
   validates :email, presence: true, uniqueness: true
 
+  # getting weird message in console
+  scope :most_trips, -> { joins(:trips).group('trips.user_id').order("count(trips.user_id) desc").limit(1)}
+
+
   def last_trip
     # check this - what happens when you update trip?
     self.trips.last
