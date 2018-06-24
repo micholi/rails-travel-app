@@ -89,6 +89,15 @@ body {
   margin: 10px auto;
 }
 
+.form {
+  width: 70%;
+  margin: auto;
+  padding: 15px 25px;
+  border: 1px solid #A9A9A9;
+  border-radius: 5px;
+  background-color: #FDFCFC;
+}
+
 table {
   border-collapse: collapse;
   width: 70%;
@@ -126,13 +135,10 @@ td {
    border-radius: 25px;
  }
 
- .form {
+ .button-below-table {
    width: 70%;
-   margin: auto;
-   padding: 15px 25px;
-   border: 1px solid #A9A9A9;
-   border-radius: 5px;
-   background-color: #FDFCFC;
+   margin-left: 15%;
+   margin-right: 15%;
  }
 
  /* ----- LINKS ----- */

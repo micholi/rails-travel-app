@@ -21,3 +21,9 @@
     <% end %>
   </tbody>
 </table>
+<br>
+<div class="button-below-table">
+  <% if @user == current_user %>
+    <%= link_to "Add New Trip", new_user_trip_url(@user), :class => 'btn btn-sm btn-info btn-rounded' %>
+  <% end %>
+</div>
