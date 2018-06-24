@@ -15,8 +15,9 @@ class CitiesController < ApplicationController
 
   def create
     @city = City.create(city_params)
+
     if @city.save
-      redirect_to city_path
+      redirect_to cities_path
     # else
     # put code here
     end
