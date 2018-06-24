@@ -18,7 +18,7 @@ Highest Rated: <%= City.highest_rated.first.name %><br>
     <tr class="border-bottom">
       <td class="no-underline"><%= link_to city.city_country, city_path(city) %></td>
       <td><%= city.trips.count %></td>
-      <td><%= city.avg_rating %> stars</td>
+      <td><%= city.avg_rating %></td>
     </tr>
     <% end %>
   </tbody>

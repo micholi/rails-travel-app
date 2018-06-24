@@ -21,7 +21,11 @@ class City < ApplicationRecord
   end
 
   def avg_rating
-    self.trips.average(:rating).to_f.round(1)
+    if self.trips.count == 0
+      "This city hasn't been rated yet."
+    else
+      self.trips.average(:rating).to_f.round(1)
+    end
   end
 
   def country_attributes=(country_attributes)

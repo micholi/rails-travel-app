@@ -10,7 +10,7 @@ class Country < ApplicationRecord
       attractions << trip.fave_attraction
     end
     if attractions.empty?
-      random = "Be the first to add a favorite attraction for #{self.name}!"
+      random = "No favorite attractions added for #{self.name} yet."
     else
       random = attractions.sample
     end

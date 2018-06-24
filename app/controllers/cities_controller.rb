@@ -15,11 +15,10 @@ class CitiesController < ApplicationController
 
   def create
     @city = City.create(city_params)
-
     if @city.save
       redirect_to cities_path
-    # else
-    # put code here
+    else
+      render :new
     end
   end
 
