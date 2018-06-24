@@ -1,0 +1,18 @@
+<div class="form">
+  <h3>Add New City</h3><br>
+
+  <%= form_for @city do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %><br><br>
+
+    <%= f.fields_for :country_attributes do |ctry_attr| %>
+      <%= f.label :country, "Select Country" %>
+      <%= ctry_attr.collection_select :country_id, Country.order('name ASC'), :id, :name, :include_blank => true %>
+
+      <%= f.label :country, "Or Add New Country" %>
+      <%= ctry_attr.text_field :country %><br><br>
+      <% end %>
+
+    <%= f.submit "Add City", :class => 'btn btn-sm btn-success' %>
+  <% end %>
+</div>

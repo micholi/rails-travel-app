@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :trips
   end
 
-  resources :cities, only: [:index, :show]
+  resources :cities, only: [:index, :show, :new, :create]
   resources :countries, only: [:index, :show]
 
   get '/signup' => 'users#new'

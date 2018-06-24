@@ -7,7 +7,7 @@ class City < ApplicationRecord
   validates :country_id, presence: true
 
   # TESTING
-  scope :highest_rated, -> { joins(:trips).group('trips.city_id').order("AVG(trips.rating) desc").limit(1)}
+  scope :highest_rated, -> { joins(:trips).group('trips.city_id').order("AVG(trips.rating) desc").limit(1) }
 
   scope :test_method, -> { joins(:trips).group('trips.city_id').order("AVG(trips.rating) desc") }
   # where avgsal=(select  max(avgsal)
@@ -24,5 +24,13 @@ class City < ApplicationRecord
     self.trips.average(:rating).to_f.round(1)
   end
 
+  def country_attributes=(country_attributes)
+    if country_name[:country] != ""
+      country = Country.find_or_create_by(name: country_attributes[:country])
+    else
+      country = Country.find_by(id: country_attributes[:country_id])
+    end
+    self.country_id = country.id if country.name != ""
+  end
 
 end

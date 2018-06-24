@@ -9,4 +9,22 @@ class CitiesController < ApplicationController
     @city = City.find(params[:id])
   end
 
+  def new
+    @city = City.new
+  end
+
+  def create
+    @city = City.create(city_params)
+    if @city.save
+      redirect_to city_path
+    # else
+    # put code here
+    end
+  end
+
+  private
+  def city_params
+    params.require(:city).permit(:name, country_attributes:[:country, :country_id])
+  end
+
 end
