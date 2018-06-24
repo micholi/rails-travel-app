@@ -3,7 +3,7 @@ class TripsController < ApplicationController
 
   def index
     find_user
-    @trips = @user.trips.all
+    @trips = @user.sort_by_rating
   end
 
   def show
@@ -13,13 +13,12 @@ class TripsController < ApplicationController
 
   def new
     set_user
-    @trip = @user.trips.build
+    @trip = Trip.new
   end
 
   def create
     set_user
-    # or @trip.user == current_user?
-    @trip = Trip.new(trip_params)
+    @trip = @user.trips.build(trip_params)
     if @trip.save
       redirect_to user_trips_path(@user), :flash => { :success => "You've successfully added this trip!"}
     else

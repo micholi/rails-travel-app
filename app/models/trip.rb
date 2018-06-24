@@ -5,6 +5,7 @@ class Trip < ApplicationRecord
   validates :rating, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 5}
   validates :city, presence: true
 
+
   def city_attributes=(attributes)
     if attributes[:city] != ""
       city = City.find_or_create_by(name: attributes[:city])
