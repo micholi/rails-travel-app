@@ -5,7 +5,6 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.find_by(email: params[:user][:email])
-
     if params[:user][:email] == "" || params[:user][:password] == ""
       redirect_to login_path, :flash => { :error => "Please enter all fields."}
     elsif !@user
@@ -19,8 +18,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-      session.destroy
-      redirect_to root_path
+    session.destroy
+    redirect_to root_path
   end
 
 end
