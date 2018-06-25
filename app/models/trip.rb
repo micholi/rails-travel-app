@@ -5,7 +5,6 @@ class Trip < ApplicationRecord
   validates :rating, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 5}
   validates :city, presence: true
 
-
   def city_attributes=(attributes)
     if attributes[:city] != ""
       city = City.find_or_create_by(name: attributes[:city])
@@ -18,6 +17,10 @@ class Trip < ApplicationRecord
     country.save if country != ""
     self.city_id = city.id
     end
+  end
+
+  def no_dup
+    # note: need method to make sure city hasn't been added to user's trips
   end
 
 end
