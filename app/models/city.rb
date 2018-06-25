@@ -4,16 +4,7 @@ class City < ApplicationRecord
   has_many :users, through: :trips
   validates :name, presence: true, uniqueness: true
   validates :country_id, presence: true
-
-  # TESTING
-  scope :five_stars, -> { joins(:trips).where('rating: 5') }
-
-  scope :test_method, -> { joins(:trips).group('trips.city_id').order("AVG(trips.rating) desc") }
-  # where avgsal=(select  max(avgsal)
-          #    from (select worker_id, avg(salary) as avgsal
-          #          from workers group by worker_id))
-
- scope :most_trips, -> { joins(:trips).group('trips.city_id').order("count(trips.city_id) desc").limit(1)}
+  scope :most_visited, -> { joins(:trips).group('trips.city_id').order("count(trips.city_id) desc").limit(1)}
 
   def city_country
     "#{self.name}, #{country.name}"
