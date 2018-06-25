@@ -13,11 +13,13 @@ class TripsController < ApplicationController
 
   def new
     set_user
+    @city = City.find_by(id: params[:city_id])
     @trip = Trip.new
   end
 
   def create
     set_user
+    @city = City.find_by(id: params[:city_id])
     @trip = @user.trips.build(trip_params)
     if @trip.save
       redirect_to user_trips_path(@user), :flash => { :success => "You've successfully added this trip!"}
