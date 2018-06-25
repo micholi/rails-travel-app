@@ -4,7 +4,7 @@
     <p>You haven't added any trips yet.</p><br>
     <%= link_to "Explore Destinations", cities_path, :class => 'btn btn-sm btn-secondary btn-rounded' %>
   <% else %>
-    <p>You've added <%= @user.trip_count %><%= " trip".pluralize(@user.trip_count > 1) %>.</p>
+    <p>You've added <%= pluralize(@user.trip_count, "trip") %>.</p>
     <span class="bold-text">Last Trip Added:</span>
     <span class="no-underline"><%= link_to @user.last_trip.city.name, user_trip_path(@user, @user.last_trip) %></span><br><br>
     <%= link_to "View My Trips", user_trips_path(@user), :class => 'btn btn-sm btn-secondary btn-rounded' %>
