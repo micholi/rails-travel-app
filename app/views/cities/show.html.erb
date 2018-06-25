@@ -10,6 +10,6 @@
   </div>
   <% end %>
 
-</div>
+  <%= link_to "Add a Review", new_user_trip_path(:user_id, :city_id => @city.id) %>
 
-<%= link_to "Add a Review", new_user_trip_path(:user_id, :city_id => @city.id) %>
+</div>

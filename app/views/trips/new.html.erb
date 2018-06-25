@@ -11,11 +11,11 @@
         <%= f.label :city, "Select City" %>
         <%= f.collection_select :city_id, City.order('name ASC'), :id, :city_country, :include_blank => true %><br>
 
-        <p>* To add a new city, enter details below:</p>
+        <p>* OR add a new city by entering details below:</p>
         <%= f.fields_for :city_attributes do |city_attr| %>
 
         <%= f.label :city, "City Name" %>
-        <%= city_attr.text_field :city %><br><br>
+        <%= city_attr.text_field :city %>
 
         <%= f.label :country, "Select Country" %>
         <%= city_attr.collection_select :country_id, Country.order('name ASC'), :id, :name, :include_blank => true %>

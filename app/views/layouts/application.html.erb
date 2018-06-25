@@ -20,8 +20,11 @@
       <%= render '/layouts/header' %>
     </div>
 
-    <%= content_tag(:div, flash[:danger], :id => "flash_danger") if flash[:danger] %>
-    <%= content_tag(:div, flash[:success], :id => "flash_success") if flash[:success] %>
+    <% flash.each do |key, value| %>
+      <div class="<%= flash_class(key) %>">
+            <%= value %>
+      </div>
+    <% end %>
 
     <%= yield %>
   </body>
