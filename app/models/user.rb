@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_many :cities, through: :trips
   has_secure_password
   validates :email, presence: true, uniqueness: true
+  validates :name, presence: true
 
   scope :most_trips, -> { joins(:trips).group('trips.user_id').order("count(trips.user_id) desc").limit(1)}
 

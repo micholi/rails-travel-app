@@ -1,5 +1,3 @@
-
-
   <%= f.hidden_field :user_id, value: @user.id %>
 
   <%= f.label :rating, "Rating (Scale of 1-5)" %>
@@ -11,8 +9,6 @@
   <%= f.label :comment, "Share Additional Details" %><br><br>
 
   <%= f.text_area :comment, :size => "35x5" %><br><br>
-
-
 
   <% if @trip.errors.any? %>
     <div id="error_explanation">
