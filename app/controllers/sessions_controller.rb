@@ -3,7 +3,6 @@ class SessionsController < ApplicationController
   def new
   end
 
-
   def facebookcreate
     @user = User.find_or_create_by(uid: auth['uid']) do |u|
       u.name = auth['info']['name']
@@ -36,7 +35,6 @@ class SessionsController < ApplicationController
   end
 
   private
-
   def auth
     request.env['omniauth.auth']
   end
