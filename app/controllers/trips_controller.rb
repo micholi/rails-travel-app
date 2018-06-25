@@ -47,6 +47,13 @@ class TripsController < ApplicationController
     end
   end
 
+  def destroy
+    set_user
+    @trip = Trip.find_by(id: params[:id])
+    @trip.destroy
+    redirect_to user_trips_path
+  end
+
   private
   def find_user
     @user = User.find_by(id: params[:user_id])

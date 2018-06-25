@@ -1,9 +1,11 @@
 class Trip < ApplicationRecord
   belongs_to :user
   belongs_to :city
-  validates :rating, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 5}
   validates :city, presence: true
-  validates_uniqueness_of :city_id, :scope => :user_id
+  validates_uniqueness_of :city_id, :scope => :user_id, message: "already added to your trips!"
+  validates :rating, presence: true
+  validates_numericality_of :rating, :only_integer => true, message: "must be a whole number"
+  validates_inclusion_of :rating, :in => 1..5, message: "must be between 1 and 5"
 
   def city_attributes=(attributes)
     if attributes[:city] != ""
@@ -17,10 +19,6 @@ class Trip < ApplicationRecord
     country.save if country != ""
     self.city_id = city.id
     end
-  end
-
-  def no_dup
-    # note: need method to make sure city hasn't been added to user's trips
   end
 
 end
