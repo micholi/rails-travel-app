@@ -3,15 +3,18 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    @top_traveler = User.most_trips.first
   end
 
   def show
-    set_user
+    if params[:id] == "most_trips"
+      @user = User.most_trips.first
+      render 'most_trips'
+    else
+      set_user
+    end
   end
 
   def most_trips
-
   end
 
   def new
@@ -30,7 +33,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    # need to add Omniauth
     params.require(:user).permit(:email, :name, :password)
   end
 

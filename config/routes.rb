@@ -11,8 +11,8 @@ Rails.application.routes.draw do
   resources :countries, only: [:index, :show]
 
   get '/trips/five_star' => 'trips#five_star', as: '/fivestar'
-  get '/cities/most_visited' => 'cities#most_visited'
-  get '/users/most_trips' => 'users#most_trips'
+  get '/cities/most_visited' => 'cities#most_visited', as: '/most_visited'
+  get '/users/most_trips' => 'users#most_trips', as: '/most_trips'
 
   get '/signup' => 'users#new'
   post '/signup' => 'users#create'

@@ -1,11 +1,10 @@
 <div class="list-details">
   <h4>Travelers</h4>
-  <p class="blue-bold"><%= @top_traveler.name %> is the most active traveler with <%= @top_traveler.trip_count %> trips!</p>
+  <%= link_to "Who's Taken the Most Trips? Find Out Here!", most_trips_url %>
   <% @users.each do |user| %>
     <div class="review-box">
       <span class="no-underline bold-text"><%= link_to user.name, user_trips_path(user) %> </span><br>
-      <%= pluralize(user.trip_count, "trip") %><br>
-      Last Trip Added - <%= user.last_trip.city.name %>
+      Last Trip - <%= user.last_trip.city.name %>
     </div>
   <% end %>
 </div>

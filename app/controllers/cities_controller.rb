@@ -3,15 +3,18 @@ class CitiesController < ApplicationController
 
   def index
     @cities = City.all.order(:name)
-    @top_city = City.most_trips.first
   end
 
   def show
-    @city = City.find(params[:id])
+    if params[:id] == "most_visited"
+      @city = City.most_visited.first
+      render 'most_visited'
+    else
+      @city = City.find(params[:id])
+    end
   end
 
   def most_visited
-
   end
 
   def new

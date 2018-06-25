@@ -5,7 +5,6 @@ body {
  }
 
 /* ----- NAV BAR ----- */
-
  .topnav {
    background-color: #428FF4;
    overflow: hidden;
@@ -30,7 +29,6 @@ body {
  }
 
 /* ----- HOME PAGE ----- */
-
 .home {
   position: absolute;
   top: 50%;
@@ -96,6 +94,10 @@ body {
   width: 60%;
   margin-left: 20%;
   margin-right: 20%;
+}
+
+.scope-page {
+  text-align: center;
 }
 
 /* ------------RENAME THIS? ------------ */
