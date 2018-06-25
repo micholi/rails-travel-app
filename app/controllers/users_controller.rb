@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :require_login, only: [:index, :show]
-  
+
   def index
     @users = User.all
     @top_traveler = User.most_trips.first
@@ -8,6 +8,10 @@ class UsersController < ApplicationController
 
   def show
     set_user
+  end
+
+  def most_trips
+
   end
 
   def new

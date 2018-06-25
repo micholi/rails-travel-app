@@ -10,6 +10,10 @@ class CitiesController < ApplicationController
     @city = City.find(params[:id])
   end
 
+  def most_visited
+
+  end
+
   def new
     @city = City.new
   end

@@ -13,7 +13,7 @@ class TripsController < ApplicationController
 
   def fivestar
     set_user
-    render 'fivestar'
+    render 'five_star'
   end
 
   def new
