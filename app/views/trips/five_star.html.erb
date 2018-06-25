@@ -1,5 +1,4 @@
-<% @user = User.find_by(params[:id]) %>
-<h4>Trips Rated 5 Stars by <%= @user.name %></h4>
-<% @user.trips.fivestar.each do |trip| %>
-  <%= link_to trip.city.city_country, user_trip_path(@user, trip) %><br>
+<h4>Trips Rated 5 Stars by <%= current_user.name %></h4>
+<% current_user.trips.fivestar.each do |trip| %>
+  <%= link_to trip.city.city_country, user_trip_path(current_user, trip) %><br>
 <% end %>
