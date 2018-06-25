@@ -6,6 +6,7 @@ class Trip < ApplicationRecord
   validates :rating, presence: true
   validates_numericality_of :rating, :only_integer => true, message: "must be a whole number"
   validates_inclusion_of :rating, :in => 1..5, message: "must be between 1 and 5"
+  scope :five_stars, -> { where(rating: 5) }
 
   def city_attributes=(attributes)
     if attributes[:city] != ""

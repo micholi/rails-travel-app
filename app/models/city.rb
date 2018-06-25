@@ -6,7 +6,7 @@ class City < ApplicationRecord
   validates :country_id, presence: true
 
   # TESTING
-  scope :highest_rated, -> { joins(:trips).group('trips.city_id').order("AVG(trips.rating) desc").limit(1) }
+  scope :five_stars, -> { joins(:trips).where('rating: 5') }
 
   scope :test_method, -> { joins(:trips).group('trips.city_id').order("AVG(trips.rating) desc") }
   # where avgsal=(select  max(avgsal)
