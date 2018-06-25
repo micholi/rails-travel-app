@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   post '/signup' => 'users#create'
 
   get '/login' => 'sessions#new'
+  get '/auth/facebook/callback' => 'sessions#facebookcreate'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
 
