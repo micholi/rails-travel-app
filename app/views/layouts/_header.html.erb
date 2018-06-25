@@ -1,6 +1,6 @@
 <% if !logged_in? %>
   <%= link_to("Log In", login_path) %>
-  <%= link_to("Facebook Login", '/auth/facebook') %>
+  <%= link_to("Log In with Facebook", '/auth/facebook') %>
   <%= link_to("Sign Up", signup_path) %>
 <% else %>
   <%= link_to("Home", user_path(current_user)) %>
