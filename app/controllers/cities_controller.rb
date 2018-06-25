@@ -3,6 +3,7 @@ class CitiesController < ApplicationController
 
   def index
     @cities = City.all.order(:name)
+    @top_city = City.most_trips.first
   end
 
   def show

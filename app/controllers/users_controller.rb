@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
 
   def index
-    @users = User.sort_by_trip_count
+    @users = User.all
+    @top_traveler = User.most_trips.first
   end
 
   def show

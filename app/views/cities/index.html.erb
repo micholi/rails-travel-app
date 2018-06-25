@@ -1,9 +1,6 @@
 <div>
-<h4 class="page-heading">Explore Cities</h4>
-
-Highest Rated: <%= City.highest_rated.first.name %><br>
-
-
+<h4 class="align-table">Explore Cities</h4>
+<p class="align-table blue-bold"><%= @top_city.name %> is our most reviewed city with <%= @top_city.trips.count %> trips!</p>
 
 <table>
   <thead>

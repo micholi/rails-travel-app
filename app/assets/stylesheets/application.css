@@ -164,12 +164,6 @@ td {
  }
 
 /* ----- MISC ----- */
- h4.page-heading {
-   width: 70%;
-   margin-left: 15%;
-   margin-right: 15%;
-   padding-bottom: 10px;
- }
 
  h4.box-heading {
    border-bottom: 1px solid #A9A9A9;
@@ -178,6 +172,18 @@ td {
    text-align: center;
  }
 
+ .align-table {
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+    padding-bottom: 10px;
+  }
+
  .bold-text {
+   font-weight: bold;
+ }
+
+ .blue-bold {
+   color: blue;
    font-weight: bold;
  }

@@ -14,7 +14,7 @@ class City < ApplicationRecord
           #    from (select worker_id, avg(salary) as avgsal
           #          from workers group by worker_id))
 
-#  scope :most_trips, -> { joins(:trips).group('trips.user_id').order("count(trips.user_id) desc").limit(1)}
+ scope :most_trips, -> { joins(:trips).group('trips.city_id').order("count(trips.city_id) desc").limit(1)}
 
   def city_country
     "#{self.name}, #{country.name}"
