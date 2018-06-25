@@ -20,6 +20,7 @@ class User < ApplicationRecord
     self.trips.all.order("rating DESC")
   end
 
+  # ok to remove?
   def self.sort_by_trip_count
     User.joins(:trips).group('trips.user_id').order("count(trips.user_id) desc")
   end

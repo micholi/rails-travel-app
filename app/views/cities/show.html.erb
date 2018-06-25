@@ -6,10 +6,11 @@
   <% @city.trips.each do |trip| %>
   <div class="review-box">
     <%= trip.comment %>
-    <p><%= trip.user.name %> (<%= trip.rating %> stars)</p>
+    <p>- <%= trip.user.name %> (<%= trip.rating %> stars)</p>
   </div>
   <% end %>
 
-  <%= link_to "Add a Review", new_user_trip_path(:user_id, :city_id => @city.id) %>
-
+  <% if !Trip.exists?(user_id: current_user.id, city_id: @city.id) %>
+    <%= link_to "Been to #{@city.name}? Add it to your trips!", new_user_trip_path(:user_id, :city_id => @city.id) %>
+  <% end %>
 </div>
