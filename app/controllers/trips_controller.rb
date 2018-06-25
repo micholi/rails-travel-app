@@ -3,7 +3,7 @@ class TripsController < ApplicationController
 
   def index
     find_user
-    @trips = @user.sort_by_rating
+    @trips = @user.trips.all
   end
 
   def show
@@ -11,9 +11,7 @@ class TripsController < ApplicationController
     @trip = Trip.find(params[:id])
   end
 
-  def fivestar
-    set_user
-    render 'five_star'
+  def five_star
   end
 
   def new
