@@ -11,6 +11,11 @@ class TripsController < ApplicationController
     @trip = Trip.find(params[:id])
   end
 
+  def fivestar
+    set_user
+    render 'fivestar'
+  end
+
   def new
     set_user
     @city = City.find_by(id: params[:city_id])

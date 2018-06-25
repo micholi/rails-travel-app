@@ -6,7 +6,7 @@ class User < ApplicationRecord
   validates :name, presence: true
 
   scope :most_trips, -> { joins(:trips).group('trips.user_id').order("count(trips.user_id) desc").limit(1)}
-
+  scope :five_star_trips, -> { joins(:trips).where(rating: 5) }
 
   def last_trip
     # check this - what happens when you update trip?

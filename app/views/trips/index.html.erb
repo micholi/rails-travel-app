@@ -3,7 +3,7 @@
   <thead>
     <tr>
       <th>City</th>
-      <th>Rating</th>
+      <th>Must See Attraction</th>
       <th></th>
     </tr>
   </thead>
@@ -11,7 +11,7 @@
     <% @trips.each do |trip| %>
     <tr class="border-bottom">
       <td class="no-underline"><%= link_to trip.city.name, user_trip_path(@user, trip) %></td>
-      <td><%= trip.rating %> stars</td>
+      <td><%= trip.fave_attraction %></td>
       <% if @user == current_user %>
         <td><%= link_to "Edit Trip", edit_user_trip_url(@user, trip), :method => 'get' %></td>
       <% else %>
@@ -27,10 +27,3 @@
     <%= link_to "Add New Trip", new_user_trip_url(@user), :class => 'btn btn-sm btn-info btn-rounded' %>
   <% end %>
 </div>
-
-<% User.all.each do |user| %>
-<%= user.name %>
-<% user.trips.five_stars.each do |trip| %>
-  <%= trip.city.name %>
-<% end %>
-<% end %>

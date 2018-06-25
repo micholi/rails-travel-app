@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   resources :cities, only: [:index, :show, :new, :create]
   resources :countries, only: [:index, :show]
 
+  get '/trips/fivestar' => 'trips#fivestar', as: '/fivestar'
+
   get '/signup' => 'users#new'
   post '/signup' => 'users#create'
 
