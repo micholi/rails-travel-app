@@ -14,8 +14,4 @@ class User < ApplicationRecord
     self.trips.count
   end
 
-  def sort_by_rating
-    self.trips.all.order("rating DESC")
-  end
-
 end

@@ -6,6 +6,7 @@ class City < ApplicationRecord
   validates :country_id, presence: true
   scope :most_visited, -> { joins(:trips).group('trips.city_id').order("count(trips.city_id) desc").limit(1)}
 
+
   def city_plus_country
     "#{self.name}, #{country.name}"
   end
