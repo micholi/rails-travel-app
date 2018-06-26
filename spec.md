@@ -1,6 +1,6 @@
 # Specifications for the Rails Assessment
 
-Specs:
+Specs:  
 [x] Using Ruby on Rails for the project  
 [x] Include at least one has_many relationship (x has_many y e.g. User has_many Recipes)
 [x] Include at least one belongs_to relationship (x belongs_to y e.g. Post belongs_to User)  
