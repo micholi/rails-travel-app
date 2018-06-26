@@ -18,6 +18,6 @@ This is a CRUD app that allows a user, aka a traveler, to create new cities and 
 * Facebook Omniauth
 
 ## Author
-Michelle Olivieri
-https://github.com/micholi
+Michelle Olivieri<br/>
+https://github.com/micholi<br/>
 https://www.linkedin.com/in/michelleolivieri/
