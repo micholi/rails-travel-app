@@ -5,7 +5,6 @@
   <thead>
     <tr>
       <th>City</th>
-      <th>Total Trips</th>
       <th>Average Rating</th>
     </tr>
   </thead>
@@ -13,7 +12,6 @@
     <% @cities.each do |city| %>
     <tr class="border-bottom">
       <td class="no-underline"><%= link_to city.city_country, city_path(city) %></td>
-      <td><%= city.trips.count %></td>
       <td><%= city.avg_rating %></td>
     </tr>
     <% end %>

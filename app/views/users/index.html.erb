@@ -4,7 +4,7 @@
   <% @users.each do |user| %>
     <div class="review-box">
       <span class="no-underline bold-text"><%= link_to user.name, user_trips_path(user) %> </span><br>
-      Last Trip - <%= user.last_trip.city.name %>
+      Last Trip Added: <%= user.last_trip.city.name %>
     </div>
   <% end %>
 </div>
