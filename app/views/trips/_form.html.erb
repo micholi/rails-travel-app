@@ -13,7 +13,7 @@
   <% if @trip.errors.any? %>
     <div id="error_explanation">
       <p>
-        <%= pluralize(@trip.errors.count, "error") %> prohibited this account from being created:</p>
+        <%= pluralize(@trip.errors.count, "error") %> occurred:</p>
       <ul>
         <% @trip.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
