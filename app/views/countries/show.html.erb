@@ -5,7 +5,9 @@
     <div class="review-box">
       <p class="no-underline bold-text"><%= link_to city.name, city_path(city) %></p>
       <%= pluralize(city.users.count, "traveler") %><br>
-      Last reviewed by <%= city.users.last.name %>
+      <%= if !city.users.empty? %>
+        <p>Last reviewed by <%= city.users.last.name %></p>
+      <% end %>
     </div>
   <% end %>
 </div>

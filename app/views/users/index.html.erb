@@ -1,6 +1,6 @@
 <div class="list-details">
   <h4>Travelers</h4>
-  <%= link_to "Who's Taken the Most Trips? Find Out Here!", most_trips_url %>
+  <p><%= link_to "Who's Taken the Most Trips? Find Out Here!", most_trips_url %></p>
   <% @users.each do |user| %>
     <div class="review-box">
       <span class="no-underline bold-text"><%= link_to user.name, user_trips_path(user) %> </span><br>

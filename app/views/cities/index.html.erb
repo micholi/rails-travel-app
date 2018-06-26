@@ -1,6 +1,5 @@
-<div>
-  <h4 class="align-table">Explore Cities</h4>
-  <p class="align-table"><%= link_to "What's Our Most Popular City? Find Out Here!", most_visited_url %></p>
+<h4 class="align-table">Explore Cities</h4>
+<p class="align-table"><%= link_to "What's Our Most Popular City? Find Out Here!", most_visited_url %></p>
 <table>
   <thead>
     <tr>
@@ -17,4 +16,7 @@
     <% end %>
   </tbody>
 </table>
+<br>
+<div class="button-below-table">
+  <%= link_to "Add New City", new_city_url, :class => 'btn btn-sm btn-info btn-rounded' %>
 </div>
