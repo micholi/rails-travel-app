@@ -5,7 +5,7 @@
     <div class="underlined-list">
       <p class="no-underline bold-text"><%= link_to city.name, city_path(city) %></p>
       <%= pluralize(city.users.count, "traveler") %><br>
-      <%= if !city.users.empty? %>
+      <% if !city.users.empty? %>
         <p>Last reviewed by <%= city.users.last.name %></p>
       <% end %>
     </div>

@@ -2,9 +2,13 @@
   <h4>Travelers</h4>
   <p><%= link_to "Who's Taken the Most Trips? Find Out Here!", most_trips_url %></p>
   <% @users.each do |user| %>
-    <div class="review-box">
+    <div class="underlined-list">
       <span class="no-underline bold-text"><%= link_to user.name, user_trips_path(user) %> </span><br>
-      Last Trip Added: <%= user.last_trip.city.name %>
+      <% if user.trips.count >= 1 %>
+        <p>Last Trip Added: <%= user.last_trip.city.name %></p>
+        <% else%>
+        <p>No trips added yet</p>
+      <% end %>
     </div>
   <% end %>
 </div>
