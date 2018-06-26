@@ -6,10 +6,6 @@ body {
 
 /* ----- NAV BAR ----- */
 
-header {
-  z-index: 99;
-}
-
  .topnav {
    background-color: #428FF4;
    overflow: hidden;
@@ -101,8 +97,7 @@ header {
   text-align: center;
 }
 
-/* ------------RENAME THIS? ------------ */
-.review-box {
+.underlined-list {
   border-top: 1px solid #C0C0C0;
   padding-top: 10px;
   margin: 10px auto;
