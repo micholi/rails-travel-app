@@ -34,7 +34,6 @@ class TripsController < ApplicationController
   def edit
     set_user
     find_trip
-    #@trip = Trip.find(params[:id])
     if @trip.user != current_user
       redirect_to user_trips_path(@user), :flash => { :danger => "You may not edit another traveler's trip."}
     end
@@ -43,8 +42,6 @@ class TripsController < ApplicationController
   def update
     set_user
     find_trip
-    #@trip = @user.trips.find(params[:id])
-    #@trip = Trip.find(params[:id])
     @trip.update(trip_params)
     if @trip.save
       redirect_to user_trips_path(@user), :flash => { :success => "Your trip has been updated!"}
@@ -56,7 +53,6 @@ class TripsController < ApplicationController
   def destroy
     set_user
     find_trip
-  #  @trip = Trip.find_by(id: params[:id])
     @trip.destroy
     redirect_to user_trips_path
   end
