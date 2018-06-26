@@ -4,10 +4,10 @@
   <p><span class="bold-text">Total Reviews: </span><%= @city.trips.count %></p>
 
   <% @city.trips.each do |trip| %>
-  <div class="review-box">
-    <%= trip.comment %>
-    <p>- <%= trip.user.name %> (<%= trip.rating %> stars)</p>
-  </div>
+    <div class="review-box">
+      <%= trip.comment %>
+      <p>- <%= trip.user.name %> (<%= trip.rating %> stars)</p>
+    </div>
   <% end %>
 
   <% if !Trip.exists?(user_id: current_user.id, city_id: @city.id) %>

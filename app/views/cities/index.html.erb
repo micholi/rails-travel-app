@@ -1,6 +1,6 @@
 <div>
-<h4 class="align-table">Explore Cities</h4>
-<p class="align-table"><%= link_to "What's Our Most Popular City? Find Out Here!", most_visited_url %></p>
+  <h4 class="align-table">Explore Cities</h4>
+  <p class="align-table"><%= link_to "What's Our Most Popular City? Find Out Here!", most_visited_url %></p>
 <table>
   <thead>
     <tr>
@@ -11,7 +11,7 @@
   <tbody>
     <% @cities.each do |city| %>
     <tr class="border-bottom">
-      <td class="no-underline"><%= link_to city.city_country, city_path(city) %></td>
+      <td class="no-underline"><%= link_to city.plus_country, city_path(city) %></td>
       <td><%= city.avg_rating %></td>
     </tr>
     <% end %>
