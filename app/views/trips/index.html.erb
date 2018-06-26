@@ -4,6 +4,7 @@
     <tr>
       <th>City</th>
       <th>Must See Attraction</th>
+      <th>Rating</th>
       <th></th>
     </tr>
   </thead>
@@ -12,6 +13,7 @@
     <tr class="border-bottom">
       <td class="no-underline"><%= link_to trip.city.name, user_trip_path(@user, trip) %></td>
       <td><%= trip.fave_attraction %></td>
+      <td><%= trip.rating %> stars</td>
       <% if @user == current_user %>
         <td><%= link_to "Edit Trip", edit_user_trip_url(@user, trip), :method => 'get' %></td>
       <% else %>

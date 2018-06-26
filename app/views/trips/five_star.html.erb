@@ -1,6 +1,6 @@
 <div class="scope-page">
   <h4 class="blue-bold">Trips Rated 5 Stars by <%= current_user.name %>:</h4><br>
   <% current_user.trips.five_star.each do |trip| %>
-    <p class="no-underline"><%= link_to trip.city.plus_country, user_trip_path(current_user, trip) %></p>
+    <p class="no-underline"><%= link_to trip.city.city_plus_country, user_trip_path(current_user, trip) %></p>
   <% end %>
 <span class="blue-bold"><%= link_to "<-- Return to Home Page", user_path(current_user) %></span>
