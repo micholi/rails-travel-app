@@ -9,7 +9,7 @@
 
       <% else %>
         <%= f.label :city, "Select City" %>
-        <%= f.collection_select :city_id, City.order('name ASC'), :id, :city_country, :include_blank => true %><br>
+        <%= f.collection_select :city_id, City.order('name ASC'), :id, :city_plus_country, :include_blank => true %><br>
 
         <p>* OR add a new city by entering details below:</p>
         <%= f.fields_for :city_attributes do |city_attr| %>

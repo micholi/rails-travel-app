@@ -11,7 +11,7 @@
   <tbody>
     <% @cities.each do |city| %>
     <tr class="border-bottom">
-      <td class="no-underline"><%= link_to city.plus_country, city_path(city) %></td>
+      <td class="no-underline"><%= link_to city.city_plus_country, city_path(city) %></td>
       <td><%= city.avg_rating %></td>
     </tr>
     <% end %>
