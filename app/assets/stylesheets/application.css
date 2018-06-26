@@ -5,6 +5,11 @@ body {
  }
 
 /* ----- NAV BAR ----- */
+
+header {
+  z-index: 99;
+}
+
  .topnav {
    background-color: #428FF4;
    overflow: hidden;
@@ -30,11 +35,7 @@ body {
 
 /* ----- HOME PAGE ----- */
 .home {
-  position: absolute;
-  top: 50%;
-  left: 50%;
   text-align: center;
-  transform: translate(-50%, -50%);
 }
 
 /* ----- LOGIN/STARTUP PAGES ----- */
