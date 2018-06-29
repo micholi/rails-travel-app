@@ -56,14 +56,14 @@ body {
   height: 300px;
 }
 
-.login-form {
-  width: 300px;
-  height: 250px;
-}
-
 .user-errors {
   color: red;
   padding-left: 3px;
+}
+
+.login-form {
+  width: 300px;
+  height: 250px;
 }
 
 /* ----- CONTENT PAGES ----- */
@@ -110,6 +110,10 @@ body {
   border: 1px solid #A9A9A9;
   border-radius: 5px;
   background-color: #FDFCFC;
+}
+
+.form-errors {
+  color: red;
 }
 
 table {

@@ -18,13 +18,11 @@ class City < ApplicationRecord
     end
   end
 
-  def country_attributes=(country_attributes)
-    if country_attributes[:country] != ""
-      country = Country.find_or_create_by(name: country_attributes[:country])
-    else
-      country = Country.find_by(id: country_attributes[:country_id])
+  def country_name=(country_name)
+    if country_name[:country] != ""
+      country = Country.find_or_create_by(name: country_name[:country])
+     self.country_id = country.id
     end
-    self.country_id = country.id if country.name != ""
-  end
+   end
 
 end
