@@ -54,7 +54,7 @@ class TripsController < ApplicationController
     set_user
     find_trip
     @trip.destroy
-    redirect_to user_trips_path
+    redirect_to user_trips_path, :flash => { :warning => "Your trip has been deleted."}
   end
 
   private
