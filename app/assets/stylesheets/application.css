@@ -65,7 +65,8 @@ body {
 
 .user-errors {
   color: red;
-  padding-left: 3px;
+  padding-top: 25px;
+  padding-left: 10px;
 }
 
 .login-form {
