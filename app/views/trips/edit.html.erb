@@ -1,13 +1,10 @@
 <div class="form">
   <h3>Edit Trip</h3><br>
-
     <%= form_for :trip, url: user_trip_path, :method => 'patch' do |f| %>
       <%= f.hidden_field :city_id %>
       <%= f.label :city %>
       <%= f.text_field :city, value: @trip.city.name, readonly: true %><br><br>
-
       <%= render partial: 'form', locals: { f: f} %>
-
       <%= f.submit "Update Trip", :class => 'btn btn-sm btn-success auto' %>
     <% end %>
 </div>

@@ -1,33 +1,24 @@
 <div class="form">
   <h3>Add New Trip</h3><br>
     <%= form_for :trip, url: user_trips_path do |f| %>
-
       <% if @city %>
         <%= f.hidden_field :city_id, value: @city.id %>
         <%= f.label :city %>
         <%= f.text_field :city, value: @city.name, readonly: true %><br><br>
-
       <% else %>
         <%= f.label :city, "Select City" %>
         <%= f.collection_select :city_id, City.order('name ASC'), :id, :city_plus_country, :include_blank => true %><br>
-
         <p>* OR add a new city by entering details below:</p>
         <%= f.fields_for :city_attributes do |city_attr| %>
-
-        <%= f.label :city, "City Name" %>
-        <%= city_attr.text_field :city %>
-
-        <%= f.label :country, "Select Country" %>
-        <%= city_attr.collection_select :country_id, Country.order('name ASC'), :id, :name, :include_blank => true %>
-
-        <%= f.label :country, "Add New Country" %>
-        <%= city_attr.text_field :country %><br><br>
+          <%= f.label :city, "City Name" %>
+          <%= city_attr.text_field :city %>
+          <%= f.label :country, "Select Country" %>
+          <%= city_attr.collection_select :country_id, Country.order('name ASC'), :id, :name, :include_blank => true %>
+          <%= f.label :country, "Add New Country" %>
+          <%= city_attr.text_field :country %><br><br>
       <% end %>
-
     <% end %>
-
     <%= render partial: 'form', locals: { f: f} %>
-
     <%= f.submit "Add Trip", :class => 'btn btn-sm btn-success' %>
   <% end %>
 </div>
