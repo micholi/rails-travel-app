@@ -35,7 +35,7 @@ class TripsController < ApplicationController
     set_user
     find_trip
     if @trip.user != current_user
-      redirect_to user_trips_path(@user), :flash => { :danger => "You may not edit another traveler's trip."}
+      redirect_to user_trips_path(@user), :flash => { :error => "You may not edit another traveler's trip."}
     end
   end
 
