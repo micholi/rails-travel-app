@@ -5,7 +5,7 @@
       <% if @city %>
         <%= f.hidden_field :city_id, value: @city.id %>
         <%= f.label :city %>
-        <%= f.text_field :city, value: @city.name %><br><br>
+        <%= f.text_field :city, value: @city.name, readonly: true %><br><br>
 
       <% else %>
         <%= f.label :city, "Select City" %>
