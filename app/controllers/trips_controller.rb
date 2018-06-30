@@ -55,7 +55,7 @@ class TripsController < ApplicationController
     find_trip
     if @user = current_user
       @trip.destroy
-      redirect_to user_trips_path(@user), :flash => { :warning => "Your trip has been deleted."}
+      redirect_to user_trips_path(@user), :flash => { :success => "Your trip has been deleted."}
     else
       redirect_to user_trips_path(@user), :flash => { :error => "You may not delete another traveler's trip."}
     end
