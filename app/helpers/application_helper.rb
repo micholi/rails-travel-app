@@ -1,25 +1,5 @@
 module ApplicationHelper
 
-  def logged_in?
-    !!session[:user_id]
-  end
-
-  def current_user
-    if logged_in?
-      User.find_by(id: session[:user_id])
-    end
-  end
-
-  def set_user
-    if logged_in?
-      @user = current_user
-    end
-  end
-
-  def require_login
-    return head(:forbidden) unless session.include? :user_id
-  end
-
   def flash_class(level)
     case level
       when 'notice' then "alert alert-info"
