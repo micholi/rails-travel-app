@@ -42,8 +42,7 @@ class TripsController < ApplicationController
   def update
     set_user
     find_trip
-    @trip.update(trip_params)
-    if @trip.save
+    if @trip.update(trip_params)
       redirect_to user_trips_path(@user), :flash => { :success => "Your trip has been updated!"}
     else
       render :edit
@@ -53,12 +52,8 @@ class TripsController < ApplicationController
   def destroy
     set_user
     find_trip
-    if @trip.user == current_user
-      @trip.destroy
-      redirect_to user_trips_path(@user), :flash => { :success => "Your trip has been deleted."}
-    else
-      redirect_to user_trips_path(@user), :flash => { :error => "You may not delete another traveler's trip."}
-    end
+    @trip.destroy
+    redirect_to user_trips_path(@user), :flash => { :success => "Your trip has been deleted."}
   end
 
   private
