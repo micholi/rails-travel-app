@@ -13,18 +13,18 @@
       <%= ctry_name.text_field :country %><br><br>
       <% end %>
 
-      <div class="form-errors">
-        <% if @city.errors.any? %>
-          <div id="error_explanation">
-              <p><%= pluralize(@city.errors.count, "error") %> prohibited this city from being created:</p>
-            <ul>
-              <% @city.errors.full_messages.each do |msg| %>
+    <div class="form-errors">
+      <% if @city.errors.any? %>
+        <div id="error_explanation">
+          <p><%= pluralize(@city.errors.count, "error") %> prohibited this city from being created:</p>
+          <ul>
+            <% @city.errors.full_messages.each do |msg| %>
               <li><%= msg %></li>
-              <% end %>
-            </ul>
-          </div>
-        <% end %>
-      </div>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </div>
     <%= f.submit "Add City", :class => 'btn btn-sm btn-success' %>
   <% end %>
 </div>
