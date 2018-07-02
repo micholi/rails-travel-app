@@ -1,7 +1,6 @@
 <header>
 <% if !logged_in? %>
   <%= link_to("Log In", login_path) %>
-  <%= link_to("Log In with Facebook", '/auth/facebook') %>
   <%= link_to("Sign Up", signup_path) %>
 <% else %>
   <%= link_to("triptracker", user_path(current_user), :class => 'logo') %>

@@ -1,8 +1,10 @@
-<div class="start-pages login-form">
+<div class="start-pages signup-login">
   <h4>Log In</h4><br>
   <%= form_for :user do |f| %>
     <%= f.email_field :email, placeholder: "email" %>
     <%= f.password_field :password, placeholder: "password" %><br><br>
-    <%= f.submit "Log In", :class => 'btn btn-md btn-success' %>
+    <%= f.submit "Log In", :class => 'btn btn-md btn-success' %><br>
   <% end %>
+  <span class="blue-bold">OR</span><br>
+  <%= link_to "Log In with Facebook!", '/auth/facebook' %>
 </div>

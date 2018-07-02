@@ -68,7 +68,7 @@ body {
   display: block;
 }
 
-.signup-form {
+.signup-login {
   width: 300px;
   min-height: 300px;
 }
@@ -79,9 +79,23 @@ body {
   padding-bottom: 5px;
 }
 
-.login-form {
-  width: 300px;
-  height: 250px;
+.signup-login a:link {
+  color: blue;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.signup-login a:hover {
+  color: black;
+}
+
+.signup-login a:visited {
+  color: blue;
+}
+
+.signup-login a:visited:hover {
+  color: black;
+  text-decoration: none;
 }
 
 /* ----- CONTENT PAGES ----- */
