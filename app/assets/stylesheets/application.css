@@ -5,27 +5,38 @@ body {
  }
 
 /* ----- NAV BAR ----- */
-
  .topnav {
    background-color: #428FF4;
    overflow: hidden;
  }
 
  .topnav a {
-   float: left;
    padding: 14px 16px;
    color: #F2F2F2;
    text-align: center;
+   vertical-align: middle;
+   display: inline-block;
    text-decoration: none;
    font-size: .85em;
  }
 
+ .topnav a.logo {
+   font-size: 1.1em;
+   color: #FFDEAD;
+   vertical-align: middle;
+   display: inline-block;
+ }
+
+ .topnav a:hover.logo {
+   color: #FFDEAD;
+ }
+
  .topnav a:hover {
-   background-color: #3357B9;
+   color: #3357B9;
  }
 
  .topnav a:active {
-   background-color: #3357B9;
+   color: #3357B9;
  }
 
 /* ----- HOME PAGE ----- */

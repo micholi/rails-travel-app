@@ -4,7 +4,7 @@
   <%= link_to("Log In with Facebook", '/auth/facebook') %>
   <%= link_to("Sign Up", signup_path) %>
 <% else %>
-  <%= link_to("Home", user_path(current_user)) %>
+  <%= link_to("triptracker", user_path(current_user), :class => 'logo') %>
   <%= link_to("My Trips", user_trips_path(current_user)) %>
   <%= link_to("Cities", cities_path) %>
   <%= link_to("Countries", countries_path) %>
