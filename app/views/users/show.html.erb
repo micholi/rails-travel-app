@@ -7,7 +7,7 @@
     <p>You've added <%= pluralize(@user.trip_count, "trip") %>.</p>
     <span class="bold-text">Last Trip Added:</span>
     <span class="no-underline"><%= link_to @user.last_trip.city.name, user_trip_path(@user, @user.last_trip) %></span><br><br>
-    <%= link_to "View My 5-Star Trips", fivestar_url %><br><br>
+    <%= link_to "View My 5-Star Trips", five_star_url %><br><br>
     <%= link_to "See All My Trips", user_trips_path(@user), :class => 'btn btn-sm btn-secondary btn-rounded' %>
   <% end %>
     <%= link_to "Add New Trip", new_user_trip_url(@user), :class => 'btn btn-sm btn-info btn-rounded' %>
