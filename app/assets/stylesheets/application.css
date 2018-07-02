@@ -81,25 +81,6 @@ body {
   padding-bottom: 5px;
 }
 
-.signup-login a:link {
-  color: blue;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-.signup-login a:hover {
-  color: black;
-}
-
-.signup-login a:visited {
-  color: blue;
-}
-
-.signup-login a:visited:hover {
-  color: black;
-  text-decoration: none;
-}
-
 /* ----- CONTENT PAGES ----- */
 .info-box {
   position: absolute;

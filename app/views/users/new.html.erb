@@ -1,9 +1,9 @@
 <div class="start-pages signup-login">
-  <h4>Sign Up for TripTracker</h4><br>
+  <h4 class="blue-bold">Sign Up for TripTracker!</h4><br>
     <%= form_for @user do |f| %>
-      <%= f.text_field :email, placeholder: "email" %>
-      <%= f.text_field :name, placeholder: "username" %>
-      <%= f.password_field :password, placeholder: "password" %><br><br>
+      <%= f.text_field :email, placeholder: "Email", :size => 30 %>
+      <%= f.text_field :name, placeholder: "Username", :size => 30 %>
+      <%= f.password_field :password, placeholder: "Password", :size => 30 %><br><br>
       <%= f.submit "Create Account", :class => 'btn btn-block btn-success' %>
     <% end %>
 
