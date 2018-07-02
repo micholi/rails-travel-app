@@ -6,17 +6,17 @@
       <%= f.password_field :password, placeholder: "password" %><br><br>
       <%= f.submit "Create Account", :class => 'btn btn-sm btn-success auto' %>
     <% end %>
-  </div>
 
-<div class="user-errors">
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-        <p><%= pluralize(@user.errors.count, "error") %> prohibited this account from being created:</p>
-      <ul>
-        <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-        <% end %>
-      </ul>
+    <div class="user-errors">
+      <% if @user.errors.any? %>
+        <div id="error_explanation">
+            <p><%= pluralize(@user.errors.count, "error") %> prohibited this account from being created:</p>
+          <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
     </div>
-  <% end %>
 </div>
