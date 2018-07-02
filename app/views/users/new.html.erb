@@ -1,10 +1,10 @@
 <div class="start-pages signup-login">
-  <h4>Sign Up</h4><br>
+  <h4>Sign Up for TripTracker</h4><br>
     <%= form_for @user do |f| %>
       <%= f.text_field :email, placeholder: "email" %>
       <%= f.text_field :name, placeholder: "username" %>
       <%= f.password_field :password, placeholder: "password" %><br><br>
-      <%= f.submit "Create Account", :class => 'btn btn-sm btn-success auto' %>
+      <%= f.submit "Create Account", :class => 'btn btn-block btn-success' %>
     <% end %>
 
     <div class="user-errors">
@@ -19,4 +19,5 @@
         </div>
       <% end %>
     </div>
+
 </div>
