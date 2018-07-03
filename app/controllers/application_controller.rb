@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   helper_method :logged_in?, :current_user, :set_user, :require_login
 
   def logged_in?
-    !!session[:user_id]
+  !!current_user
   end
 
   def current_user
