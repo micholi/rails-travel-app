@@ -1,10 +1,10 @@
 <div class="scope-page">
-  <h4 class="blue-bold">Trips Rated 5 Stars by <%= current_user.name %>:</h4><br>
-  <% if current_user.trips.five_star.count >= 1 %>
-    <% current_user.trips.five_star.each do |trip| %>
-      <p class="no-underline"><%= link_to trip.city.city_plus_country, user_trip_path(current_user, trip) %></p>
+  <h4 class="blue-bold">Trips Rated 5 Stars by <%= @user.name %>:</h4><br>
+  <% if @user.trips.five_star.count >= 1 %>
+    <% @user.trips.five_star.each do |trip| %>
+      <p class="no-underline"><%= link_to trip.city.city_plus_country, user_trip_path(@user, trip) %></p>
     <% end %>
     <% else %>
     <p>You don't have any 5-star trips yet.</p>
   <% end %>
-<span class="blue-bold"><%= link_to "<-- Return to Home Page", user_path(current_user) %></span>
+<span class="blue-bold"><%= link_to "<-- Return to Home Page", user_path(@user) %></span>

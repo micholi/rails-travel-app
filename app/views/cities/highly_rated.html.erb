@@ -1,0 +1,8 @@
+<div class="scope-page">
+  <h3 class="blue-bold">Cities with Average Rating of 4.5 or Higher</h3>
+  <% @cities.each do |c| %>
+    <h4><%= "#{c.name} - #{c.avg_rating}" %></h4>
+  <% end %>
+  <br>
+  <span class="blue-bold"><%= link_to "<-- Return to Cities Page", cities_path %></span>
+</div>

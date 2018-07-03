@@ -6,15 +6,15 @@ class CitiesController < ApplicationController
   end
 
   def show
-    if params[:id] == "most_visited"
-      @city = City.most_visited.first
-      render 'most_visited'
-    else
-      @city = City.find(params[:id])
-    end
+    @city = City.find(params[:id])
   end
 
   def most_visited
+    @city = City.most_visited.first
+  end
+
+  def highly_rated
+    @cities = City.highly_rated
   end
 
   def new

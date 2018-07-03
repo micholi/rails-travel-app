@@ -12,6 +12,7 @@ class TripsController < ApplicationController
   end
 
   def five_star
+    set_user
   end
 
   def new

@@ -6,15 +6,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    if params[:id] == "most_trips"
-      @user = User.most_trips.first
-      render 'most_trips'
-    else
-      set_user
-    end
+    set_user
   end
 
   def most_trips
+    @user = User.most_trips.first
   end
 
   def new

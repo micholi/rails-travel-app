@@ -5,7 +5,8 @@ class City < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :country_id, presence: true
   scope :most_visited, -> { joins(:trips).group('trips.city_id').order("count(trips.city_id) desc").limit(1)}
-
+  #scope :highly_rated, -> { joins(:trips).group('trips.rating').order("AVG(trips.rating) desc").limit(1)}
+  scope :highly_rated, -> { joins(:trips).merge(Trip.group(:city_id).having('AVG(rating) >= 4.5'))}
   def city_plus_country
     "#{self.name}, #{country.name}"
   end
