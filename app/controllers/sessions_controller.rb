@@ -19,13 +19,11 @@ class SessionsController < ApplicationController
     @user = User.find_by(email: params[:user][:email])
     if params[:user][:email] == "" || params[:user][:password] == ""
       redirect_to login_path, :flash => { :error => "Please enter all fields."}
-    elsif !@user
-      redirect_to login_path, :flash => { :error => "Sorry, we don't recognize that email."}
     elsif @user && @user.try(:authenticate, params[:user][:password])
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
-      redirect_to login_path, :flash => { :error => "Incorrect password. Please try again."}
+      redirect_to login_path, :flash => { :error => "Incorrect username/password. Please try again."}
     end
   end
 
