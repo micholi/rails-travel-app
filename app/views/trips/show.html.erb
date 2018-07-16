@@ -1,21 +1,23 @@
 <h1 class="tripCity"><%= @trip.city.name %></h1>
-<p class="tripRating"><%= @trip.rating %></p>
-<p class="tripMustSee"><%= @trip.fave_attraction %></p>
-<p class="tripReview"><%= @trip.comment %></p>
-<a href="#" class="js-next" data-user-id="<%= @trip.user.id %> data-trip-id="<%= @trip.id %>">Next Trip</a>
+<p class="tripRating">Rating: <%= @trip.rating %></p>
+<p class="tripMustSee">Must See Attraction: <%= @trip.fave_attraction %></p>
+<p class="tripReview">Review: <%= @trip.comment %></p>
+<a href="#" class="js-next" data-user-id="<%= @trip.user.id %>" data-trip-id="<%= @trip.id %>">Next Trip</a>
 
 <script type="text/javascript" charset="utf-8">
 $(function () {
   $(".js-next").on("click", function() {
-    var nextId = parseInt($(".js-next").attr("data-trip-id")) + 1;
-    $.get("trips/" + nextId + ".json", function(data) {
+    let userId = parseInt($(".js-next").attr("data-user-id"));
+
+    let nextTripId = parseInt($(".js-next").attr("data-trip-id")) + 1;
+    $.get("/users/" + userId + "/trips/" + nextTripId + ".json", function(data) {
       var trip = data;
       $(".tripCity").text(trip["city"]["name"]);
       $(".tripRating").text(trip["rating"]);
       $(".tripMustSee").text(trip["fave_attraction"]);
       $(".tripReview").text(trip["comment"]);
       // re-set the id to current on the link
-      $(".js-next").attr("data-id", trip["id"]);
+      $(".js-next").attr("data-trip-id", trip["id"]);
     });
   });
 });
