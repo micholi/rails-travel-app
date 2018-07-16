@@ -9,7 +9,7 @@ class TripsController < ApplicationController
 
   def show
     find_user
-    #find_trip
+    # find_trip
     @trip = @user.trips.find_by(id: params[:id])
     respond_to do |format|
       format.html { render :show }
