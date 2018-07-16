@@ -4,11 +4,17 @@ class TripsController < ApplicationController
   def index
     find_user
     @trips = @user.trips.all
+    # render json: @trips
   end
 
   def show
     find_user
-    find_trip
+    #find_trip
+    @trip = @user.trips.find_by(id: params[:id])
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @trip }
+    end
   end
 
   def five_star

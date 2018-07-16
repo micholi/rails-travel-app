@@ -1,11 +1,25 @@
-<div class="info-box med-box">
-  <h4 class="box-heading"><%= @user.name %>'s <%= @trip.city.name %> Trip</h4>
-  <p><span class="bold-text">Rating: </span><%= @trip.rating %></p>
-  <p><span class="bold-text">Must See Attraction: </span><%= @trip.fave_attraction %></p>
-  <p><span class="bold-text">Review: </span><%= @trip.comment %></p><br>
 
-  <% if @user == current_user %>
-    <%= link_to "Edit Trip", edit_user_trip_url, :class => 'btn btn-sm btn-primary btn-rounded' %>
-    <%= link_to "Delete Trip", user_trip_path, :method => 'delete', data: { confirm: "Are you sure?" }, :class => 'btn btn-sm btn-secondary btn-rounded' %>
-  <% end %>
-</div>
+
+
+<a href="#" class="js-next" data-id="<%=@trip.id%>">Next Trip</a>
+<h1 class="tripCity"><%= @trip.city.name %></h1>
+<p class="tripRating"><%= @trip.rating %></p>
+<p class="tripMustSee"><%= @trip.fave_attraction %></p>
+<p class="tripReview"><%= @trip.comment %></p>
+
+<script type="text/javascript" charset="utf-8">
+$(function () {
+  $(".js-next").on("click", function() {
+    var nextId = parseInt($(".js-next").attr("data-id")) + 1;
+    $.get("/trips/" + nextId + ".json", function(data) {
+      var trip = data;
+      $(".tripCity").text(trip["city"]["name"]);
+      $(".tripRating").text(trip["rating"]);
+      $(".tripMustSee").text(trip["fave_attraction"]);
+      $(".tripReview").text(trip["comment"]);
+      // re-set the id to current on the link
+      $(".js-next").attr("data-id", trip["id"]);
+    });
+  });
+});
+</script>

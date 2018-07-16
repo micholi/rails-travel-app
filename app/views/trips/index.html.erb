@@ -1,26 +1,25 @@
 <h4 class="align-table"><%= @user.name %>'s Trips</h4>
-<table>
-  <thead>
-    <tr>
-      <th>City</th>
-      <th>Must See Attraction</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @trips.each do |trip| %>
-    <tr class="border-bottom">
-      <td class="no-underline"><%= link_to trip.city.name, user_trip_path(@user, trip) %></td>
-      <td><%= trip.fave_attraction %></td>
-      <% if @user == current_user %>
-        <td><%= link_to "Edit Trip", edit_user_trip_url(@user, trip), :method => 'get' %></td>
-      <% else %>
-        <td> </td>
-      <% end %>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+<% @trips.each do |trip| %>
+  <p><%= trip.city.name %></p>
+  <div id="trip-<%= trip.id %>"><%= truncate(trip.comment) %></div>
+  <button class="js-more" data-id="<%= trip.id %>">Read More</button>
+  <ul id="trip-<%= trip.id %>-">
+  </ul>
+<% end %>
+
+<script type="text/javascript" charset="utf-8">
+$(function() {
+  $(".js-more").on("click", function() {
+    var id = $(this).data("id");
+    $.get("trips/" + id + ".json", function(data) {
+      var trip = data;
+      var reviewText = "<p>" + trip["comment"] + "</p><p>" + reviewText + "</p>";
+      $("#trip-" + id).html(reviewText);
+    })
+  })
+})
+</script>
+
 <br>
 <div class="button-below-table">
   <% if @user == current_user %>
