@@ -1,3 +1,3 @@
 class CitySerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :name, :country, :city_info
 end

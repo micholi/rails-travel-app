@@ -7,6 +7,10 @@ class CitiesController < ApplicationController
 
   def show
     @city = City.find(params[:id])
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @city }
+    end
   end
 
   def most_visited

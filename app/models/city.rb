@@ -19,6 +19,14 @@ class City < ApplicationRecord
     end
   end
 
+  def trip_count
+    self.trips.count
+  end
+
+  def city_info
+    "#{self.name} is located in #{self.country.name}. It has been visited by #{self.trip_count} of our travelers and has an average rating of #{self.avg_rating}. "
+  end
+
   def country_name=(country_name)
     if country_name[:country] != ""
       country = Country.find_or_create_by(name: country_name[:country])

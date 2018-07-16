@@ -13,7 +13,7 @@ $(function() {
     var id = $(this).data("id");
     $.get("trips/" + id + ".json", function(data) {
       var trip = data;
-      var reviewText = "<p>" + trip["comment"] + "</p><p>" + reviewText + "</p>";
+      var reviewText = "<p>" + trip["comment"] + "</p>";
       $("#trip-" + id).html(reviewText);
     })
   })
