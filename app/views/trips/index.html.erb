@@ -1,8 +1,8 @@
 <h4 class="align-table"><%= @user.name %>'s Trips</h4>
 <% @trips.each do |trip| %>
-  <p><%= link_to trip.city.name, user_trip_path(@user, trip) %></p>
+  <p><%= link_to trip.city.city_plus_country, user_trip_path(@user, trip) %></p>
   <div id="trip-<%= trip.id %>"><%= truncate(trip.comment) %></div>
-  <button class="js-more" data-id="<%= trip.id %>">Read More</button>
+  <a href="#" class="js-more" data-id="<%= trip.id %>">Read More</a>
   <ul id="trip-<%= trip.id %>-">
   </ul>
 <% end %>
@@ -13,7 +13,7 @@ $(function() {
     var id = $(this).data("id");
     $.get("trips/" + id + ".json", function(data) {
       var trip = data;
-      var reviewText = "<p>" + trip["comment"] + "</p>";
+      var reviewText = "<p>" + trip["comment"] + "</p><p>" + "Rating: " + trip["rating"] + "</p><p>" + "Must See Attraction: " + trip["fave_attraction"] + "</p>";
       $("#trip-" + id).html(reviewText);
     })
   })
