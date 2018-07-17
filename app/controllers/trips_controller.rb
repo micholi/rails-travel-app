@@ -4,7 +4,10 @@ class TripsController < ApplicationController
   def index
     find_user
     @trips = @user.trips.all
-    # render json: @trips
+    respond_to do |format|
+      format.html { render :index }
+      format.json {render json: @trips }
+    end
   end
 
   def show

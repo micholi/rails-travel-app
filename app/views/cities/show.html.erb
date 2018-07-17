@@ -1,28 +1,21 @@
 <h1 class="cityName"><%= @city.name %></h1>
 <p class="cityTripCount">Total Trips: <%= @city.trip_count %></p>
 <p class="cityAvgRating">Average Rating: <%= @city.avg_rating %></p>
-<a href="#" class="js-next" city-id="<%= @city.id %>">Next City</a>
+<a href="#" class="next-city" data-city-id="<%= @city.id %>">Next City</a>
 
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" ></script>
 <script type="text/javascript" charset="utf-8">
-$(function () {
-  $(".js-next").on("click", function() {
-    var nextId = parseInt($(".js-next").attr("city-id")) + 1;
-    $.get("/cities/" + nextId + ".json", function(data) {
-      let city = data;
-      $(".cityName").text(city["name"]);
-      $(".cityTripCount").text(`Total Trips: ${city["trip_count"]}`);
-      $(".cityAvgRating").text(`Average Rating: ${city["avg_rating"]}`);
-
-      // re-set the id to current on the link
-      $(".js-next").attr("city-id", city["id"]);
-    });
-  });
-});
+$(function() {
+  $(".next-city").on("click", function(e) {
+    e.preventDefault()
+    let cityId = parseInt($(".next-city").attr("data-city-id"))
+    let nextCityId = getNextCity()
+    $.get(`/cities/${nextCityId}.json`, function(resp) {
+      let city = new City(resp)
+      city.displayNextCity()
+    })
+  })
+})
 </script>
-
 
 
   <% if !Trip.exists?(user_id: current_user.id, city_id: @city.id) %>
