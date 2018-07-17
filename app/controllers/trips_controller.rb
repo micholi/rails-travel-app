@@ -6,7 +6,7 @@ class TripsController < ApplicationController
     @trips = @user.trips.all
     respond_to do |format|
       format.html { render :index }
-      format.json {render json: @trips }
+      format.json { render json: @trips }
     end
   end
 
