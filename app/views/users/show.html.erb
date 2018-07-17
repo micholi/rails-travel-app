@@ -14,21 +14,22 @@
 
 
 <a href="#" class="js-load-trips" data-user-id="<%= @user.id %>">See my trips</a>
-<div id="trips"></div>
+<div id="my-trips"></div>
 
 <script>
 $(function() {
   $(".js-load-trips").on("click", function() {
     let userId = parseInt($(".js-load-trips").attr("data-user-id"))
     $.get(`/users/${userId}/trips.json`, function(data) {
-      
+
       let trips = data;
-      let tripsList = '<ul id=trips>';
+      let tripsList = "";
       trips.forEach(function(trip) {
-        tripsList += '<li>' + trip.city.name + '</li>'
-      })
-      tripsList += '</ul>'
-      $("#trips").html(tripsList);
+        let tripId = trip.id;
+        let city = trip.city.name;
+
+      $("#my-trips").append(`<a href="/users/${userId}/trips/${tripId}">${city}</a><br>`);
+    })
     })
   })
 })
