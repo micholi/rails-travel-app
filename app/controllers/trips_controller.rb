@@ -2,7 +2,8 @@ class TripsController < ApplicationController
   before_action :require_login
 
   def index
-    find_user
+    #find_user
+    @user = current_user
     @trips = @user.trips.all
     respond_to do |format|
       format.html { render :index }
@@ -12,8 +13,8 @@ class TripsController < ApplicationController
 
   def show
     find_user
-    # find_trip
-    @trip = @user.trips.find_by(id: params[:id])
+    find_trip
+    #@trip = @user.trips.find_by(id: params[:id])
     respond_to do |format|
       format.html { render :show }
       format.json { render json: @trip }
