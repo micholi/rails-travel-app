@@ -13,5 +13,5 @@
     <%= link_to "Add New Trip", new_user_trip_url(@user), :class => 'btn btn-sm btn-info btn-rounded' %>
 
 
-<button class="js-load-trips btn btn-sm btn-secondary btn-rounded" data-user-id="<%= @user.id %>">See my trips</button>
+<button class="js-load-trips btn btn-sm btn-secondary btn-rounded" data-user-id="<%= @user.id %>" id="btn">See my trips</button>
 <div id="my-trips"></div>
