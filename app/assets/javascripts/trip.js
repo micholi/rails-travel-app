@@ -1,15 +1,24 @@
+function Trip(city, rating, faveAttraction, review) {
+  this.city = city
+  this.rating = rating
+  this.faveAttraction = faveAttraction
+  this.review = review
+}
+
 $(function() {
 
   var userId = parseInt($(".js-next").attr("data-user-id"));
   var tripId = parseInt($(".js-next").attr("data-trip-id"));
-  var index = 0
+  var index
   //let index = 0;
   //function getTripId() {
     var tripIdsArray = []
 
 
     $.get(`/users/${userId}/trips.json`, function(data) {
-      data.forEach(trip => tripIdsArray.push(trip.id))
+
+      tripIdsArray = data
+    //  data.forEach(trip => tripIdsArray.push(trip.id))
       index = tripIdsArray.indexOf(tripId)
 
 
@@ -29,6 +38,7 @@ function loadTrip(userId, nextTripId) {
     $(".tripReview").text(`Review: ${trip.comment}`);
     // re-set the id to current on the link
     //$(".js-next").attr("data-user-id", trip["user"]["id"]);
+    debugger
     $(".js-next").attr("data-trip-id", trip["id"]);
 
   })
@@ -37,10 +47,16 @@ function loadTrip(userId, nextTripId) {
 $(".js-next").on("click", function(event) {
 
 
-  let nextTripId = tripIdsArray[index + 1]
+//  let nextTripId = tripIdsArray[index + 1]
+debugger
+//  let newIndex = tripIdsArray[index + 1]
+  index += 1
+  let nextTripId = tripIdsArray[index]
 
   event.preventDefault()
   loadTrip(userId, nextTripId)
+
+ // data[2]["city"]["name"]
 
 })
 

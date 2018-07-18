@@ -2,4 +2,4 @@
 <p class="tripRating">Rating: <%= @trip.rating %></p>
 <p class="tripMustSee">Must See Attraction: <%= @trip.fave_attraction %></p>
 <p class="tripReview">Review: <%= @trip.comment %></p>
-<a href="#" class="js-next" data-user-id="<%= @trip.user.id %>" data-trip-id="<%= @trip.id %>">Next Trip</a>
+<a href="#" class="js-next" data-user-id="<%= @user.id %>" data-trip-id="<%= @trip.id %>">Next Trip</a>
