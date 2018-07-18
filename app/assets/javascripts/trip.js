@@ -46,6 +46,7 @@ function loadTrip(userId, nextTripId) {
     // re-set the id to current on the link
     //$(".js-next").attr("data-user-id", trip["user"]["id"]);
     debugger
+    $(".js-previous").attr("data-trip-id", this.id);
     $(".js-next").attr("data-trip-id", this.id);
 
   })
@@ -53,10 +54,8 @@ function loadTrip(userId, nextTripId) {
 
 $(".js-next").on("click", function(event) {
 
-
-//  let nextTripId = tripIdsArray[index + 1]
 debugger
-//  let newIndex = tripIdsArray[index + 1]
+
   currentIndex += 1
   let nextTripId = tripsArray[currentIndex]["id"]
 
@@ -64,7 +63,19 @@ debugger
   loadTrip(userId, nextTripId)
 
  // data[2]["city"]["name"]
+})
 
+$(".js-previous").on("click", function(event) {
+
+
+
+  currentIndex -= 1
+  let nextTripId = tripsArray[currentIndex]["id"]
+
+  event.preventDefault()
+  loadTrip(userId, nextTripId)
+
+ // data[2]["city"]["name"]
 })
 
 })

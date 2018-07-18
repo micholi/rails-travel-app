@@ -1,5 +1,6 @@
-<h1 class="tripCity"><%= @trip.city.name %></h1>
+<h1 class="tripCity"><%= @trip.city.city_plus_country %></h1>
 <p class="tripRating">Rating: <%= @trip.rating %></p>
 <p class="tripMustSee">Must See Attraction: <%= @trip.fave_attraction %></p>
 <p class="tripReview">Review: <%= @trip.comment %></p>
+<a href="#" class="js-previous" data-user-id="<%= @user.id %>" data-trip-id="<%= @trip.id %>">Previous Trip</a>
 <a href="#" class="js-next" data-user-id="<%= @user.id %>" data-trip-id="<%= @trip.id %>">Next Trip</a>
