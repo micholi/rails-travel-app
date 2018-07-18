@@ -25,7 +25,7 @@ $(function() {
 
       tripsArray = data
     //  data.forEach(trip => tripIdsArray.push(trip.id))
-      currentIndex = tripIdsArray.indexOf(tripId)
+      currentIndex = tripsArray.indexOf(tripId)
 
 
     });
@@ -69,6 +69,7 @@ $(".js-previous").on("click", function(event) {
 
 
 
+
   currentIndex -= 1
   let nextTripId = tripsArray[currentIndex]["id"]
 
@@ -76,6 +77,7 @@ $(".js-previous").on("click", function(event) {
   loadTrip(userId, nextTripId)
 
  // data[2]["city"]["name"]
+
 })
 
 })

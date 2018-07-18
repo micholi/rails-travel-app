@@ -10,6 +10,7 @@ $(function() {
       trips.forEach(function(trip) {
         let tripId = trip.id;
         let city = trip.city.name;
+      
 
       $("#my-trips").append(`<a href="/users/${userId}/trips/${tripId}">${city}</a><br>`);
       btn.innerHTML = "Hide Trips"
