@@ -15,23 +15,3 @@
 
 <button class="js-load-trips btn btn-sm btn-secondary btn-rounded" data-user-id="<%= @user.id %>">See my trips</button>
 <div id="my-trips"></div>
-
-
-<script>
-$(function() {
-  $(".js-load-trips").on("click", function() {
-    let userId = parseInt($(".js-load-trips").attr("data-user-id"))
-    $.get(`/users/${userId}/trips.json`, function(data) {
-
-      let trips = data;
-      let tripsList = "";
-      trips.forEach(function(trip) {
-        let tripId = trip.id;
-        let city = trip.city.name;
-
-      $("#my-trips").append(`<a href="/users/${userId}/trips/${tripId}">${city}</a><br>`);
-    })
-    })
-  })
-})
-</script>
