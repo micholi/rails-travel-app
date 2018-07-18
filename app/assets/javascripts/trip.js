@@ -1,9 +1,9 @@
-function Trip(city, user, rating, faveAttraction, review) {
+function Trip(city, rating, fave_attraction, comment) {
   this.city = city
-  this.user = user
+  //this.user = user
   this.rating = rating
-  this.faveAttraction = faveAttraction
-  this.review = review
+  this.fave_attraction = fave_attraction
+  this.comment = comment
 }
 
 Trip.prototype.cityCountry = function() {
@@ -36,9 +36,10 @@ $(function() {
 function loadTrip(userId, nextTripId) {
   //debugger
   $.get(`/users/${userId}/trips/${nextTripId}.json`, function(data) {
-    let trip = data;
-
-    $(".tripCity").text(trip["city"]["name"]);
+    //let trip = data;
+    const trip = new Trip(data.city, data.rating, data.fave_attraction, data.comment)
+    //$(".tripCity").text(trip["city"]["name"]);
+    $(".tripCity").text(trip.cityCountry());
     $(".tripRating").text(`Rating: ${trip.rating}`);
     $(".tripMustSee").text(`Must See Attraction: ${trip.fave_attraction}`);
     $(".tripReview").text(`Review: ${trip.comment}`);
