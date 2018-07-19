@@ -26,7 +26,7 @@ $(function() {
 
     $(".js-next").on("click", function(event) {
 
-      debugger
+      //debugger
       currentIndex += 1
       let nextTripId = tripsArray[currentIndex]["id"]
 
@@ -75,9 +75,9 @@ function loadTrip(userId, nextTripId) {
     $(".tripReview").text(`Review: ${trip.comment}`);
     // re-set the id to current on the link
     //$(".js-next").attr("data-user-id", trip["user"]["id"]);
-    debugger
-    $(".js-previous").attr("data-trip-id", city.id);
-    $(".js-next").attr("data-trip-id", city.id);
+    
+    $(".js-previous").attr("data-trip-id", this.id);
+    $(".js-next").attr("data-trip-id", this.id);
 
   })
 }

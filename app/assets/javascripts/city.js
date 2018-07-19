@@ -20,6 +20,23 @@ City.prototype.avgRating = function() {
   return average
 }
 
+City.prototype.getComments = function() {
+  //let comments = []
+  let cityTrips = this.trips
+  debugger
+  //cityTrips.map(trip => comments.push(trip.comment))
+  //comments.forEach(comment => $(".city-comments").append(`<p>comment</p>`))
+
+  //cityTrips.forEach(trip => $("#js-city-comments").append(`<p>${trip.user.name} says '${trip.comment}'</p>`))
+  cityTrips.forEach(function(trip) {
+    let cityTripUser = trip.user.name;
+    let cityComment = trip.comment;
+    $("#js-city-comments").append(`<p>${cityTripUser} says ${cityComment}</p>`);
+  })
+}
+
+
+
 $(function() {
   let cityId = $(this).attr('data-city-id')
   var currentIndex = 0
@@ -72,8 +89,21 @@ function loadCity(nextCityId) {
 
     $(".js-previous-city").attr("data-city-id", this.id);
     $(".js-next-city").attr("data-city-id", this.id);
-
+    $(".js-display-comments").attr("data-city-id", this.id);
   })
 }
+
+// testing
+$(".js-display-comments").on("click", function(event) {
+
+  let myCityId = parseInt($(".js-display-comments").attr("data-city-id"));
+  $.get(`/cities/${myCityId}.json`, function(data) {
+    const newCity = new City(data)
+    event.preventDefault()
+    newCity.getComments()
+  })
+})
+
+
 
 })
