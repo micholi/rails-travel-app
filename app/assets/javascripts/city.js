@@ -12,16 +12,17 @@ function City(id, name, country) {
     //});
 //}
 
-City.prototype.tripCount = function() {
-//  debugger
+City.prototype.tripCount = function(currentIndex) {
+  //let testIndex = 0
   var cityTrips = []
-  //let cityId = id
-  //var trips = this.fetchTrips()
-  //return trips.size
-    $.get(`/cities/${this.id}/trips.json`, function(data) {
+//  $.get(`/cities/${this.id}/trips.json`, function(data) {
+  $.get(`/cities.json`, function(data) {
   //trips = this.fetchTrips()
   cityTrips = data
-  return cityTrips.size
+  return cityTrips[currentIndex].trips.length
+//return count
+  //return cityTrips.size
+
 })
 }
 
@@ -50,12 +51,13 @@ function loadCity(nextCityId) {
   $.get(`/cities/${nextCityId}.json`, function(data) {
 
     const city = new City(data.id, data.name, data.country)
+
     //debugger
 
     $(".cityName").text(city.name);
     $(".countryName").text(city.country.name);
 
-    $(".cityTripCount").text(city.tripCount());
+    $(".cityTripCount").text(city.tripCount(currentIndex));
     //$(".cityAvgRating").text(city.avgRating());
     // country
 
@@ -66,7 +68,7 @@ function loadCity(nextCityId) {
 }
 
 $(".js-next-city").on("click", function(event) {
-debugger
+
   currentIndex += 1
   let nextCityId = citiesArray[currentIndex]["id"]
 

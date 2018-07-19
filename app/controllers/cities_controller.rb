@@ -11,10 +11,12 @@ class CitiesController < ApplicationController
 
   def show
     @city = City.find(params[:id])
+    #@trips = @city.trips
     respond_to do |format|
       format.html { render :show }
       format.json { render json: @city }
     end
+      #render json: @trips
   end
 
   def most_visited
@@ -23,14 +25,6 @@ class CitiesController < ApplicationController
 
   def highly_rated
     @cities = City.highly_rated
-  end
-
-  def trips
-    @city = City.find(params[:id])
-    @city_trips = @city.trips
-
-      #render json: @city_trips, serializer: CitySerializer, status: 200
-      render json: @city_trips
   end
 
   def new
