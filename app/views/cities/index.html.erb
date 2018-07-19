@@ -10,18 +10,8 @@
   </ul>
 <% end %>
 
-<script type="text/javascript" charset="utf-8">
-$(function() {
-  $(".js-more").on("click", function() {
-    var id = $(this).data("id");
-    $.get("/cities/" + id + ".json", function(data) {
-      var city = data;
-      var cityText = city["city_info"];
-      $("#city-" + id).html(cityText);
-    })
-  })
-})
-</script>
+
+
 
 <div class="button-below-table">
   <%= link_to "Add New City", new_city_url, :class => 'btn btn-sm btn-primary btn-rounded' %>

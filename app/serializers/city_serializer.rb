@@ -1,5 +1,5 @@
 class CitySerializer < ActiveModel::Serializer
-  attributes :id, :name, :country, :trips
+  attributes :id, :name, :country, :trips, :city_info
   belongs_to :country
   has_many :trips
   # need to create citytrips serializer
