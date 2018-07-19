@@ -25,7 +25,7 @@ $(function() {
   var currentIndex = 0
   var citiesArray = []
 
-  $(".js-next-city").on("click", function(event) {
+  $(".js-next").on("click", function(event) {
     currentIndex += 1
     let nextCityId = citiesArray[currentIndex]["id"]
 
@@ -33,22 +33,22 @@ $(function() {
     loadCity(nextCityId)
   })
 
-  $(".js-previous-city").on("click", function(event) {
+  $(".js-previous").on("click", function(event) {
     currentIndex -= 1
     let nextCityId = citiesArray[currentIndex]["id"]
     event.preventDefault()
     loadCity(nextCityId)
   })
 
-    $(".js-more").on("click", function(event) {
-      var testCityId = $(this).data("id");
-      $.get("/cities/" + testCityId + ".json", function(data) {
-        var city = data;
-        var cityText = city["city_info"];
-        event.preventDefault()
-        $("#city-" + id).html(cityText);
-      })
-    })
+//    $(".js-more").on("click", function(event) {
+//      var testCityId = $(this).data("id");
+//      $.get("/cities/" + testCityId + ".json", function(data) {
+//        var city = data;
+//        var cityText = city["city_info"];
+//        event.preventDefault()
+//        $("#city-" + id).html(cityText);
+//      })
+//    })
 
     $.get("/cities.json", function(data) {
 
@@ -66,7 +66,7 @@ function loadCity(nextCityId) {
     //debugger
 
     $(".cityName").text(city.name);
-    $(".countryName").text(`Country: ${city.country.name}`);
+    $(".countryName").text(city.country.name);
     $(".cityTripCount").text(city.tripCount());
     $(".cityAvgRating").text(city.avgRating());
 

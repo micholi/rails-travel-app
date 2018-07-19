@@ -1,10 +1,10 @@
-<div class="test">
+<div class="prev-next-container">
+<a href="#" class="js-previous" data-city-id="<%= @city.id %>">Previous City</a>
+<a href="#" class="js-next" data-city-id="<%= @city.id %>">Next City</a>
 <h3 class="cityName"><%= @city.name %></h3>
 <p>Country: <span class="countryName"><%= @city.country.name %></span></p>
 <p>Total Trips: <span class="cityTripCount"><%= @city.trip_count %></span></p>
 <p>Average Rating: <span class="cityAvgRating"><%= @city.avg_rating %></span></p>
-<a href="#" class="js-previous-city" data-city-id="<%= @city.id %>">Previous City</a>
-<a href="#" class="js-next-city" data-city-id="<%= @city.id %>">Next City</a>
 
   <% if !Trip.exists?(user_id: current_user.id, city_id: @city.id) %>
     <%= link_to "Been to #{@city.name}? Add it to your trips!", new_user_trip_path(:user_id => current_user.id, :city_id => @city.id) %>

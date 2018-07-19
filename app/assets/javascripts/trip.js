@@ -20,7 +20,7 @@ $(function() {
 
       tripsArray = data
       currentIndex = tripsArray.indexOf(tripId)
-      
+
     });
 
 
@@ -47,6 +47,19 @@ $(function() {
 
      // data[2]["city"]["name"]
     })
+
+
+
+      $(".js-more").on("click", function() {
+        let moreTripId = $(this).data("id");
+        $.get("trips/" + moreTripId + ".json", function(data) {
+          let trip = data;
+          var reviewText = "<p>" + trip["comment"] + "</p><p>" + "Rating: " + trip["rating"] + "</p><p>" + "Must See Attraction: " + trip["fave_attraction"] + "</p>";
+          $("#trip-" + moreTripId).html(reviewText);
+          $("#more-" + moreTripId).hide()
+        })
+      })
+
 
 
 
