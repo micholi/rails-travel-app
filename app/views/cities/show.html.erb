@@ -1,3 +1,4 @@
+<div class="test">
 <h1 class="cityName"><%= @city.name %></h1>
 <h1 class="countryName"><%= @city.country.name %></h1>
 <p class="cityTripCount">Total Trips: <%= @city.trip_count %></p>
@@ -8,3 +9,5 @@
   <% if !Trip.exists?(user_id: current_user.id, city_id: @city.id) %>
     <%= link_to "Been to #{@city.name}? Add it to your trips!", new_user_trip_path(:user_id => current_user.id, :city_id => @city.id) %>
   <% end %>
+
+</test>

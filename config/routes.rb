@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get '/trips/five_star' => 'trips#five_star', as: :five_star
   get '/cities/most_visited' => 'cities#most_visited', as: :most_visited
   get '/cities/highly_rated' => 'cities#highly_rated', as: :highly_rated
+  get '/cities/:id/trips' => 'cities#trips'
 
   resources :users do
     resources :trips

@@ -25,6 +25,14 @@ class CitiesController < ApplicationController
     @cities = City.highly_rated
   end
 
+  def trips
+    @city = City.find(params[:id])
+    @city_trips = @city.trips
+
+      #render json: @city_trips, serializer: CitySerializer, status: 200
+      render json: @city_trips
+  end
+
   def new
     @city = City.new
   end

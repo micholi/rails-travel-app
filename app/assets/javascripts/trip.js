@@ -1,6 +1,5 @@
 function Trip(city, rating, fave_attraction, comment) {
   this.city = city
-  //this.user = user
   this.rating = rating
   this.fave_attraction = fave_attraction
   this.comment = comment
@@ -11,25 +10,43 @@ Trip.prototype.cityCountry = function() {
 }
 
 $(function() {
-
   let userId = $(this).attr('data-user-id')
   let tripId = $(this).attr('data-trip-id')
-  //var userId = parseInt($(".js-next").attr("data-user-id"));
-  //var tripId = parseInt($(".js-next").attr("data-trip-id"));
-  var currentIndex = 0
-  //let index = 0;
-  //function getTripId() {
-  var tripsArray = []
+  let currentIndex = 0
+  let tripsArray = []
+
 
     $.get(`/users/${userId}/trips.json`, function(data) {
 
       tripsArray = data
-    //  data.forEach(trip => tripIdsArray.push(trip.id))
       currentIndex = tripsArray.indexOf(tripId)
-
-
+      
     });
-//  }
+
+
+    $(".js-next").on("click", function(event) {
+
+      debugger
+      currentIndex += 1
+      let nextTripId = tripsArray[currentIndex]["id"]
+
+
+      event.preventDefault()
+      loadTrip(userId, nextTripId)
+
+     // data[2]["city"]["name"]
+    })
+
+    $(".js-previous").on("click", function(event) {
+
+      currentIndex -= 1
+      let nextTripId = tripsArray[currentIndex]["id"]
+
+      event.preventDefault()
+      loadTrip(userId, nextTripId)
+
+     // data[2]["city"]["name"]
+    })
 
 
 
@@ -46,38 +63,12 @@ function loadTrip(userId, nextTripId) {
     // re-set the id to current on the link
     //$(".js-next").attr("data-user-id", trip["user"]["id"]);
     debugger
-    $(".js-previous").attr("data-trip-id", this.id);
-    $(".js-next").attr("data-trip-id", this.id);
+    $(".js-previous").attr("data-trip-id", city.id);
+    $(".js-next").attr("data-trip-id", city.id);
 
   })
 }
 
-$(".js-next").on("click", function(event) {
 
-debugger
-
-  currentIndex += 1
-  let nextTripId = tripsArray[currentIndex]["id"]
-
-  event.preventDefault()
-  loadTrip(userId, nextTripId)
-
- // data[2]["city"]["name"]
-})
-
-$(".js-previous").on("click", function(event) {
-
-
-
-
-  currentIndex -= 1
-  let nextTripId = tripsArray[currentIndex]["id"]
-
-  event.preventDefault()
-  loadTrip(userId, nextTripId)
-
- // data[2]["city"]["name"]
-
-})
 
 })
