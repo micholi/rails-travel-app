@@ -1,12 +1,12 @@
-<h4 class="align-table"><%= @user.name %>'s Trips</h4>
+<div class="trip-index-container">
+<h3><%= @user.name %>'s Trips</h3>
 <% @trips.each do |trip| %>
-  <p><%= link_to trip.city.city_plus_country, user_trip_path(@user, trip) %></p>
+  <p class="no-underline bold-text"><%= link_to trip.city.city_plus_country, user_trip_path(@user, trip) %></p>
   <div id="trip-<%= trip.id %>"><%= truncate(trip.comment) %></div>
-  <a href="#" class="js-more" id="more-<%= trip.id %>" data-id="<%= trip.id %>">Read More</a>
+  <a href="#" class="js-more" id="more-<%= trip.id %>" data-id="<%= trip.id %>">Read More...</a>
   <ul id="trip-<%= trip.id %>-">
   </ul>
 <% end %>
-
 
 
 <br>
@@ -14,4 +14,5 @@
   <% if @user == current_user %>
     <%= link_to "Add New Trip", new_user_trip_url(@user), :class => 'btn btn-sm btn-primary btn-rounded' %>
   <% end %>
+</div>
 </div>
