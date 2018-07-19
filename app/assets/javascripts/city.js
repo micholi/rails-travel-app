@@ -20,20 +20,20 @@ City.prototype.avgRating = function() {
   return average
 }
 
-City.prototype.getComments = function() {
+//City.prototype.getComments = function() {
   //let comments = []
-  let cityTrips = this.trips
-  debugger
+//  let cityTrips = this.trips
+//  debugger
   //cityTrips.map(trip => comments.push(trip.comment))
   //comments.forEach(comment => $(".city-comments").append(`<p>comment</p>`))
 
   //cityTrips.forEach(trip => $("#js-city-comments").append(`<p>${trip.user.name} says '${trip.comment}'</p>`))
-  cityTrips.forEach(function(trip) {
-    let cityTripUser = trip.user.name;
-    let cityComment = trip.comment;
-    $("#js-city-comments").append(`<p>${cityTripUser} says ${cityComment}</p>`);
-  })
-}
+//  cityTrips.forEach(function(trip) {
+//    let cityTripUser = trip.user.name;
+//    let cityComment = trip.comment;
+//    $("#js-city-comments").append(`<p>${cityTripUser} says ${cityComment}</p>`);
+//  })
+//}
 
 
 
@@ -57,6 +57,31 @@ $(function() {
     loadCity(nextCityId)
   })
 
+  // testing
+  $(".js-display-comments").on("click", function(event) {
+    event.preventDefault()
+  //  let myCityId = parseInt($(".js-display-comments").attr("data-city-id"));
+  //  $.get(`/cities/${myCityId}.json`, function(data) {
+    //  const newCity = new City(data)
+
+      getComments()
+    //})
+  })
+
+  function getComments() {
+    let myCityId = parseInt($(".js-display-comments").attr("data-city-id"));
+    $.get(`/cities/${myCityId}.json`, function(data) {
+      const newCity = new City(data)
+      var cityTrips = data.trips
+      cityTrips.forEach(function(trip) {
+         let cityTripUser = trip.user.name;
+         let cityComment = trip.comment;
+         $("#js-city-comments").append(`<p>${cityTripUser} says ${cityComment}</p>`);
+       })
+     })
+  }
+
+
 //    $(".js-more").on("click", function(event) {
 //      var testCityId = $(this).data("id");
 //      $.get("/cities/" + testCityId + ".json", function(data) {
@@ -77,7 +102,7 @@ $(function() {
 function loadCity(nextCityId) {
 
   $.get(`/cities/${nextCityId}.json`, function(data) {
-
+    $("#js-city-comments").empty()
     const city = new City(data.id, data.name, data.country, data.trips)
 
     //debugger
@@ -93,16 +118,7 @@ function loadCity(nextCityId) {
   })
 }
 
-// testing
-$(".js-display-comments").on("click", function(event) {
 
-  let myCityId = parseInt($(".js-display-comments").attr("data-city-id"));
-  $.get(`/cities/${myCityId}.json`, function(data) {
-    const newCity = new City(data)
-    event.preventDefault()
-    newCity.getComments()
-  })
-})
 
 
 
