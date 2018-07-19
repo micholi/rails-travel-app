@@ -6,19 +6,19 @@ function City(id, name, country, trips) {
 }
 
 City.prototype.tripCount = function() {
-  debugger
-  var cityTrips = this.trips
-  //var cityTrips = []
-  //cityTrips = this.length
-  return cityTrips.length
-//})
+  let count = this.trips.length
+  return count
 }
 
-
-
-//City.prototype.avgRating = function() {
-//  return this.avg_rating
-//}
+City.prototype.avgRating = function() {
+  let ratings = []
+  let trips = this.trips
+  trips.map(trip => ratings.push(trip.rating))
+  //var average = ratings.reduce((p,c,_,a) => p + c/a.length,0);
+  let sum = ratings.reduce((a, b) => a + b, 0)
+  let average = parseFloat(sum / ratings.length).toFixed(1)
+  return average
+}
 
 $(function() {
   let cityId = $(this).attr('data-city-id')
@@ -26,7 +26,6 @@ $(function() {
   var citiesArray = []
 
   $(".js-next-city").on("click", function(event) {
-
     currentIndex += 1
     let nextCityId = citiesArray[currentIndex]["id"]
 
@@ -37,12 +36,9 @@ $(function() {
   $(".js-previous-city").on("click", function(event) {
     currentIndex -= 1
     let nextCityId = citiesArray[currentIndex]["id"]
-
     event.preventDefault()
     loadCity(nextCityId)
-
   })
-
 
     $(".js-more").on("click", function(event) {
       var testCityId = $(this).data("id");
@@ -54,10 +50,6 @@ $(function() {
       })
     })
 
-
-
-
-
     $.get("/cities.json", function(data) {
 
       citiesArray = data
@@ -66,7 +58,6 @@ $(function() {
     });
 
 function loadCity(nextCityId) {
-  //debugger
 
   $.get(`/cities/${nextCityId}.json`, function(data) {
 
@@ -75,18 +66,14 @@ function loadCity(nextCityId) {
     //debugger
 
     $(".cityName").text(city.name);
-    $(".countryName").text(city.country.name);
-
-    $(".cityTripCount").text(city.trips.length);
-    //$(".cityAvgRating").text(city.avgRating());
-    // country
+    $(".countryName").text(`Country: ${city.country.name}`);
+    $(".cityTripCount").text(city.tripCount());
+    $(".cityAvgRating").text(city.avgRating());
 
     $(".js-previous-city").attr("data-city-id", this.id);
     $(".js-next-city").attr("data-city-id", this.id);
 
   })
 }
-
-
 
 })

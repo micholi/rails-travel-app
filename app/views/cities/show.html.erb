@@ -1,8 +1,8 @@
 <div class="test">
-<h1 class="cityName"><%= @city.name %></h1>
-<h1 class="countryName"><%= @city.country.name %></h1>
-<p class="cityTripCount">Total Trips: <%= @city.trip_count %></p>
-<p class="cityAvgRating">Average Rating: <%= @city.avg_rating %></p>
+<h3 class="cityName"><%= @city.name %></h3>
+<p>Country: <span class="countryName"><%= @city.country.name %></span></p>
+<p>Total Trips: <span class="cityTripCount"><%= @city.trip_count %></span></p>
+<p>Average Rating: <span class="cityAvgRating"><%= @city.avg_rating %></span></p>
 <a href="#" class="js-previous-city" data-city-id="<%= @city.id %>">Previous City</a>
 <a href="#" class="js-next-city" data-city-id="<%= @city.id %>">Next City</a>
 
