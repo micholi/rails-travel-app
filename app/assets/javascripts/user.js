@@ -4,14 +4,27 @@ function User(data) {
 
 User.prototype.formatTrips = function(userId) {
   let userTrips = this.trips
-  var tripsHtml = ""
+  var tripsHtml = `<table>
+  <thead>
+    <tr>
+      <th>City</th>
+      <th>Must See Attraction</th>
+    </tr>
+  </thead>
+  <tbody>`
   userTrips.forEach(function(trip) {
     let userTripId = trip.id;
     let city = trip.city.name;
-    //$("#my-trips").append(`<a href="/users/${userId}/trips/${userTripId}">${city}</a><br>`);
-    tripsHtml += `<a href="/users/${userId}/trips/${userTripId}">${city}</a><br>`
+    let fave = trip.fave_attraction;
+
+    //tripsHtml += `<a href="/users/${userId}/trips/${userTripId}">${city}</a><br>`
+
+    tripsHtml +=`<tr class="border-bottom">
+      <td class="no-underline"><a href="/users/${userId}/trips/${userTripId}">${city}</a></td>
+      <td>${fave}</td></tr>`
 
   })
+  tripsHtml += `</tbody></table>`
 return tripsHtml
 
   //  btn.innerHTML = "Hide Trips"
