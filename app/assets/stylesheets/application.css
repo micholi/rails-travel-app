@@ -35,11 +35,7 @@ body {
    color: #FFDEAD;
  }
 
- .topnav a:hover {
-   color: #3357B9;
- }
-
- .topnav a:active {
+ .topnav a:hover, a:active {
    color: #3357B9;
  }
 
@@ -165,11 +161,20 @@ body {
   width: 60%;
   margin-left: 20%;
   margin-right: 20%;
+  margin-bottom: 30px;
+  background-color: white;
+  padding: 25px;
 }
 
 .scope-page {
+  width: 70%;
+  min-height: 250px;
   margin-top: 30px;
+  margin-left: 15%;
+  margin-right: 15%;
   text-align: center;
+  background-color: white;
+  padding: 25px;
 }
 
 .underlined-list {
@@ -185,7 +190,7 @@ body {
   padding: 15px 25px;
   border: 1px solid #A9A9A9;
   border-radius: 5px;
-  background-color: #FDFCFC;
+  background-color: #white;
 }
 
 .form-errors {

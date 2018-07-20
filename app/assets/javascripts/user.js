@@ -2,7 +2,7 @@ function User(data) {
   this.trips = data
 }
 
-User.prototype.formatTrips = function(userId) {
+User.prototype.formatUserTripsIndex = function(userId) {
   let userTrips = this.trips
   let tripsHtml = `<br><br><table>
   <thead>
@@ -47,7 +47,7 @@ $(function() {
     let userId = parseInt($(".js-load-trips").attr("data-user-id"))
     $.get(`/users/${userId}/trips.json`, function(data) {
       const user = new User(data);
-      let userTrips = user.formatTrips(userId)
+      let userTrips = user.formatUserTripsIndex(userId)
       $("#my-trips").append(userTrips);
     });
   }
