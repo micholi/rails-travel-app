@@ -6,8 +6,10 @@
     <div class="underlined-list">
       <span class="no-underline bold-text"><%= link_to user.name, user_trips_path(user) %> </span><br>
       <p>Total Trips Added: <%= user.trips.count %></p>
-      <a href="#" class="js-display-trips" data-user-id="<%= user.id %>">See trips</a><br>
-      <div id="js-user-trips"></div>
-    </div>
+      <a href="#" class="js-display-trip-cities" data-traveler-id="<%= user.id %>">See trips</a><br>
+
+      <div id="js-traveler-trip-cities"></div>
+
   <% end %>
+  </div>
 </div>

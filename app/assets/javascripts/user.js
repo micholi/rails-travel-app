@@ -27,16 +27,17 @@ User.prototype.formatUserTripsIndex = function(userId) {
   return tripsHtml
 }
 
-User.prototype.fetchUserTrips = function(userId) {
+User.prototype.fetchTravelerTrips = function(travelerId) {
   // rename variables
-  let uT = this.trips
-  let html = `<ul>`
-  uT.forEach(function(t) {
-    let c = t.city.name
-    html += `<li>${c}</li>`
+  let travelerTrips = this.trips
+  let travelerString = `<ul>`
+  travelerTrips.forEach(function(trip) {
+    let city = trip.city.name
+    let fave = trip.fave_attraction
+    travelerString += `<li>${city} - Must See Attraction: ${fave}</li>`
   })
-    html += `</ul>`
-    return html
+    travelerString += `</ul>`
+    return travelerString
 }
 
 $(function() {
@@ -64,24 +65,24 @@ $(function() {
     });
   }
 
-  function displayUserTrips(userId) {
-    //userId = parseInt($(".js-display-trips").attr("data-user-id"))
-    $.get(`/users/${userId}/trips.json`, function(data) {
-      const userObj = new User(data);
-      let x = userObj.fetchUserTrips(userId)
-      $("#js-user-trips").append(x)
+  function displayTripCities(travelerId) {
+    //let travelerId = parseInt($(".js-display-trips").attr("data-traveler-id"))
+    $.get(`/users/${travelerId}/trips.json`, function(data) {
+      const traveler = new User(data);
+      let travelerHtml = traveler.fetchTravelerTrips(travelerId)
+      $("#js-traveler-trip-cities").append(travelerHtml)
       // works for current user, only.. need to debug
-      //  "js-display-trips"
-      //  "js-user-trips"
+    //class="js-display-trip-cities"
+    //id="js-traveler-trip-cities">
     });
   }
 
 
-$(".js-display-trips").on("click", function(event) {
+$(".js-display-trip-cities").on("click", function(event) {
 //  debugger
-  userId = parseInt($(".js-display-trips").attr("data-user-id"))
+  let travelerId = parseInt($(".js-display-trip-cities").attr("data-traveler-id"))
   event.preventDefault()
-  displayUserTrips(userId)
+  displayTripCities(travelerId)
 })
 
 
