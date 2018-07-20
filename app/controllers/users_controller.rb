@@ -7,6 +7,10 @@ class UsersController < ApplicationController
 
   def show
     set_user
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @user }
+    end
   end
 
   def most_trips

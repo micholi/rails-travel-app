@@ -12,7 +12,7 @@ Trip.prototype.cityCountry = function() {
 
 $(function() {
   var tripId
-  var userId
+  var tripUserId
   let tripIndex = 0
   let tripsArray = []
 
@@ -22,7 +22,7 @@ $(function() {
     $(".js-next-trip").on("click", function(event) {
 
       tripId = parseInt($(".js-next-trip").attr("data-trip-id"))
-      userId = parseInt($(".js-next-trip").attr("data-user-id"))
+      tripUserId = parseInt($(".js-next-trip").attr("data-user-id"))
 
       $.get(`/users/${userId}/trips.json`, function(data) {
         tripsArray = data
@@ -31,7 +31,7 @@ $(function() {
       tripIndex = tripsArray.map(t => t.id).indexOf(tripId)
       newTripId = tripsArray[tripIndex + 1]["id"]
       event.preventDefault()
-      loadTrip(userId, newTripId)
+      loadTrip(tripUserId, newTripId)
 
       })
 
@@ -40,16 +40,16 @@ $(function() {
     $(".js-previous-trip").on("click", function(event) {
       tripId = parseInt($(".js-previous-trip").attr("data-trip-id"))
 
-      userId = parseInt($(".js-previous-trip").attr("data-user-id"))
+      tripUserId = parseInt($(".js-previous-trip").attr("data-user-id"))
 
-      $.get(`/users/${userId}/trips.json`, function(data) {
+      $.get(`/users/${tripUserId}/trips.json`, function(data) {
         tripsArray = data
 
 
       tripIndex = tripsArray.map(t => t.id).indexOf(tripId)
       newTripId = tripsArray[tripIndex - 1]["id"]
       event.preventDefault()
-      loadTrip(userId, newTripId)
+      loadTrip(tripUserId, newTripId)
 
         })
 
@@ -68,9 +68,9 @@ $(function() {
 
 
 
-function loadTrip(userId, newTripId) {
+function loadTrip(tripUserId, newTripId) {
   debugger
-  $.get(`/users/${userId}/trips/${newTripId}.json`, function(data) {
+  $.get(`/users/${tripUserId}/trips/${newTripId}.json`, function(data) {
     //let trip = data;
     const trip = new Trip(data.id, data.city, data.rating, data.fave_attraction, data.comment)
     $(".tripCity").text(trip.cityCountry());
