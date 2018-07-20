@@ -102,14 +102,12 @@ body {
 }
 
 .prev-next-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   margin-top: 30px;
   padding: 15px;
-  width: 400px;
-  min-height: 300px;
+  width: 60%;
+  margin-left: 20%;
+  margin-right: 20%;
+  padding: 15px;
   background-color: white;
 
 }
@@ -121,7 +119,6 @@ body {
 
 .trip-index-container {
   margin-top: 30px;
-
   padding: 15px;
   width: 60%;
   margin-left: 20%;
@@ -250,11 +247,29 @@ td {
    color: blue;
  }
 
- .js-previous {
+ .js-previous-city {
    float: left;
  }
 
- .js-next {
+ .js-next-city {
+   float: right;
+ }
+
+ .js-previous-city a:link, a:hover {
+   color: #3357B9;
+   text-decoration: none;
+ }
+
+ .js-next-city a:link, a:hover {
+   color: #3357B9;
+   text-decoration: none;
+ }
+
+ .js-previous-trip {
+   float: left;
+ }
+
+ .js-next-trip {
    float: right;
  }
 

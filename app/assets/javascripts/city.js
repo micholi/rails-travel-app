@@ -14,112 +14,70 @@ City.prototype.avgRating = function() {
   let ratings = []
   let trips = this.trips
   trips.map(trip => ratings.push(trip.rating))
-  //var average = ratings.reduce((p,c,_,a) => p + c/a.length,0);
   let sum = ratings.reduce((a, b) => a + b, 0)
   let average = parseFloat(sum / ratings.length).toFixed(1)
   return average
 }
 
-//City.prototype.getComments = function() {
-  //let comments = []
-//  let cityTrips = this.trips
-//  debugger
-  //cityTrips.map(trip => comments.push(trip.comment))
-  //comments.forEach(comment => $(".city-comments").append(`<p>comment</p>`))
-
-  //cityTrips.forEach(trip => $("#js-city-comments").append(`<p>${trip.user.name} says '${trip.comment}'</p>`))
-//  cityTrips.forEach(function(trip) {
-//    let cityTripUser = trip.user.name;
-//    let cityComment = trip.comment;
-//    $("#js-city-comments").append(`<p>${cityTripUser} says ${cityComment}</p>`);
-//  })
-//}
-
-
-
 $(function() {
-  let cityId = $(this).attr('data-city-id')
-  var currentIndex = 0
-  var citiesArray = []
+  //let cityId = $(this).attr('data-city-id')
+  var cityId
+  var newCityId
+  let cityIndex = 0
+  let citiesArray = []
 
-  $(".js-next").on("click", function(event) {
-    currentIndex += 1
-    let nextCityId = citiesArray[currentIndex]["id"]
+  $.get("/cities.json", function(data) {
+    citiesArray = data
 
+  $(".js-next-city").on("click", function(event) {
+    cityId = parseInt($(".js-next-city").attr("data-city-id"))
+    cityIndex = citiesArray.map(c => c.id).indexOf(cityId)
+    newCityId = citiesArray[cityIndex + 1]["id"]
     event.preventDefault()
-    loadCity(nextCityId)
+    loadCity(newCityId)
   })
 
-  $(".js-previous").on("click", function(event) {
-    currentIndex -= 1
-    let nextCityId = citiesArray[currentIndex]["id"]
+  $(".js-previous-city").on("click", function(event) {
+    cityId = parseInt($(".js-previous-city").attr("data-city-id"))
+    cityIndex = citiesArray.map(c => c.id).indexOf(cityId)
+    newCityId = citiesArray[cityIndex - 1]["id"]
     event.preventDefault()
-    loadCity(nextCityId)
+    loadCity(newCityId)
   })
 
-  // testing
   $(".js-display-comments").on("click", function(event) {
+  //  debugger
+    cityId = parseInt($(".js-display-comments").attr("data-city-id"))
     event.preventDefault()
-  //  let myCityId = parseInt($(".js-display-comments").attr("data-city-id"));
-  //  $.get(`/cities/${myCityId}.json`, function(data) {
-    //  const newCity = new City(data)
-
-      getComments()
-    //})
+    displayComments(cityId)
   })
+})
 
-  function getComments() {
-    let myCityId = parseInt($(".js-display-comments").attr("data-city-id"));
-    $.get(`/cities/${myCityId}.json`, function(data) {
-      const newCity = new City(data)
-      var cityTrips = data.trips
+  function displayComments(cityId) {
+    $.get(`/cities/${cityId}.json`, function(data) {
+      const cityObj = new City(data)
+      let cityTrips = data.trips
       cityTrips.forEach(function(trip) {
          let cityTripUser = trip.user.name;
          let cityComment = trip.comment;
-         $("#js-city-comments").append(`<p>${cityTripUser} says ${cityComment}</p>`);
+         $("#js-city-comments").append(`<p>${cityTripUser}: ${cityComment}</p>`);
        })
      })
   }
 
-
-//    $(".js-more").on("click", function(event) {
-//      var testCityId = $(this).data("id");
-//      $.get("/cities/" + testCityId + ".json", function(data) {
-//        var city = data;
-//        var cityText = city["city_info"];
-//        event.preventDefault()
-//        $("#city-" + id).html(cityText);
-//      })
-//    })
-
-    $.get("/cities.json", function(data) {
-
-      citiesArray = data
-    //  currentIndex = citiesArray.indexOf(cityId)
-      currentIndex = citiesArray.indexOf(cityId)
-    });
-
-function loadCity(nextCityId) {
-
-  $.get(`/cities/${nextCityId}.json`, function(data) {
+  function loadCity(updatedCityId) {
     $("#js-city-comments").empty()
-    const city = new City(data.id, data.name, data.country, data.trips)
-
-    //debugger
-
-    $(".cityName").text(city.name);
-    $(".countryName").text(city.country.name);
-    $(".cityTripCount").text(city.tripCount());
-    $(".cityAvgRating").text(city.avgRating());
-
-    $(".js-previous-city").attr("data-city-id", this.id);
-    $(".js-next-city").attr("data-city-id", this.id);
-    $(".js-display-comments").attr("data-city-id", this.id);
-  })
-}
-
-
-
-
+    $.get(`/cities/${updatedCityId}.json`, function(data) {
+      $("#js-city-comments").empty()
+      const city = new City(data.id, data.name, data.country, data.trips)
+      $(".cityName").text(city.name);
+      $(".countryName").text(city.country.name);
+      $(".cityTripCount").text(city.tripCount());
+      $(".cityAvgRating").text(city.avgRating());
+      $(".js-previous-city").attr("data-city-id", city.id);
+      $(".js-next-city").attr("data-city-id", city.id);
+      $(".js-display-comments").attr("data-city-id", city.id);
+    })
+  }
 
 })

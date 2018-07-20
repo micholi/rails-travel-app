@@ -75,7 +75,7 @@ function loadTrip(userId, nextTripId) {
     $(".tripReview").text(`Review: ${trip.comment}`);
     // re-set the id to current on the link
     //$(".js-next").attr("data-user-id", trip["user"]["id"]);
-    
+
     $(".js-previous").attr("data-trip-id", this.id);
     $(".js-next").attr("data-trip-id", this.id);
 
