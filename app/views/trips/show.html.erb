@@ -7,4 +7,9 @@
   <p>Must See Attraction: <span class="tripMustSee"><%= @trip.fave_attraction %></span></p>
   <p>Review: <span class="tripReview"><%= @trip.comment %></span></p>
 
+  <% if @user == current_user %>
+    <%= link_to "Edit Trip", edit_user_trip_url, :class => 'btn btn-sm btn-primary btn-rounded' %>
+    <%= link_to "Delete Trip", user_trip_path, :method => 'delete', data: { confirm: "Are you sure?" }, :class => 'btn btn-sm btn-secondary btn-rounded' %>
+  <% end %>
+
 </div>
