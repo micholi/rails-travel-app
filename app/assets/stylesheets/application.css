@@ -91,12 +91,14 @@ body {
 /* ----- CONTENT PAGES ----- */
 
 .user-main-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+
+
   margin-top: 30px;
-  width: 400px;
+  padding: 30px;
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+  min-height: 300px;
   background-color: white;
 
 }
@@ -183,9 +185,9 @@ body {
 
 table {
   border-collapse: collapse;
-  width: 70%;
-  margin-left: 15%;
-  margin-right: 15%;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
 th {

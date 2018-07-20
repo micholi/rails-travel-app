@@ -1,10 +1,10 @@
 <div class="user-main-container">
-  <h4><%= @user.name %></h4>
+  <h4><%= @user.name %>'s Travel Summary</h4>
   <% if @user.trips.count == 0 %>
     <p>You haven't added any trips yet.</p><br>
     <%= link_to "Explore Destinations", cities_path, :class => 'btn btn-sm btn-secondary btn-rounded' %>
   <% else %>
-    <p>You've added <%= pluralize(@user.trip_count, "trip") %>.</p>
+    <span class="bold-text">Total Trips: </span><%= @user.trip_count %><br>
     <span class="bold-text">Last Trip Added:</span>
     <span class="no-underline"><%= link_to @user.last_trip.city.name, user_trip_path(@user, @user.last_trip) %></span><br><br>
     <%= link_to "View My 5-Star Trips", five_star_url %><br><br>
@@ -14,6 +14,6 @@
     <%= link_to "Add New Trip", new_user_trip_url(@user), :class => 'btn btn-sm btn-info btn-rounded' %>
 
 
-<button class="js-load-trips btn btn-sm btn-secondary btn-rounded" data-user-id="<%= @user.id %>" id="btn">See my trips</button>
+<button class="js-load-trips btn btn-sm btn-secondary btn-rounded" data-user-id="<%= @user.id %>" id="btn">See My Trips</button>
 <div id="my-trips"></div>
 </div>
