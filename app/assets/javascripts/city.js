@@ -65,9 +65,9 @@ $(function() {
      })
   }
 
-  function loadCity(updatedCityId) {
+  function loadCity(newCityId) {
     $("#js-city-comments").empty()
-    $.get(`/cities/${updatedCityId}.json`, function(data) {
+    $.get(`/cities/${newCityId}.json`, function(data) {
       $("#js-city-comments").empty()
       const city = new City(data.id, data.name, data.country, data.trips)
       $(".cityName").text(city.name);

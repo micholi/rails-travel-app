@@ -1,10 +1,10 @@
 <div class="prev-next-container">
-  <a href="#" class="js-previous" data-user-id="<%= @user.id %>" data-trip-id="<%= @trip.id %>">Previous Trip</a>
-  <a href="#" class="js-next" data-user-id="<%= @user.id %>" data-trip-id="<%= @trip.id %>">Next Trip</a>
+  <a href="#" class="js-previous-trip" data-user-id="<%= @user.id %>" data-trip-id="<%= @trip.id %>">Previous Trip</a>
+  <a href="#" class="js-next-trip" data-user-id="<%= @user.id %>" data-trip-id="<%= @trip.id %>">Next Trip</a>
 
-  <h3 class="tripCity"><%= @trip.city.city_plus_country %></h3>
-  <p class="tripRating">Rating: <%= @trip.rating %></p>
-  <p class="tripMustSee">Must See Attraction: <%= @trip.fave_attraction %></p>
-  <p class="tripReview">Review: <%= @trip.comment %></p>
+  <h3><span class="tripCity"><%= @trip.city.city_plus_country %></span></h3>
+  <p>Rating: <span class="tripRating"><%= @trip.rating %></span></p>
+  <p>Must See Attraction: <span class="tripMustSee"><%= @trip.fave_attraction %></span></p>
+  <p>Review: <span class="tripReview"><%= @trip.comment %></span></p>
 
 </div>
