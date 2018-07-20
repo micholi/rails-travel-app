@@ -1,10 +1,10 @@
 body {
    margin: 0;
-   /* background-color: #ECECEB; */
+  /* background-color: #ECECEB; */
    font-family: 'Open Sans', sans-serif;
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/assets/venice.jpg') no-repeat center center;
-    background-size: cover;
-    height: 100%;
+   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/assets/venice.jpg') no-repeat center center;
+   background-size: cover;
+   min-height: 800px;
  }
 
 /* ----- NAV BAR ----- */
@@ -52,12 +52,12 @@ body {
  }
 
 /* ----- HOME PAGE ----- */
-/*
+
 .home {
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/assets/venice.jpg') no-repeat center center;
   background-size: cover;
-  height: 800px;
-} */
+  min-height: 800px;
+}
 
 .home h2 {
   padding-top: 25px;
@@ -276,7 +276,6 @@ td {
 .js-previous-city {
   float: left;
   color: #339966;
-
 }
 
 .js-next-trip,
