@@ -24,7 +24,7 @@ $(function() {
       tripId = parseInt($(".js-next-trip").attr("data-trip-id"))
       tripUserId = parseInt($(".js-next-trip").attr("data-user-id"))
 
-      $.get(`/users/${userId}/trips.json`, function(data) {
+      $.get(`/users/${tripUserId}/trips.json`, function(data) {
         tripsArray = data
 
 
@@ -69,8 +69,9 @@ $(function() {
 
 
 function loadTrip(tripUserId, newTripId) {
-  debugger
+
   $.get(`/users/${tripUserId}/trips/${newTripId}.json`, function(data) {
+    debugger
     //let trip = data;
     const trip = new Trip(data.id, data.city, data.rating, data.fave_attraction, data.comment)
     $(".tripCity").text(trip.cityCountry());
