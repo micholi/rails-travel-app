@@ -27,12 +27,10 @@ $(function() {
       $.get(`/users/${tripUserId}/trips.json`, function(data) {
         tripsArray = data
 
-
       tripIndex = tripsArray.map(t => t.id).indexOf(tripId)
       newTripId = tripsArray[tripIndex + 1]["id"]
       event.preventDefault()
       loadTrip(tripUserId, newTripId)
-
       })
 
     })
@@ -44,7 +42,6 @@ $(function() {
 
       $.get(`/users/${tripUserId}/trips.json`, function(data) {
         tripsArray = data
-
 
       tripIndex = tripsArray.map(t => t.id).indexOf(tripId)
       newTripId = tripsArray[tripIndex - 1]["id"]

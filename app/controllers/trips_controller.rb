@@ -2,8 +2,8 @@ class TripsController < ApplicationController
   before_action :require_login
 
   def index
-    #find_user
-    @user = current_user
+    find_user
+    #@user = current_user
     @trips = @user.trips.all
     respond_to do |format|
       format.html { render :index }

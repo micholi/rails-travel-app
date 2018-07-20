@@ -27,13 +27,25 @@ User.prototype.formatUserTripsIndex = function(userId) {
   return tripsHtml
 }
 
+User.prototype.fetchUserTrips = function(userId) {
+  // rename variables
+  let uT = this.trips
+  let html = `<ul>`
+  uT.forEach(function(t) {
+    let c = t.city.name
+    html += `<li>${c}</li>`
+  })
+    html += `</ul>`
+    return html
+}
+
 $(function() {
   btn = document.getElementById("btn");
 
   $(".js-load-trips").on("click", function(event) {
     event.preventDefault()
       if (btn.innerHTML === "See My Trips") {
-        loadUserTrips()
+        renderUserTripsIndex()
       } else if (btn.innerHTML === "Hide Trips"){
         $("div#my-trips").hide();
         btn.innerHTML = "Show Trips"
@@ -43,13 +55,36 @@ $(function() {
       }
   })
 
-  function loadUserTrips() {
+  function renderUserTripsIndex() {
     let userId = parseInt($(".js-load-trips").attr("data-user-id"))
     $.get(`/users/${userId}/trips.json`, function(data) {
       const user = new User(data);
-      let userTrips = user.formatUserTripsIndex(userId)
-      $("#my-trips").append(userTrips);
+      let userTripsHtml = user.formatUserTripsIndex(userId)
+      $("#my-trips").append(userTripsHtml);
     });
   }
+
+  function displayUserTrips(userId) {
+    //userId = parseInt($(".js-display-trips").attr("data-user-id"))
+    $.get(`/users/${userId}/trips.json`, function(data) {
+      const userObj = new User(data);
+      let x = userObj.fetchUserTrips(userId)
+      $("#js-user-trips").append(x)
+      // works for current user, only.. need to debug
+      //  "js-display-trips"
+      //  "js-user-trips"
+    });
+  }
+
+
+$(".js-display-trips").on("click", function(event) {
+//  debugger
+  userId = parseInt($(".js-display-trips").attr("data-user-id"))
+  event.preventDefault()
+  displayUserTrips(userId)
+})
+
+
+
 
 })

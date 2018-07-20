@@ -39,11 +39,6 @@ body {
    color: #3357B9;
  }
 
- .topnav .logout {
-   float: right;
-   margin-right: 50px;
- }
-
  .topnav .welcome {
    color: #3357B9;
    font-weight: bold;
