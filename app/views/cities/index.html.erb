@@ -1,18 +1,29 @@
-<h4>Explore Cities</h4>
-<span><%= link_to "Check Out the Most Reviewed City", most_visited_url %></span><br>
-<span><%= link_to "View Our Highest Rated Cities", highly_rated_url %></span><br><br>
+<div class="table-container">
 
-<% @cities.each do |city| %>
-  <p><%= link_to city.city_plus_country, city_path(city) %></p>
-  <div id="city-<%= city.id %>"><%= truncate(city.city_info) %></div>
-  <button class="js-more" data-id="<%= city.id %>">Read More</button>
-  <ul id="city-<%= city.id %>-">
-  </ul>
-<% end %>
-
-
-
-
+<h4 class="align-table">Explore Cities</h4>
+<span class="align-table"><%= link_to "Check Out the Most Reviewed City", most_visited_url %></span><br>
+<span class="align-table"><%= link_to "View Our Highest Rated Cities", highly_rated_url %></span><br><br>
+<table>
+  <thead>
+    <tr>
+      <th>City</th>
+      <th>Total Trips</th>
+      <th>Average Rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cities.each do |city| %>
+    <tr class="border-bottom">
+      <td class="no-underline"><%= link_to city.city_plus_country, city_path(city) %></td>
+      <td class="no-underline"><%= city.trip_count %></td>
+      <td><%= city.avg_rating %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
 <div class="button-below-table">
   <%= link_to "Add New City", new_city_url, :class => 'btn btn-sm btn-primary btn-rounded' %>
+</div>
+
 </div>
