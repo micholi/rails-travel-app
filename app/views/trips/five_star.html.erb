@@ -1,4 +1,4 @@
-<div class="scope-page">
+<div class="page-container scope-page">
   <h4 class="blue-bold">Trips Rated 5 Stars by <%= @user.name %>:</h4><br>
   <% if @user.trips.five_star.count >= 1 %>
     <% @user.trips.five_star.each do |trip| %>

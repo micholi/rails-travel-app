@@ -1,17 +1,16 @@
 <div class="page-container trip-index">
   <h4><%= @user.name %>'s Trips</h4>
   <% @trips.each do |trip| %>
-    <p class="no-underline bold-text"><%= link_to trip.city.city_plus_country, user_trip_path(@user, trip) %></p>
-    <div id="trip-<%= trip.id %>"><%= truncate(trip.comment) %></div>
-    <a href="#" class="js-more" id="more-<%= trip.id %>" data-id="<%= trip.id %>">Read More...</a>
-    <ul id="trip-<%= trip.id %>-">
+    <div class="underlined-list">
+      <p class="no-underline bold-text"><%= link_to trip.city.city_plus_country, user_trip_path(@user, trip) %></p>
+      <div id="trip-<%= trip.id %>"><%= truncate(trip.comment) %></div>
+      <a href="#" class="js-more" id="more-<%= trip.id %>" data-id="<%= trip.id %>">Read More...</a>
+      <ul id="trip-<%= trip.id %>-">
     </ul>
+    </div>
   <% end %>
-
   <br>
-  <div class="button-below-table">
-    <% if @user == current_user %>
-      <%= link_to "Add New Trip", new_user_trip_url(@user), :class => 'btn btn-sm btn-primary btn-rounded' %>
-    <% end %>
-  </div>
+  <% if @user == current_user %>
+    <%= link_to "Add New Trip", new_user_trip_url(@user), :class => 'btn btn-sm btn-primary btn-rounded' %>
+  <% end %>
 </div>
