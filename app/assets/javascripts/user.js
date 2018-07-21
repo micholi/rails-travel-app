@@ -2,31 +2,24 @@ function User(data) {
   this.trips = data
 }
 
-User.prototype.formatUserTripsIndex = function(userId) {
+// prototype formats html for rendering current user's index on their show page
+User.prototype.formatUserTripsIndex = function(currentUserId) {
+  btn = document.getElementById("btn");
   let userTrips = this.trips
-  let tripsHtml = `<br><br><table>
-  <thead>
-    <tr>
-      <th>City</th>
-      <th>Must See Attraction</th>
-    </tr>
-  </thead>
-  <tbody>`
+  let tripsHtml = `<br><br><table><thead><tr><th>City</th><th>Must See Attraction</th></tr></thead><tbody>`
   userTrips.forEach(function(trip) {
     let userTripId = trip.id;
     let city = trip.city.name;
     let fave = trip.fave_attraction;
-    btn = document.getElementById("btn");
-
     tripsHtml +=`<tr class="border-bottom">
-      <td class="no-underline"><a href="/users/${userId}/trips/${userTripId}">${city}</a></td>
-      <td>${fave}</td></tr>`
+      <td class="no-underline"><a href="/users/${currentUserId}/trips/${userTripId}">${city}</a></td><td>${fave}</td></tr>`
   })
   tripsHtml += `</tbody></table>`
   btn.innerHTML = "Hide Trips"
   return tripsHtml
 }
 
+// prototype formats html for rendering trip info on Travelers (aka Users) index page
 User.prototype.fetchTravelerTrips = function(travelerId) {
   $("#link-trav-" + travelerId).hide()
   let travelerTrips = this.trips
@@ -41,12 +34,11 @@ User.prototype.fetchTravelerTrips = function(travelerId) {
 }
 
 $(function() {
-  btn = document.getElementById("btn");
-
   $(".js-load-trips").on("click", function(event) {
+    let currentUserId = $(this).data("user-id");
     event.preventDefault()
       if (btn.innerHTML === "See My Trips") {
-        renderUserTripsIndex()
+        renderUserTripsIndex(currentUserId)
       } else if (btn.innerHTML === "Hide Trips"){
         $("div#my-trips").hide();
         btn.innerHTML = "Show Trips"
@@ -56,27 +48,28 @@ $(function() {
       }
   })
 
-  function renderUserTripsIndex() {
-    let userId = parseInt($(".js-load-trips").attr("data-user-id"))
-    $.get(`/users/${userId}/trips.json`, function(data) {
-      const user = new User(data);
-      let userTripsHtml = user.formatUserTripsIndex(userId)
-      $("#my-trips").append(userTripsHtml);
+  $(".js-display-traveler-trips").on("click", function(event) {
+    let travelerId = $(this).data("traveler-id");
+    event.preventDefault()
+    displayTravelerTrips(travelerId)
+  })
+
+  // appends html from prototype to render index on current user's main show page
+  function renderUserTripsIndex(currentUserId) {
+    $.get(`/users/${currentUserId}/trips.json`, function(data) {
+      const currentUser = new User(data);
+      let userIndexHtml = currentUser.formatUserTripsIndex(currentUserId)
+      $("#my-trips").append(userIndexHtml);
     });
   }
 
-  function displayTripCities(travelerId) {
+  // appends html from prototype for each traveler on Travelers index page
+  function displayTravelerTrips(travelerId) {
     $.get(`/users/${travelerId}/trips.json`, function(data) {
       const traveler = new User(data);
       let travelerHtml = traveler.fetchTravelerTrips(travelerId)
       $("#traveler-" + travelerId).append(travelerHtml)
     });
   }
-
-  $(".js-display-traveler-trips").on("click", function(event) {
-    let travelerId = $(this).data("traveler-id");
-    event.preventDefault()
-    displayTripCities(travelerId)
-  })
 
 })
