@@ -28,16 +28,16 @@ User.prototype.formatUserTripsIndex = function(userId) {
 }
 
 User.prototype.fetchTravelerTrips = function(travelerId) {
-  // rename variables
+  $("#link-trav-" + travelerId).hide()
   let travelerTrips = this.trips
-  let travelerString = `<ul>`
+  let travelerString = `<p>Cities Visited + Recommended Attractions:</p><ul>`
   travelerTrips.forEach(function(trip) {
     let city = trip.city.name
     let fave = trip.fave_attraction
-    travelerString += `<li>${city} - Must See Attraction: ${fave}</li>`
+    travelerString += `<li><span class="bold-text">${city}</span> - ${fave}</li>`
   })
-    travelerString += `</ul>`
-    return travelerString
+  travelerString += `</ul>`
+  return travelerString
 }
 
 $(function() {
@@ -66,26 +66,17 @@ $(function() {
   }
 
   function displayTripCities(travelerId) {
-    //let travelerId = parseInt($(".js-display-trips").attr("data-traveler-id"))
     $.get(`/users/${travelerId}/trips.json`, function(data) {
       const traveler = new User(data);
       let travelerHtml = traveler.fetchTravelerTrips(travelerId)
-      $("#js-traveler-trip-cities").append(travelerHtml)
-      // works for current user, only.. need to debug
-    //class="js-display-trip-cities"
-    //id="js-traveler-trip-cities">
+      $("#traveler-" + travelerId).append(travelerHtml)
     });
   }
 
-
-$(".js-display-trip-cities").on("click", function(event) {
-//  debugger
-  let travelerId = parseInt($(".js-display-trip-cities").attr("data-traveler-id"))
-  event.preventDefault()
-  displayTripCities(travelerId)
-})
-
-
-
+  $(".js-display-traveler-trips").on("click", function(event) {
+    let travelerId = $(this).data("traveler-id");
+    event.preventDefault()
+    displayTripCities(travelerId)
+  })
 
 })

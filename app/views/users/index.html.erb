@@ -1,15 +1,12 @@
 <div class="list-details">
-
   <h4>Travelers</h4>
   <p><%= link_to "Who's Taken the Most Trips? Find Out Here!", most_trips_url %></p>
   <% @users.each do |user| %>
     <div class="underlined-list">
       <span class="no-underline bold-text"><%= link_to user.name, user_trips_path(user) %> </span><br>
-      <p>Total Trips Added: <%= user.trips.count %></p>
-      <a href="#" class="js-display-trip-cities" data-traveler-id="<%= user.id %>">See trips</a><br>
-
-      <div id="js-traveler-trip-cities"></div>
-
+      <p>Total Trips: <%= user.trips.count %></p>
+      <a href="#" class="js-display-traveler-trips" id="link-trav-<%= user.id %>" data-traveler-id="<%= user.id %>">Show Trips</a><br>
+      <div id="traveler-<%= user.id %>"></div>
+    </div>
   <% end %>
-  </div>
 </div>
