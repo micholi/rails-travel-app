@@ -5,7 +5,7 @@
   <h3><span class="tripCity"><%= @trip.city.city_plus_country %></span></h3>
   <p><span class="bold-text">Rating: </span><span class="tripRating"><%= @trip.rating %></span></p>
   <p><span class="bold-text">Must See Attraction: </span><span class="tripMustSee"><%= @trip.fave_attraction %></span></p>
-  <p><span class="bold-text">Review: </span><span class="tripReview"><%= @trip.comment %></span></p>
+  <p><span class="bold-text">Review: </span><span class="tripReview"><%= @trip.comment %></span></p><br>
 
   <% if @user == current_user %>
     <%= link_to "Edit Trip", edit_user_trip_url, :class => 'btn btn-sm btn-primary btn-rounded' %>

@@ -56,6 +56,7 @@ $(function() {
         let moreTripId = $(this).data("id");
         $.get("trips/" + moreTripId + ".json", function(data) {
           let trip = data;
+          // refactor this to create object, add bold text to headings
           var reviewText = "<p>" + trip["comment"] + "</p><p>" + "Rating: " + trip["rating"] + "</p><p>" + "Must See Attraction: " + trip["fave_attraction"] + "</p>";
           $("#trip-" + moreTripId).html(reviewText);
           $("#more-" + moreTripId).hide()

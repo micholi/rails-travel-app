@@ -60,7 +60,8 @@ $(function() {
       cityTrips.forEach(function(trip) {
          let cityTripUser = trip.user.name;
          let cityComment = trip.comment;
-         $("#js-city-comments").append(`<p>${cityTripUser}: ${cityComment}</p>`);
+         // remove see comments link and add Comments About this City
+         $("#js-city-comments").append(`<p><span class="bold-text">${cityTripUser}</span> - ${cityComment}</p>`);
        })
      })
   }
