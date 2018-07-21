@@ -1,4 +1,4 @@
-<div class="trip-index-container">
+<div class="page-container trip-index">
   <h4><%= @user.name %>'s Trips</h4>
   <% @trips.each do |trip| %>
     <p class="no-underline bold-text"><%= link_to trip.city.city_plus_country, user_trip_path(@user, trip) %></p>

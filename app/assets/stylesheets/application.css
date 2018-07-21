@@ -23,16 +23,11 @@ body {
    font-size: .85em;
  }
 
- .topnav a.logo {
+ .topnav a.logo,
+ .topnav a:hover.logo {
    font-size: 1.15em;
    color: #FFDEAD;
-   vertical-align: middle;
-   display: inline-block;
    margin-left: 25px;
- }
-
- .topnav a:hover.logo {
-   color: #FFDEAD;
  }
 
  .topnav a:hover, a:active {
@@ -48,11 +43,13 @@ body {
 
 /* ----- HOME PAGE ----- */
 
+/*
 .home {
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/assets/venice.jpg') no-repeat center center;
   background-size: cover;
   min-height: 800px;
 }
+*/
 
 .home h2 {
   padding-top: 25px;
@@ -91,28 +88,30 @@ body {
 
 /* ----- CONTENT PAGES ----- */
 
-.user-main-container {
+.page-container {
   margin-top: 30px;
+  background-color: white;
+}
+
+.user-show {
   margin-bottom: 30px;
   padding: 30px;
   width: 50%;
   margin-left: 25%;
   margin-right: 25%;
   min-height: 300px;
-  background-color: white;
+
 }
 
-.prev-next-container {
-  margin-top: 30px;
+.prev-next {
   padding: 15px;
   width: 60%;
   margin-left: 20%;
   margin-right: 20%;
   padding: 10px 25px 30px;
-  background-color: white;
 }
 
-.prev-next-container h3 {
+.prev-next h3 {
   padding-top: 50px;
   padding-bottom: 10px;
 }
@@ -130,6 +129,7 @@ body {
 
 }
 
+/* NEED TO CONFIRM THESE ARE NO LONGER NEEDED
 .info-box {
   position: absolute;
   top: 50%;
@@ -150,6 +150,7 @@ body {
   padding-left: 15px;
   padding-right: 15px;
 }
+*/
 
 .list-details {
   margin-top: 30px;
@@ -192,6 +193,8 @@ body {
   color: red;
 }
 
+/* ----- TABLES ----- */
+
 .table-container {
   width: 80%;
   margin: 30px;
@@ -222,7 +225,19 @@ td {
    border-bottom: 1px solid #C0C0C0;
  }
 
+ .align-table {
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding-bottom: 10px;
+   }
+
+   h4.align-table {
+      padding-top: 30px;
+   }
+
  /* ----- BUTTONS ----- */
+
  .btn-sm {
    margin-right: 10px;
    padding: 0 auto;
@@ -255,16 +270,13 @@ td {
    color: black;
  }
 
-.no-underline a:hover {
+.no-underline a:hover,
+a:visited:hover {
    color: blue;
  }
 
  .no-underline a:visited {
    color: black;
- }
-
- .no-underline a:visited:hover {
-   color: blue;
  }
 
 .js-previous-trip,
@@ -281,23 +293,14 @@ td {
 
 /* ----- MISC ----- */
 
+/* NEED TO CONFIRM THIS IS NO LONGER NEEDED
  h4.box-heading {
    border-bottom: 1px solid #A9A9A9;
    margin-top: 10px;
    padding-bottom: 10px;
    text-align: center;
  }
-
-.align-table {
-   width: 80%;
-   margin-left: 10%;
-   margin-right: 10%;
-   padding-bottom: 10px;
-  }
-
-  h4.align-table {
-     padding-top: 30px;
-  }
+ */
 
  .bold-text {
    font-weight: bold;
