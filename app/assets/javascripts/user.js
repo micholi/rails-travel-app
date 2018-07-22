@@ -20,7 +20,7 @@ User.prototype.formatUserTripsIndex = function(currentUserId) {
 }
 
 // prototype formats html for rendering trip info on Travelers (aka Users) index page
-User.prototype.fetchTravelerTrips = function(travelerId) {
+User.prototype.getTravelerTrips = function(travelerId) {
   $("#link-trav-" + travelerId).hide()
   let travelerTrips = this.trips
   let travelerString = `<p>Cities Visited + Recommended Attractions:</p><ul>`
@@ -67,7 +67,7 @@ $(function() {
   function displayTravelerTrips(travelerId) {
     $.get(`/users/${travelerId}/trips.json`, function(data) {
       const traveler = new User(data);
-      let travelerHtml = traveler.fetchTravelerTrips(travelerId)
+      let travelerHtml = traveler.getTravelerTrips(travelerId)
       $("#traveler-" + travelerId).append(travelerHtml)
     });
   }
