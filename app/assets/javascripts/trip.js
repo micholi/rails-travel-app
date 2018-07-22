@@ -6,7 +6,7 @@ function Trip(id, city, rating, fave_attraction, comment) {
   this.comment = comment
 }
 
-Trip.prototype.formatShowMore = function() {
+Trip.prototype.showMore = function() {
   let moreTripString = `<p>${this.comment}</p><p><span class="bold-text">Rating: </span>${this.rating}</p><p><span class="bold-text">Must See Attraction: </span>${this.fave_attraction}</p>`;
   return moreTripString
 }
@@ -40,7 +40,12 @@ $(function() {
 
   $(".js-more").on("click", function(event) {
     let moreTripId = $(this).data("more-trip-id")
-    showMoreTrip(moreTripId)
+    $.get(`trips/${moreTripId}.json`, function(data) {
+      const moreTrip = new Trip(data.id, data.city, data.rating, data.fave_attraction, data.comment)
+      let moreTripHtml = moreTrip.showMore()
+      $("#trip-" + moreTripId).html(moreTripHtml);
+      $("#more-" + moreTripId).hide()
+    })
     event.preventDefault()
   })
 
@@ -57,16 +62,6 @@ $(function() {
       }
       newTripId = tripsArray[tripIndex]["id"]
       loadTrip(tripUserId, newTripId)
-    })
-  }
-
-  function showMoreTrip(moreTripId) {
-  // trip is nested resource; /users/userId/ prepends url
-    $.get(`trips/${moreTripId}.json`, function(data) {
-      const moreTrip = new Trip(data.id, data.city, data.rating, data.fave_attraction, data.comment)
-      let moreTripHtml = moreTrip.formatShowMore()
-      $("#trip-" + moreTripId).html(moreTripHtml);
-      $("#more-" + moreTripId).hide()
     })
   }
 
