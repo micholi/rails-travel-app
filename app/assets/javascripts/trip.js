@@ -16,57 +16,52 @@ Trip.prototype.cityCountry = function() {
 }
 
 $(function() {
-  var tripId
   var tripUserId
+  var tripId
+  var op
   let tripIndex = 0
   let tripsArray = []
 
-  //  $.get(`/users/${userId}/trips.json`, function(data) {
-  //    tripsArray = data
+  $(".js-next-trip").on("click", function(event) {
+    tripUserId = parseInt($(".js-next-trip").attr("data-user-id"))
+    tripId = parseInt($(".js-next-trip").attr("data-trip-id"))
+    op = "add"
+    event.preventDefault()
+    getNewTripId(tripUserId, tripId, op)
+    })
 
-    $(".js-next-trip").on("click", function(event) {
+  $(".js-previous-trip").on("click", function(event) {
+    tripUserId = parseInt($(".js-previous-trip").attr("data-user-id"))
+    tripId = parseInt($(".js-previous-trip").attr("data-trip-id"))
+    op = "sub"
+    event.preventDefault()
+    getNewTripId(tripUserId, tripId, op)
+    })
 
-      tripId = parseInt($(".js-next-trip").attr("data-trip-id"))
-      tripUserId = parseInt($(".js-next-trip").attr("data-user-id"))
+  $(".js-more").on("click", function(event) {
+    let moreTripId = $(this).data("more-trip-id")
+    showMoreTrip(moreTripId)
+    event.preventDefault()
+  })
 
-      $.get(`/users/${tripUserId}/trips.json`, function(data) {
-        tripsArray = data
-
+  // gets index of trip and adds or subtracts 1 based on value passed from next/previous click
+  // updated index is used to retrieve trip id, which is then passed to loadTrip function
+  function getNewTripId(tripUserId, tripId, op) {
+    $.get(`/users/${tripUserId}/trips.json`, function(data) {
+      tripsArray = data
       tripIndex = tripsArray.map(t => t.id).indexOf(tripId)
-      newTripId = tripsArray[tripIndex + 1]["id"]
-      event.preventDefault()
+      if (op === "add") {
+        tripIndex += 1
+      } else if (op === "sub") {
+        tripIndex -= 1
+      }
+      newTripId = tripsArray[tripIndex]["id"]
       loadTrip(tripUserId, newTripId)
-      })
-
     })
-
-    $(".js-previous-trip").on("click", function(event) {
-      tripId = parseInt($(".js-previous-trip").attr("data-trip-id"))
-
-      tripUserId = parseInt($(".js-previous-trip").attr("data-user-id"))
-
-      $.get(`/users/${tripUserId}/trips.json`, function(data) {
-        tripsArray = data
-
-      tripIndex = tripsArray.map(t => t.id).indexOf(tripId)
-      newTripId = tripsArray[tripIndex - 1]["id"]
-      event.preventDefault()
-      loadTrip(tripUserId, newTripId)
-
-        })
-
-    })
-
-    $(".js-more").on("click", function(event) {
-      let moreTripId = $(this).data("more-trip-id")
-      showMoreTrip(moreTripId)
-      event.preventDefault()
-    })
-
+  }
 
   function showMoreTrip(moreTripId) {
-  //  let moreTripId = $(this).data("more-trip-id");
-    // trip is nested resource; /users/userId/ prepends url
+  // trip is nested resource; /users/userId/ prepends url
     $.get(`trips/${moreTripId}.json`, function(data) {
       const moreTrip = new Trip(data.id, data.city, data.rating, data.fave_attraction, data.comment)
       let moreTripHtml = moreTrip.formatShowMore()
@@ -77,8 +72,6 @@ $(function() {
 
   function loadTrip(tripUserId, newTripId) {
     $.get(`/users/${tripUserId}/trips/${newTripId}.json`, function(data) {
-      debugger
-      let trip = data;
       const trip = new Trip(data.id, data.city, data.rating, data.fave_attraction, data.comment)
       $(".tripCity").text(trip.cityCountry());
       $(".tripRating").text(trip.rating);
