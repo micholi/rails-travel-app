@@ -5,14 +5,12 @@ function User(data) {
 // prototype formats html for rendering current user's index on their show page
 User.prototype.formatUserTripsIndex = function(currentUserId) {
   btn = document.getElementById("btn");
-  let userTrips = this.trips
   let tripsHtml = `<br><br><table><thead><tr><th>City</th><th>Must See Attraction</th></tr></thead><tbody>`
-  userTrips.forEach(function(trip) {
+  this.trips.forEach(function(trip) {
     let userTripId = trip.id;
     let city = trip.city.name;
     let fave = trip.fave_attraction;
-    tripsHtml +=`<tr class="border-bottom">
-      <td class="no-underline"><a href="/users/${currentUserId}/trips/${userTripId}">${city}</a></td><td>${fave}</td></tr>`
+    tripsHtml +=`<tr class="border-bottom"><td class="no-underline"><a href="/users/${currentUserId}/trips/${userTripId}">${city}</a></td><td>${fave}</td></tr>`
   })
   tripsHtml += `</tbody></table>`
   btn.innerHTML = "Hide Trips"
@@ -22,9 +20,8 @@ User.prototype.formatUserTripsIndex = function(currentUserId) {
 // prototype formats html for rendering trip info on Travelers (aka Users) index page
 User.prototype.getTravelerTrips = function(travelerId) {
   $("#link-trav-" + travelerId).hide()
-  let travelerTrips = this.trips
   let travelerString = `<p>Cities Visited + Recommended Attractions:</p><ul>`
-  travelerTrips.forEach(function(trip) {
+  this.trips.forEach(function(trip) {
     let city = trip.city.name
     let fave = trip.fave_attraction
     travelerString += `<li><span class="bold-text">${city}</span> - ${fave}</li>`
