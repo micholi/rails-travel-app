@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
   def show
     set_user
-    #@trip = @user.trips.build
+    @trip = @user.trips.build
     respond_to do |format|
       format.html { render :show }
       format.json { render json: @user }

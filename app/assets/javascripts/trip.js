@@ -6,6 +6,23 @@ function Trip(id, city, rating, fave_attraction, comment) {
   this.comment = comment
 }
 
+/*
+Trip.renderNewTrip = function() {
+  let newTripString = `<td class="no-underline"><a href="/users/${currentUserId}/trips/${id}">${city}</a></td><td>${rating}</td><td>${fave_attraction}</td>`>
+  return newTripString
+}
+*/
+
+Trip.renderNewTrip = function() {
+  //debugger
+  let newTripString = `<p class="no-underline bold-text" id="${this.id}"> <a href="/users/${this.user.id}/trips/${this.id}">${this.city}</a></p>`
+
+  return newTripString
+}
+
+
+
+
 Trip.prototype.showMore = function() {
   let moreTripString = `<p>${this.comment}</p><p><span class="bold-text">Rating: </span>${this.rating}</p><p><span class="bold-text">Must See Attraction: </span>${this.fave_attraction}</p>`;
   return moreTripString
@@ -48,6 +65,31 @@ $(function() {
     })
     event.preventDefault()
   })
+
+
+  /* Testing form submission */
+    $('form').submit(function(event) {
+          //prevent form from submitting the default way
+          event.preventDefault();
+          //debugger
+          var $form = $(this)
+          var action = $form.attr("action")
+          var params = $form.serialize()
+          $.ajax({
+            url: action,
+            data: params,
+            datatype: "json",
+            method: "POST"
+          }).success(function(json) {
+            let newTrip = new Trip(json);
+            let newTripHtml = newTrip.renderNewTrip()
+            $(".my-trips.underlined-list").append(newTripHtml)
+          })
+        })
+
+
+
+
 
   // gets index of trip and adds or subtracts 1 based on value passed from next/previous click
   // updated index is used to retrieve trip id, which is then passed to loadTrip function

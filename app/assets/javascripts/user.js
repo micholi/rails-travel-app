@@ -4,7 +4,7 @@ function User(data) {
 
 // prototype formats html for rendering current user's index on their show page
 User.prototype.formatUserIndex = function(currentUserId) {
-  let tripsHtml = `<br><br><table><thead><tr><th>City</th><th>Rating</th><th>Must See Attraction</th></tr></thead><tbody>`
+  let tripsHtml = `<br><br><table><thead><tr><th>City</th><th>Rating</th><th>Must See Attraction</th></tr></thead><tbody id="trips-table">`
   this.trips.forEach(function(trip) {
     let userTripId = trip.id;
     let city = trip.city.name;
@@ -39,6 +39,10 @@ $(function() {
     })
       event.preventDefault()
   })
+
+
+
+
 
   // invokes formatTravelerTrips prototype and appends html for that traveler(aka user) on Travelers index page
   $(".js-display-traveler-trips").one("click", function(event) {

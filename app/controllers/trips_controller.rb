@@ -4,6 +4,7 @@ class TripsController < ApplicationController
   def index
     find_user
     @trips = @user.trips.all
+    @trip = @user.trips.build
     respond_to do |format|
       format.html { render :index }
       format.json { render json: @trips }
@@ -24,20 +25,24 @@ class TripsController < ApplicationController
     set_user
   end
 
-  def new
-    set_user
-    find_city
-    @trip = Trip.new
-  end
+#  def new
+#    set_user
+#    find_city
+#    @trip = Trip.new
+#  end
 
   def create
     set_user
-    find_city
+    #find_city
     @trip = @user.trips.build(trip_params)
     if @trip.save
-      redirect_to user_trips_path(@user), :flash => { :success => "You've successfully added this trip!"}
+    #  redirect_to user_trips_path(@user), :flash => { :success => "You've successfully added this trip!"}
+
+
+    render json: @trip
     else
-      render :new
+      #render :new
+      render 'users/show'
     end
   end
 
