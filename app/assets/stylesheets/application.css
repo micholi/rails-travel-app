@@ -281,6 +281,14 @@ td {
   color: #339966;
 }
 
+div.prev-next a:link {
+  text-decoration: none;
+}
+
+div.prev-next a:hover, a:hover:visited {
+  color: blue;
+}
+
 /* ----- MISC ----- */
 
 /* NEED TO CONFIRM THIS IS NO LONGER NEEDED
