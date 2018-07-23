@@ -5,6 +5,17 @@ function City(id, name, country, trips) {
   this.trips = trips
 }
 
+City.prototype.displayComments = function(cityId) {
+  let cityString = `<ul>`
+  this.trips.forEach(function(trip) {
+     let cityTripUser = trip.user.name;
+     let cityComment = trip.comment;
+     cityString += `<li>${cityComment} - ${cityTripUser}`
+   })
+   cityString += `</ul>`
+   return cityString
+}
+
 City.prototype.tripCount = function() {
   let count = this.trips.length
   return count
@@ -42,17 +53,20 @@ $(function() {
     getNewCityId(cityId, op)
   })
 
-  $(".js-display-comments").on("click", function(event) {
+  $(".js-display-comments").one("click", function(event) {
     cityId = parseInt($(".js-display-comments").attr("data-city-id"))
-    event.preventDefault()
-    displayComments(cityId)
-  })
+    $.get(`/cities/${cityId}.json`, function(data) {
+      const cityTrips = new City(data.id, data.name, data.country, data.trips)
+      let cityHtml = cityTrips.displayComments(cityId)
+      $("#js-city-comments").append(cityHtml)
+    })
+  event.preventDefault()
+})
 
 // gets index of city and adds or subtracts 1 based on value passed from next/previous click
 // updated index is used to retrieve city id, which is then passed to loadTrip function
 function getNewCityId(cityId, op) {
   $.get("/cities.json", function(data) {
-    //debugger
     citiesArray = data
     cityIndex = citiesArray.map(c => c.id).indexOf(cityId)
     if (op === "add") {
@@ -64,19 +78,6 @@ function getNewCityId(cityId, op) {
     loadCity(newCityId)
   })
 }
-
-  function displayComments(cityId) {
-    $.get(`/cities/${cityId}.json`, function(data) {
-      const cityObj = new City(data)
-      let cityTrips = data.trips
-      cityTrips.forEach(function(trip) {
-         let cityTripUser = trip.user.name;
-         let cityComment = trip.comment;
-         // remove see comments link and add Comments About this City
-         $("#js-city-comments").append(`<p><span class="bold-text">${cityTripUser}</span> - ${cityComment}</p>`);
-       })
-     })
-  }
 
   function loadCity(newCityId) {
     $("#js-city-comments").empty()

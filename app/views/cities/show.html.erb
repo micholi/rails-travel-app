@@ -11,7 +11,7 @@
     <%= link_to "Been to #{@city.name}? Add it to your trips!", new_user_trip_path(:user_id => current_user.id, :city_id => @city.id) %>
   <% end %>
 
-  <a href="#" class="js-display-comments" data-city-id="<%= @city.id %>">Read comments about this city</a><br><br>
+  <a href="#" class="js-display-comments" data-city-id="<%= @city.id %>">See Comments About This City</a><br><br>
   <div id="js-city-comments"></div>
 
 

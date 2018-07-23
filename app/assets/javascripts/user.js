@@ -4,7 +4,6 @@ function User(data) {
 
 // prototype formats html for rendering current user's index on their show page
 User.prototype.formatUserTripsIndex = function(currentUserId) {
-  debugger
   btn = document.getElementById("btn");
   let tripsHtml = `<br><br><table><thead><tr><th>City</th><th>Must See Attraction</th></tr></thead><tbody>`
   this.trips.forEach(function(trip) {
