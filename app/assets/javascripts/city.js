@@ -13,45 +13,57 @@ City.prototype.tripCount = function() {
 City.prototype.avgRating = function() {
   let ratings = []
   let trips = this.trips
+  let average = 0
   trips.map(trip => ratings.push(trip.rating))
   let sum = ratings.reduce((a, b) => a + b, 0)
-  let average = parseFloat(sum / ratings.length).toFixed(1)
+  if (sum > 0) {
+    average = parseFloat(sum / ratings.length).toFixed(1)
+  } else average = "Cannot calculate average for cities with 0 trips"
   return average
 }
 
 $(function() {
-  //let cityId = $(this).attr('data-city-id')
   var cityId
   var newCityId
   let cityIndex = 0
   let citiesArray = []
 
-  $.get("/cities.json", function(data) {
-    citiesArray = data
-
   $(".js-next-city").on("click", function(event) {
     cityId = parseInt($(".js-next-city").attr("data-city-id"))
-    cityIndex = citiesArray.map(c => c.id).indexOf(cityId)
-    newCityId = citiesArray[cityIndex + 1]["id"]
+    op = "add"
     event.preventDefault()
-    loadCity(newCityId)
+    getNewCityId(cityId, op)
   })
 
   $(".js-previous-city").on("click", function(event) {
     cityId = parseInt($(".js-previous-city").attr("data-city-id"))
-    cityIndex = citiesArray.map(c => c.id).indexOf(cityId)
-    newCityId = citiesArray[cityIndex - 1]["id"]
+    op = "sub"
     event.preventDefault()
-    loadCity(newCityId)
+    getNewCityId(cityId, op)
   })
 
   $(".js-display-comments").on("click", function(event) {
-  //  debugger
     cityId = parseInt($(".js-display-comments").attr("data-city-id"))
     event.preventDefault()
     displayComments(cityId)
   })
-})
+
+// gets index of city and adds or subtracts 1 based on value passed from next/previous click
+// updated index is used to retrieve city id, which is then passed to loadTrip function
+function getNewCityId(cityId, op) {
+  $.get("/cities.json", function(data) {
+    //debugger
+    citiesArray = data
+    cityIndex = citiesArray.map(c => c.id).indexOf(cityId)
+    if (op === "add") {
+      cityIndex += 1
+    } else if (op === "sub") {
+      cityIndex -= 1
+    }
+    newCityId = citiesArray[cityIndex]["id"]
+    loadCity(newCityId)
+  })
+}
 
   function displayComments(cityId) {
     $.get(`/cities/${cityId}.json`, function(data) {
