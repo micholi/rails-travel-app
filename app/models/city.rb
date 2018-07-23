@@ -13,7 +13,7 @@ class City < ApplicationRecord
 
   def avg_rating
     if self.trips.count == 0
-      "This city hasn't been rated yet."
+      "Not Yet Rated"
     else
       self.trips.average(:rating).to_f.round(1)
     end

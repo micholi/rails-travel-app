@@ -3,7 +3,6 @@ class TripsController < ApplicationController
 
   def index
     find_user
-    #@user = current_user
     @trips = @user.trips.all
     respond_to do |format|
       format.html { render :index }
