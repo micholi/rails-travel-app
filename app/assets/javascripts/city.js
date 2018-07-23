@@ -53,7 +53,7 @@ $(function() {
     getNewCityId(cityId, op)
   })
 
-  $(".js-display-comments").one("click", function(event) {
+  $(".js-display-comments").on("click", function(event) {
     cityId = parseInt($(".js-display-comments").attr("data-city-id"))
     $.get(`/cities/${cityId}.json`, function(data) {
       const cityTrips = new City(data.id, data.name, data.country, data.trips)
