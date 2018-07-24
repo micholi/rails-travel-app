@@ -37,6 +37,9 @@ class TripsController < ApplicationController
     if @trip.save
       # redirect_to user_trips_path(@user), :flash => { :success => "You've successfully added this trip!"}
       render json: @trip
+
+
+
     else
     #  render :new
       render 'users/show'
@@ -56,11 +59,11 @@ class TripsController < ApplicationController
     find_trip
     if @trip.update(trip_params)
       # original redirect no longer works since request coming from ajax
-      # redirect_to user_trips_path(@user), :flash => { :success => "Your trip has been updated!"}
-      respond_to do |format|
-        format.html { redirect_to user_trips_path(@user) }
-        format.json { render json: @trip }
-      end
+       redirect_to user_trips_path(@user), :flash => { :success => "Your trip has been updated!"}
+  #    respond_to do |format|
+  #      format.html { redirect_to user_trips_path(@user) }
+  #      format.json { render json: @trip }
+  #    end
     else
       render :edit
     end

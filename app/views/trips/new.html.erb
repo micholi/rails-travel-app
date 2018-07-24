@@ -18,7 +18,17 @@
           <%= city_attr.text_field :country %><br><br>
       <% end %>
     <% end %>
-    <%= render partial: 'form', locals: { f: f} %>
+
+    <%= f.label :rating, "Rating (Scale of 1-5)" %>
+    <%= f.text_field :rating %><br><br>
+
+    <%= f.label :fave_attraction, "Must See Attraction" %>
+    <%= f.text_field :fave_attraction %><br><br>
+
+    <%= f.label :comment, "Share Additional Details" %><br><br>
+    <%= f.text_area :comment, :size => "35x5" %><br><br>
+
+
     <%= f.submit "Add Trip", :class => 'btn btn-sm btn-success' %>
   <% end %>
 </div>

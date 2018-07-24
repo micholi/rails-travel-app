@@ -8,7 +8,7 @@ function Trip(id, user, city, rating, fave_attraction, comment) {
 }
 
 Trip.prototype.getNewTrip = function() {
-  let newTripString = `<div id="index-trip-${this.id}" class="bottom-border"><p class="no-underline bold-text"><a href="/users/${this.user}/trips/${this.id}">${this.city.name}</a></p><p>${this.comment}</p></div>`
+  let newTripString = `<div id="index-trip-${this.id}" class="bottom-border"><p class="no-underline bold-text"><a href="/users/${this.user.id}/trips/${this.id}">${this.city.name}</a></p><p>${this.comment}</p></div>`
   return newTripString
 }
 
@@ -56,7 +56,7 @@ $(function() {
   })
 
   // need to fix disabled button issue
-  $('form#new_user_trip').on("submit", function(event) {
+  $('form#new-trip-form').on("submit", function(event) {
     event.preventDefault();
     var $form = $(this)
     var action = $form.attr("action")

@@ -27,7 +27,7 @@ User.prototype.formatUserIndex = function(currentUserId) {
     let city = trip.city.name;
     let rating = trip.rating
     let fave = trip.fave_attraction;
-    let comment = trip.comment // new
+    let comment = trip.comment
     tripsHtml +=`<div id="index-trip-${userTripId}" class="bottom-border"><p class="no-underline bold-text"> <a href="/users/${currentUserId}/trips/${userTripId}">${city}</a></p><p>${comment}</p></div>`
   })
   tripsHtml += '</div>'
