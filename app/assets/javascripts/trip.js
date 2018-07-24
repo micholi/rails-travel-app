@@ -7,11 +7,13 @@ function Trip(id, user, city, rating, fave_attraction, comment) {
   this.comment = comment
 }
 
+// prototype formats html for new trip to be appended to user show page
 Trip.prototype.getNewTrip = function() {
   let newTripString = `<div id="index-trip-${this.id}" class="bottom-border"><p class="no-underline bold-text"><a href="/users/${this.user.id}/trips/${this.id}">${this.city.name}</a></p><p>${this.comment}</p></div>`
   return newTripString
 }
 
+// prototype formats html for show more feature on user trips index page
 Trip.prototype.showMore = function() {
   let moreTripString = `<p>${this.comment}</p><p><span class="bold-text">Rating: </span>${this.rating}</p><p><span class="bold-text">Must See Attraction: </span>${this.fave_attraction}</p>`;
   return moreTripString
@@ -55,7 +57,7 @@ $(function() {
     event.preventDefault()
   })
 
-  // need to fix disabled button issue
+  // ajax request to create new trip and append to index on user show page
   $('form#new-trip-form').on("submit", function(event) {
     event.preventDefault();
     var $form = $(this)
@@ -67,7 +69,6 @@ $(function() {
       datatype: "json",
       method: "POST"
     }).success(function(json) {
-      //debugger
       let newTrip = new Trip(json.id, json.user, json.city, json.rating, json.fave_attraction, json.comment);
       let newTripHtml = newTrip.getNewTrip()
       $("#my-trips-index").append(newTripHtml)
@@ -97,6 +98,7 @@ $(function() {
     })
   }
 
+  // renders updated info for next or previous trip selected
   function loadTrip(tripUserId, newTripId) {
     $.get(`/users/${tripUserId}/trips/${newTripId}.json`, function(data) {
       const trip = new Trip(data.id, data.user, data.city, data.rating, data.fave_attraction, data.comment)

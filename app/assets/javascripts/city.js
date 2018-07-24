@@ -5,6 +5,7 @@ function City(id, name, country, trips) {
   this.trips = trips
 }
 
+// prototype to format comments to display on city show pages
 City.prototype.displayComments = function(cityId) {
   let cityString = `<ul>`
   this.trips.forEach(function(trip) {
@@ -80,6 +81,7 @@ function getNewCityId(cityId, op) {
   })
 }
 
+  // renders updated info for next or previous city selected
   function loadCity(newCityId) {
     $("#js-city-comments").empty()
     $.get(`/cities/${newCityId}.json`, function(data) {
