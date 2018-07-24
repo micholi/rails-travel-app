@@ -3,7 +3,6 @@ class CitiesController < ApplicationController
 
   def index
     @cities = City.all
-    @city = City.new
     respond_to do |format|
       format.html { render :index }
       format.json { render json: @cities }
@@ -12,12 +11,10 @@ class CitiesController < ApplicationController
 
   def show
     @city = City.find(params[:id])
-    #@trips = @city.trips
     respond_to do |format|
       format.html { render :show }
       format.json { render json: @city }
     end
-      #render json: @trips
   end
 
   def most_visited
