@@ -36,7 +36,7 @@ body {
 
 /* ----- HOME PAGE ----- */
 
-/* NEED TO CONFIRM NO LONGER NEEDED
+/*
 .home {
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/assets/venice.jpg') no-repeat center center;
   background-size: cover;
@@ -44,13 +44,7 @@ body {
 }
 */
 
-.home h2 {
-  padding-top: 25px;
-  text-align: center;
-  color: white;
-}
-
-/* ----- LOGIN/STARTUP PAGES ----- */
+/* ----- HOME/LOGIN/STARTUP PAGES ----- */
 .start-pages {
   position: absolute;
   top: 50%;
@@ -62,15 +56,26 @@ body {
   background-color: #FDFCFC;
   text-align: center;
   display: block;
-  padding-top: 20px;
   display: block;
 }
 
+.home {
+  width: 350px;
+  min-height: 250px;
+  padding: 20px;
+}
+
+.home a.start-button,
+.home a:hover.start-button,
+.signup-login a.start-button,
+.signup-login a:hover.start-button {
+  color: white;
+}
+
 .signup-login {
-  width: 300px;
-  min-height: 300px;
-  padding-left: 20px;
-  padding-right: 20px;
+  width: 350px;
+  min-height: 325px;
+  padding: 20px;
 }
 
 .user-errors {
@@ -115,29 +120,6 @@ body {
   padding: 30px;
   min-height: 300px;
 }
-
-/* NEED TO CONFIRM THESE ARE NO LONGER NEEDED
-.info-box {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  margin-top: 30px;
-  width: 300px;
-  height: 250px;
-  border: 1px solid #A9A9A9;
-  border-radius: 15px;
-  background-color: #DEDBDB;
-  text-align: center;
-}
-
-.info-box.med-box {
-  width: 400px;
-  height: 325px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-*/
 
 .list-details {
   width: 60%;
@@ -289,15 +271,6 @@ div.prev-next a:hover, a:hover:visited {
 }
 
 /* ----- MISC ----- */
-
-/* NEED TO CONFIRM THIS IS NO LONGER NEEDED
- h4.box-heading {
-   border-bottom: 1px solid #A9A9A9;
-   margin-top: 10px;
-   padding-bottom: 10px;
-   text-align: center;
- }
- */
 
  .bold-text {
    font-weight: bold;
