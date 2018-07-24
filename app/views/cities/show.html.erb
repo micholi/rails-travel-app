@@ -7,10 +7,6 @@
   <p><span class="bold-text">Total Trips: </span><span class="cityTripCount"><%= @city.trip_count %></span></p>
   <p><span class="bold-text">Average Rating: </span><span class="cityAvgRating"><%= @city.avg_rating %></span></p>
 
-  <% if !Trip.exists?(user_id: current_user.id, city_id: @city.id) %>
-    <%= link_to "Been to #{@city.name}? Add it to your trips!", new_user_trip_path(:user_id => current_user.id, :city_id => @city.id) %>
-  <% end %>
-
   <a href="#" class="js-display-comments" data-city-id="<%= @city.id %>">See Comments About This City</a><br><br>
   <div id="js-city-comments"></div>
 

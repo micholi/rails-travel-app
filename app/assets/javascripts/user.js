@@ -2,31 +2,15 @@ function User(data) {
   this.trips = data
 }
 
-/* testing something new
-// prototype formats html for rendering current user's index on their show page
-User.prototype.formatUserIndex = function(currentUserId) {
-  let tripsHtml = `<br><br><table><thead><tr><th>City</th><th>Rating</th><th>Must See Attraction</th></tr></thead><tbody id="trips-table">`
-  this.trips.forEach(function(trip) {
-    let userTripId = trip.id;
-    let city = trip.city.name;
-    let rating = trip.rating
-    let fave = trip.fave_attraction;
-    let comment = trip.comment // new
-    tripsHtml +=`<tr class="border-bottom"><td class="no-underline"><a href="/users/${currentUserId}/trips/${userTripId}">${city}</a></td><td>${rating}</td><td>${fave}</td></tr>`
-  })
-  tripsHtml += `</tbody></table>`
-  return tripsHtml
-}
-*/
-
-/* testing below prototype */
+/* prototype formats html to display trips index on current user show page */
 User.prototype.formatUserIndex = function(currentUserId) {
   let tripsHtml = `<div id="my-trips-index">`
   this.trips.forEach(function(trip) {
     let userTripId = trip.id;
     let city = trip.city.name;
-    let rating = trip.rating
-    let fave = trip.fave_attraction;
+    let country = trip.city.country.name
+    //let rating = trip.rating
+    //let fave = trip.fave_attraction;
     let comment = trip.comment
     tripsHtml +=`<div id="index-trip-${userTripId}" class="bottom-border"><p class="no-underline bold-text"> <a href="/users/${currentUserId}/trips/${userTripId}">${city}</a></p><p>${comment}</p></div>`
   })
@@ -34,7 +18,7 @@ User.prototype.formatUserIndex = function(currentUserId) {
   return tripsHtml
 }
 
-// prototype formats html for rendering trip info on Travelers (aka Users) index page
+// prototype formats html for rendering trip info on travelers (aka users) index page
 User.prototype.formatTravelerTrips = function(travelerId) {
   let travelerString = `<ul>`
   this.trips.forEach(function(trip) {
@@ -57,10 +41,6 @@ $(function() {
     })
       event.preventDefault()
   })
-
-
-
-
 
   // invokes formatTravelerTrips prototype and appends html for that traveler(aka user) on Travelers index page
   $(".js-display-traveler-trips").one("click", function(event) {

@@ -1,15 +1,14 @@
 <div class="page-container user-show">
-  <h4><%= @user.name %>'s Travel Summary</h4>
+  <h4>Welcome, <%= @user.name %>!</h4>
   <% if @user.trips.count == 0 %>
     <p>You haven't added any trips yet.</p><br>
     <%= link_to "Explore Destinations", cities_path, :class => 'btn btn-sm btn-secondary btn-rounded' %>
   <% else %>
-    <span class="bold-text">Total Trips: </span><%= @user.trip_count %><br>
-
-    <%= link_to "View My 5-Star Trips", five_star_url %><br><br>
+    
+    <%= link_to "See 5-Star Trips", five_star_url %><br><br>
   <% end %>
 
-  <button href="#" class="js-load-trips btn btn-sm btn-outline-secondary" data-user-id="<%= @user.id %>" >My Trips</button><br><Br>
+  <button href="#" class="js-load-trips btn btn-sm btn-dark" data-user-id="<%= @user.id %>" >View All My Trips</button><br><Br>
   <div class="underlined-list"></div>
   <div id="my-trips"></div>
 

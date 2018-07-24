@@ -7,7 +7,8 @@ class User < ApplicationRecord
   has_secure_password
 
   def last_trip
-    self.trips.last
+    #self.trips.last
+    self.trips[-1]
   end
 
   def trip_count

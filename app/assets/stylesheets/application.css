@@ -34,13 +34,6 @@ body {
    color: #3357B9;
  }
 
- .topnav .welcome {
-   color: #3357B9;
-   font-weight: bold;
-   padding-left: 30px;
-   padding-right: 75px;
- }
-
 /* ----- HOME PAGE ----- */
 
 /* NEED TO CONFIRM NO LONGER NEEDED
@@ -172,7 +165,7 @@ body {
 
 .bottom-border {
   border-bottom: 1px solid #C0C0C0;
-  
+
   margin: 10px auto;
 }
 

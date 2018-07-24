@@ -5,7 +5,6 @@
 <% else %>
 
   <%= link_to("triptracker", user_path(current_user), :class => 'logo') %>
-  <a href="#" class="welcome"><%= "Welcome, #{current_user.name}!" %></a>
   <%= link_to("Home", user_path(current_user)) %>
   <%= link_to("My Trips", user_trips_path(current_user)) %>
   <%= link_to("Cities", cities_path) %>
