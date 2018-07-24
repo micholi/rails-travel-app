@@ -12,10 +12,12 @@
       </tr>
     </thead>
     <tbody>
+      <div class="city-list">
+
       <% @cities.each do |city| %>
       <tr class="border-bottom">
-        <td class="no-underline"><%= link_to city.city_plus_country, city_path(city) %></td>
-        
+        <td class="no-underline" id="city-<%= city.id %>"><%= link_to city.city_plus_country, city_path(city) %></td>
+
         <td><%= city.avg_rating %></td>
 
         <% if !Trip.exists?(user_id: current_user.id, city_id: city.id) %>
@@ -24,8 +26,15 @@
           <td>&check;</td>
         <% end %>
 
+
+      </div>
+
+
       </tr>
       <% end %>
+
+
+
     </tbody>
   </table>
   <br>

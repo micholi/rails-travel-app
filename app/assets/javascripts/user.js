@@ -2,6 +2,7 @@ function User(data) {
   this.trips = data
 }
 
+/* testing something new
 // prototype formats html for rendering current user's index on their show page
 User.prototype.formatUserIndex = function(currentUserId) {
   let tripsHtml = `<br><br><table><thead><tr><th>City</th><th>Rating</th><th>Must See Attraction</th></tr></thead><tbody id="trips-table">`
@@ -10,9 +11,26 @@ User.prototype.formatUserIndex = function(currentUserId) {
     let city = trip.city.name;
     let rating = trip.rating
     let fave = trip.fave_attraction;
+    let comment = trip.comment // new
     tripsHtml +=`<tr class="border-bottom"><td class="no-underline"><a href="/users/${currentUserId}/trips/${userTripId}">${city}</a></td><td>${rating}</td><td>${fave}</td></tr>`
   })
   tripsHtml += `</tbody></table>`
+  return tripsHtml
+}
+*/
+
+/* testing below prototype */
+User.prototype.formatUserIndex = function(currentUserId) {
+  let tripsHtml = `<div id="my-trips-index">`
+  this.trips.forEach(function(trip) {
+    let userTripId = trip.id;
+    let city = trip.city.name;
+    let rating = trip.rating
+    let fave = trip.fave_attraction;
+    let comment = trip.comment // new
+    tripsHtml +=`<div id="index-trip-${userTripId}"><a href="/users/${currentUserId}/trips/${userTripId}">${city}</a><p>${comment}</p></div>`
+  })
+  tripsHtml += '</div>'
   return tripsHtml
 }
 

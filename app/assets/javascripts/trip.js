@@ -6,22 +6,12 @@ function Trip(id, city, rating, fave_attraction, comment) {
   this.comment = comment
 }
 
-/*
-Trip.renderNewTrip = function() {
-  let newTripString = `<td class="no-underline"><a href="/users/${currentUserId}/trips/${id}">${city}</a></td><td>${rating}</td><td>${fave_attraction}</td>`>
+
+Trip.prototype.getNewTrip = function() {
+
+  let newTripString = `<div id="index-trip-${this.id}"><a href="#">${this.city.name}</a><p>${this.comment}</p></div>`
   return newTripString
 }
-*/
-
-Trip.renderNewTrip = function() {
-  //debugger
-  let newTripString = `<p class="no-underline bold-text" id="${this.id}"> <a href="/users/${this.user.id}/trips/${this.id}">${this.city}</a></p>`
-
-  return newTripString
-}
-
-
-
 
 Trip.prototype.showMore = function() {
   let moreTripString = `<p>${this.comment}</p><p><span class="bold-text">Rating: </span>${this.rating}</p><p><span class="bold-text">Must See Attraction: </span>${this.fave_attraction}</p>`;
@@ -67,25 +57,30 @@ $(function() {
   })
 
 
-  /* Testing form submission */
-    $('form').submit(function(event) {
-          //prevent form from submitting the default way
-          event.preventDefault();
-          //debugger
-          var $form = $(this)
-          var action = $form.attr("action")
-          var params = $form.serialize()
-          $.ajax({
-            url: action,
-            data: params,
-            datatype: "json",
-            method: "POST"
-          }).success(function(json) {
-            let newTrip = new Trip(json);
-            let newTripHtml = newTrip.renderNewTrip()
-            $(".my-trips.underlined-list").append(newTripHtml)
-          })
-        })
+
+$('form').on("submit", function(event) {
+      //prevent form from submitting the default way
+      event.preventDefault();
+
+      var $form = $(this)
+      var action = $form.attr("action")
+      var params = $form.serialize()
+      $.ajax({
+        url: action,
+        data: params,
+        datatype: "json",
+        method: "POST"
+      }).success(function(json) {
+        //debugger
+        let newTrip = new Trip(json.id, json.city, json.rating, json.fave_attraction, json.comment);
+        let newTripHtml = newTrip.getNewTrip()
+        $("#my-trips-index").append(newTripHtml)
+        //document.getElementById("new-trip-form").reset();
+        $("#new-trip-form")[0].reset();
+        $.rails.enableElement($('a[data-disable-with]'));
+      })
+
+    })
 
 
 

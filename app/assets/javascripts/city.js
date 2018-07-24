@@ -63,6 +63,7 @@ $(function() {
   event.preventDefault()
 })
 
+
 // gets index of city and adds or subtracts 1 based on value passed from next/previous click
 // updated index is used to retrieve city id, which is then passed to loadTrip function
 function getNewCityId(cityId, op) {

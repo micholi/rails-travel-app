@@ -12,9 +12,6 @@
   <button class="js-load-trips btn btn-sm btn-outline-secondary btn-rounded" data-user-id="<%= @user.id %>" >See My Trips</button>
   <div id="my-trips"></div>
 
-
-  <% if @user == current_user %>
-<%= render partial: "trips/form", locals: {user: @user, trip: @trip} %>
-<% end %>
+  <%= render partial: "trips/form", locals: {user: @user, trip: @trip} %>
 
 </div>

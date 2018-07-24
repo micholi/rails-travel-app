@@ -4,7 +4,6 @@ class TripsController < ApplicationController
   def index
     find_user
     @trips = @user.trips.all
-    @trip = @user.trips.build
     respond_to do |format|
       format.html { render :index }
       format.json { render json: @trips }
@@ -25,11 +24,11 @@ class TripsController < ApplicationController
     set_user
   end
 
-#  def new
-#    set_user
-#    find_city
-#    @trip = Trip.new
-#  end
+  def new
+    set_user
+    find_city
+    @trip = Trip.new
+  end
 
   def create
     set_user
@@ -41,8 +40,8 @@ class TripsController < ApplicationController
 
     render json: @trip
     else
-      #render :new
-      render 'users/show'
+      render :new
+    #  render 'users/show'
     end
   end
 
