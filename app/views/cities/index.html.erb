@@ -6,22 +6,16 @@
     <thead>
       <tr>
         <th>City</th>
+        <th>Total Trips</th>
         <th>Average Rating</th>
-        <th>Been Here?</th>
       </tr>
     </thead>
     <tbody>
-      <div class="city-list">
       <% @cities.each do |city| %>
       <tr class="border-bottom">
         <td class="no-underline" id="city-<%= city.id %>"><%= link_to city.city_plus_country, city_path(city) %></td>
+        <td><%= city.trip_count %></td>
         <td><%= city.avg_rating %></td>
-        <% if !Trip.exists?(user_id: current_user.id, city_id: city.id) %>
-        <td><%= link_to "Add Trip", new_user_trip_path(:user_id => current_user.id, :city_id => city.id) %><td>
-          <% elsif Trip.exists?(user_id: current_user.id, city_id: city.id) %>
-          <td>&check;</td>
-        <% end %>
-      </div>
       </tr>
       <% end %>
     </tbody>
