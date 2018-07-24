@@ -1,6 +1,6 @@
 <p class="blue-bold">Add New Trip</hp>
 
-<%= form_for :trip, url: user_trips_path(@user), :html => {:id => "new-trip-form"} do |f| %>
+<%= form_for :trip, url: user_trips_path(@user), :html => {:id => "new-trip-form"}, data: { disable_with: false } do |f| %>
 
 <%= f.label :city, "Select City" %>
 <%= f.collection_select :city_id, City.order('name ASC'), :id, :city_plus_country, :include_blank => true %>

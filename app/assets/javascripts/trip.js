@@ -8,8 +8,7 @@ function Trip(id, user, city, rating, fave_attraction, comment) {
 }
 
 Trip.prototype.getNewTrip = function() {
-
-  let newTripString = `<div id="index-trip-${this.id}" class="bottom-border"><a href="/users/${this.user.id}/trips/${this.id}">${this.city.name}</a><p>${this.comment}</p></div>`
+  let newTripString = `<div id="index-trip-${this.id}" class="bottom-border"><p class="no-underline bold-text"><a href="/users/${this.user}/trips/${this.id}">${this.city.name}</a></p><p>${this.comment}</p></div>`
   return newTripString
 }
 
@@ -69,12 +68,16 @@ $(function() {
       method: "POST"
     }).success(function(json) {
       //debugger
-      let newTrip = new Trip(json.id, json.city, json.rating, json.fave_attraction, json.comment);
+      let newTrip = new Trip(json.id, json.user, json.city, json.rating, json.fave_attraction, json.comment);
       let newTripHtml = newTrip.getNewTrip()
       $("#my-trips-index").append(newTripHtml)
-      //document.getElementById("new-trip-form").reset();
+      // reset form post-submit
       $("#new-trip-form")[0].reset();
-      $.rails.enableElement($('a[data-disable-with]'));
+      // re-enable button auto-disabled by Rails
+      var selectors = [Rails.linkDisableSelector, Rails.formEnableSelector].join(', ');
+      $(selectors).each(function() {
+        Rails.enableElement(this);
+      })
     })
   })
 
@@ -96,7 +99,7 @@ $(function() {
 
   function loadTrip(tripUserId, newTripId) {
     $.get(`/users/${tripUserId}/trips/${newTripId}.json`, function(data) {
-      const trip = new Trip(data.id, data.city, data.rating, data.fave_attraction, data.comment)
+      const trip = new Trip(data.id, data.user, data.city, data.rating, data.fave_attraction, data.comment)
       $(".tripCity").text(trip.cityCountry());
       $(".tripRating").text(trip.rating);
       $(".tripMustSee").text(trip.fave_attraction);
