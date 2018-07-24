@@ -11,7 +11,6 @@ class UsersController < ApplicationController
 
   def show
     set_user
-    #remove line below
     @trip = @user.trips.build
     respond_to do |format|
       format.html { render :show }

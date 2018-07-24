@@ -37,9 +37,6 @@ class TripsController < ApplicationController
     if @trip.save
       # redirect_to user_trips_path(@user), :flash => { :success => "You've successfully added this trip!"}
       render json: @trip
-
-
-
     else
     #  render :new
       render 'users/show'
