@@ -13,7 +13,6 @@ class TripsController < ApplicationController
   def show
     find_user
     find_trip
-    #@trip = @user.trips.find_by(id: params[:id])
     respond_to do |format|
       format.html { render :show }
       format.json { render json: @trip }
@@ -24,7 +23,7 @@ class TripsController < ApplicationController
     set_user
   end
 
-  # not needed
+  # not needed since new trip is added from user show page
   #def new
   #  set_user
   #  find_city
@@ -38,7 +37,7 @@ class TripsController < ApplicationController
       # redirect_to user_trips_path(@user), :flash => { :success => "You've successfully added this trip!"}
       render json: @trip
     else
-    #  render :new
+      # render :new
       render 'users/show'
     end
   end
@@ -55,12 +54,13 @@ class TripsController < ApplicationController
     set_user
     find_trip
     if @trip.update(trip_params)
-      # original redirect no longer works since request coming from ajax
-       redirect_to user_trips_path(@user), :flash => { :success => "Your trip has been updated!"}
-  #    respond_to do |format|
-  #      format.html { redirect_to user_trips_path(@user) }
-  #      format.json { render json: @trip }
-  #    end
+      redirect_to user_trips_path(@user), :flash => { :success => "Your trip has been updated!"}
+      # had added below code to fix issue with redirect post-update
+      # may not actually be needed, but keeping just in case
+      # respond_to do |format|
+        # format.html { redirect_to user_trips_path(@user) }
+        # format.json { render json: @trip }
+      # end
     else
       render :edit
     end
