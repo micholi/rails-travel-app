@@ -1,5 +1,6 @@
-function Trip(id, city, rating, fave_attraction, comment) {
+function Trip(id, user, city, rating, fave_attraction, comment) {
   this.id = id
+  this.user = user
   this.city = city
   this.rating = rating
   this.fave_attraction = fave_attraction
@@ -8,7 +9,7 @@ function Trip(id, city, rating, fave_attraction, comment) {
 
 Trip.prototype.getNewTrip = function() {
 
-  let newTripString = `<div id="index-trip-${this.id}"><a href="#">${this.city.name}</a><p>${this.comment}</p></div>`
+  let newTripString = `<div id="index-trip-${this.id}" class="bottom-border"><a href="/users/${this.user.id}/trips/${this.id}">${this.city.name}</a><p>${this.comment}</p></div>`
   return newTripString
 }
 
@@ -47,7 +48,7 @@ $(function() {
   $(".js-more").on("click", function(event) {
     let moreTripId = $(this).data("more-trip-id")
     $.get(`trips/${moreTripId}.json`, function(data) {
-      const moreTrip = new Trip(data.id, data.city, data.rating, data.fave_attraction, data.comment)
+      const moreTrip = new Trip(data.id, data.user, data.city, data.rating, data.fave_attraction, data.comment)
       let moreTripHtml = moreTrip.showMore()
       $("#trip-" + moreTripId).html(moreTripHtml);
       $("#more-" + moreTripId).hide()
