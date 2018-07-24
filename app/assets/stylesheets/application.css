@@ -170,6 +170,12 @@ body {
   margin: 10px auto;
 }
 
+.bottom-border {
+  border-bottom: 1px solid #C0C0C0;
+  
+  margin: 10px auto;
+}
+
 .form {
   width: 80%;
   margin: 30px auto;

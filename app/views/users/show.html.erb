@@ -8,8 +8,9 @@
 
     <%= link_to "View My 5-Star Trips", five_star_url %><br><br>
   <% end %>
-  <%= link_to "Add New Trip", new_user_trip_url(@user), :class => 'btn btn-sm btn-info btn-rounded' %>
-  <button class="js-load-trips btn btn-sm btn-outline-secondary btn-rounded" data-user-id="<%= @user.id %>" >See My Trips</button>
+
+  <button href="#" class="js-load-trips btn btn-sm btn-outline-secondary" data-user-id="<%= @user.id %>" >My Trips</button><br><Br>
+  <div class="underlined-list"></div>
   <div id="my-trips"></div>
 
   <%= render partial: "trips/form", locals: {user: @user, trip: @trip} %>

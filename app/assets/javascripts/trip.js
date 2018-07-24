@@ -6,7 +6,6 @@ function Trip(id, city, rating, fave_attraction, comment) {
   this.comment = comment
 }
 
-
 Trip.prototype.getNewTrip = function() {
 
   let newTripString = `<div id="index-trip-${this.id}"><a href="#">${this.city.name}</a><p>${this.comment}</p></div>`
@@ -56,35 +55,27 @@ $(function() {
     event.preventDefault()
   })
 
-
-
-$('form').on("submit", function(event) {
-      //prevent form from submitting the default way
-      event.preventDefault();
-
-      var $form = $(this)
-      var action = $form.attr("action")
-      var params = $form.serialize()
-      $.ajax({
-        url: action,
-        data: params,
-        datatype: "json",
-        method: "POST"
-      }).success(function(json) {
-        //debugger
-        let newTrip = new Trip(json.id, json.city, json.rating, json.fave_attraction, json.comment);
-        let newTripHtml = newTrip.getNewTrip()
-        $("#my-trips-index").append(newTripHtml)
-        //document.getElementById("new-trip-form").reset();
-        $("#new-trip-form")[0].reset();
-        $.rails.enableElement($('a[data-disable-with]'));
-      })
-
+  // need to fix disabled button issue
+  $('form').on("submit", function(event) {
+    event.preventDefault();
+    var $form = $(this)
+    var action = $form.attr("action")
+    var params = $form.serialize()
+    $.ajax({
+      url: action,
+      data: params,
+      datatype: "json",
+      method: "POST"
+    }).success(function(json) {
+      //debugger
+      let newTrip = new Trip(json.id, json.city, json.rating, json.fave_attraction, json.comment);
+      let newTripHtml = newTrip.getNewTrip()
+      $("#my-trips-index").append(newTripHtml)
+      //document.getElementById("new-trip-form").reset();
+      $("#new-trip-form")[0].reset();
+      $.rails.enableElement($('a[data-disable-with]'));
     })
-
-
-
-
+  })
 
   // gets index of trip and adds or subtracts 1 based on value passed from next/previous click
   // updated index is used to retrieve trip id, which is then passed to loadTrip function
