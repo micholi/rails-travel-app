@@ -24,24 +24,22 @@ class TripsController < ApplicationController
     set_user
   end
 
-  def new
-    set_user
-    find_city
-    @trip = Trip.new
-  end
+  # not needed
+  #def new
+  #  set_user
+  #  find_city
+  #  @trip = Trip.new
+  #end
 
   def create
     set_user
-    #find_city
     @trip = @user.trips.build(trip_params)
     if @trip.save
-    #  redirect_to user_trips_path(@user), :flash => { :success => "You've successfully added this trip!"}
-
-
-    render json: @trip
+      # redirect_to user_trips_path(@user), :flash => { :success => "You've successfully added this trip!"}
+      render json: @trip
     else
-      render :new
-    #  render 'users/show'
+    #  render :new
+      render 'users/show'
     end
   end
 
@@ -57,7 +55,12 @@ class TripsController < ApplicationController
     set_user
     find_trip
     if @trip.update(trip_params)
-      redirect_to user_trips_path(@user), :flash => { :success => "Your trip has been updated!"}
+      # original redirect no longer works since request coming from ajax
+      # redirect_to user_trips_path(@user), :flash => { :success => "Your trip has been updated!"}
+      respond_to do |format|
+        format.html { redirect_to user_trips_path(@user) }
+        format.json { render json: @trip }
+      end
     else
       render :edit
     end

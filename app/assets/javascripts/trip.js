@@ -56,7 +56,7 @@ $(function() {
   })
 
   // need to fix disabled button issue
-  $('form').on("submit", function(event) {
+  $('form#new_user_trip').on("submit", function(event) {
     event.preventDefault();
     var $form = $(this)
     var action = $form.attr("action")
