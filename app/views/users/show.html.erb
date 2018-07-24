@@ -4,11 +4,10 @@
     <p>You haven't added any trips yet.</p><br>
     <%= link_to "Explore Destinations", cities_path, :class => 'btn btn-sm btn-secondary btn-rounded' %>
   <% else %>
-    
     <%= link_to "See 5-Star Trips", five_star_url %><br><br>
   <% end %>
 
-  <button href="#" class="js-load-trips btn btn-sm btn-dark" data-user-id="<%= @user.id %>" >View All My Trips</button><br><Br>
+  <button href="#" class="js-load-trips btn btn-sm btn-dark" data-user-id="<%= @user.id %>" >View All My Trips</button><br><br>
   <div class="underlined-list"></div>
   <div id="my-trips"></div>
 
