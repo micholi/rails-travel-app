@@ -4,7 +4,7 @@
 ## Description
 This is a CRUD app that allows a user, aka a traveler, to create new cities and trip reviews. For each trip review submitted, the user can assign a rating of 1-5, add a Must See Attraction, and include additional comments to share with other travelers. Travel sites like TripAdvisor were my inspiration, but as this is a school project, my app is a much simpler version! To use the app, a user must create a new account either through Facebook or by providing a unique email address.
 
-The original iteration of this project was created using Rails. In this updated version, some of the front end has been rebuilt with JS, jQuery, AJAX, and JSON APIs to make the app more dynamic. New features include the ability to render additional content without a page refresh, create a new resource and append the response to the current page without refresh, and scroll though content using Next and Previous links.
+The original iteration of this project was created using Rails. In this updated version, some of the front end has been rebuilt using JS, jQuery, AJAX, JSON, and Active Model Serialization to make the app more dynamic. New features include the ability to render additional content without a page refresh, create a new resource and append the response to the current page without refresh, and scroll though content using Next and Previous links.
 
 ## Travel App Instructions
 
@@ -21,7 +21,6 @@ The original iteration of this project was created using Rails. In this updated 
 * JavaScript
 * jQuery
 * AJAX
-* JSON APIs
 * Facebook Omniauth
 
 ## Contributing

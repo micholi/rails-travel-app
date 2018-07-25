@@ -4,7 +4,7 @@ function User(data) {
 
 /* prototype formats html to display trips index on current user show page */
 User.prototype.formatUserIndex = function(currentUserId) {
-  let tripsHtml = `<div id="my-trips-index">`
+  let tripsHtml = `<div id="my-trips-index"><p class="blue-bold">My Trips</p>`
   this.trips.forEach(function(trip) {
     let userTripId = trip.id;
     let city = trip.city.name;

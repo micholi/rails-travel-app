@@ -1,15 +1,17 @@
 <div class="page-container user-show">
   <h4>Welcome, <%= @user.name %>!</h4>
+
   <% if @user.trips.count == 0 %>
     <p>You haven't added any trips yet.</p><br>
-    <%= link_to "Explore Destinations", cities_path, :class => 'btn btn-sm btn-secondary btn-rounded' %>
+    <%= link_to "Explore Destinations", cities_path, :class => 'btn btn-sm btn-secondary' %><br><br>
+    <div class="underlined-list"></div>
+    <div id="my-trips-index"></div>
   <% else %>
     <%= link_to "See 5-Star Trips", five_star_url %><br><br>
+    <button href="#" class="js-load-trips btn btn-sm btn-outline-dark" data-user-id="<%= @user.id %>" >View My Trips</button><br><br>
+    <div class="underlined-list"></div>
+    <div id="my-trips"></div>
   <% end %>
-
-  <button href="#" class="js-load-trips btn btn-sm btn-dark" data-user-id="<%= @user.id %>" >View All My Trips</button><br><br>
-  <div class="underlined-list"></div>
-  <div id="my-trips"></div>
 
   <%= render partial: "trips/form", locals: {user: @user, trip: @trip} %>
 
