@@ -29,7 +29,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session.destroy
-    redirect_to root_path
+    redirect_to login_path
   end
 
   private
