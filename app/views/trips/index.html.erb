@@ -1,13 +1,30 @@
-<div class="page-container trip-index">
-  <h4><%= @user.name %>'s Trips</h4>
-  <span class="bold-text">Total Trips: </span><%= @user.trip_count %><br>
-  <% @trips.each do |trip| %>
-    <div class="underlined-list">
-      <p class="no-underline bold-text"><%= link_to trip.city.city_plus_country, user_trip_path(@user, trip) %></p>
-      <div id="trip-<%= trip.id %>"><%= truncate(trip.comment) %></div>
-      <a href="#" class="js-more" id="more-<%= trip.id %>" data-more-trip-id="<%= trip.id %>">Read More...</a>
-      <ul id="trip-<%= trip.id %>-">
-    </ul>
-    </div>
-  <% end %>
+
+
+<div class="table-container">
+<h4 class="align-table"><%= @user.name %>'s Trips</h4>
+<table>
+  <thead>
+    <tr>
+      <th>City</th>
+      <th>Rating</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @trips.each do |trip| %>
+    <tr class="border-bottom">
+      <td class="no-underline"><%= link_to trip.city.name, user_trip_path(@user, trip) %></td>
+      <td><%= trip.rating %></td>
+      <% if @user == current_user %>
+        <td><%= link_to "Edit Trip", edit_user_trip_url(@user, trip), :method => 'get', :class => 'btn btn-sm btn-outline-primary' %></td>
+        <td><%= link_to "Delete Trip", user_trip_path(@user, trip), :method => 'delete', data: { confirm: "Are you sure?" }, :class => 'btn btn-sm btn-outline-secondary' %></td>
+      <% else %>
+        <td> </td>
+        <td> </td>
+      <% end %>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
 </div>
