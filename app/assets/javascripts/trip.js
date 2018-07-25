@@ -13,11 +13,13 @@ Trip.prototype.getNewTrip = function() {
   return newTripString
 }
 
+/* no longer needed since index page was changed, but keeping for future reference)
 // prototype formats html for show more feature on user trips index page
 Trip.prototype.showMore = function() {
   let moreTripString = `<p>${this.comment}</p><p><span class="bold-text">Rating: </span>${this.rating}</p><p><span class="bold-text">Must See Attraction: </span>${this.fave_attraction}</p>`;
   return moreTripString
 }
+*/
 
 Trip.prototype.cityCountry = function() {
   return this.city.name + ", " + this.city.country.name
@@ -46,6 +48,7 @@ $(function() {
     getNewTripId(tripUserId, tripId, op)
     })
 
+  /* no longer needed since index page was changed, but keeping for future reference)
   $(".js-more").on("click", function(event) {
     let moreTripId = $(this).data("more-trip-id")
     $.get(`trips/${moreTripId}.json`, function(data) {
@@ -56,6 +59,7 @@ $(function() {
     })
     event.preventDefault()
   })
+  */
 
   // ajax request to create new trip and append to index on user show page
   $('form#new-trip-form').on("submit", function(event) {
@@ -69,7 +73,7 @@ $(function() {
       datatype: "json",
       method: "POST"
     }).success(function(json) {
-      let newTrip = new Trip(json.id, json.user, json.city, json.rating, json.fave_attraction, json.comment);
+      const newTrip = new Trip(json.id, json.user, json.city, json.rating, json.fave_attraction, json.comment);
       let newTripHtml = newTrip.getNewTrip()
       $("#my-trips-index").append(newTripHtml)
       // reset form post-submit
