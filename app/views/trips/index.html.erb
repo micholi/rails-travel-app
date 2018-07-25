@@ -16,9 +16,12 @@
     <tr class="border-bottom">
       <td class="no-underline"><%= link_to trip.city.name, user_trip_path(@user, trip) %></td>
       <td><%= trip.rating %></td>
+
       <% if @user == current_user %>
-        <td><%= link_to "Edit Trip", edit_user_trip_url(@user, trip), :method => 'get', :class => 'btn btn-sm btn-outline-primary' %></td>
-        <td><%= link_to "Delete Trip", user_trip_path(@user, trip), :method => 'delete', data: { confirm: "Are you sure?" }, :class => 'btn btn-sm btn-outline-secondary' %></td>
+
+        <td class="index-buttons"><%= link_to "Edit", edit_user_trip_url(@user, trip), :method => 'get', :class => 'btn btn-sm btn-outline-primary color-fix' %></td>
+        <td class="index-buttons"><%= link_to "Delete", user_trip_path(@user, trip), :method => 'delete', data: { confirm: "Are you sure?" }, :class => 'btn btn-sm btn-outline-secondary color-fix' %></td>
+
       <% else %>
         <td> </td>
         <td> </td>

@@ -230,6 +230,11 @@ td {
    margin-right: 10%;
  }
 
+ .index-buttons a:hover.color-fix,
+ .index-buttons a:visited:hover.color-fix {
+   color: white;
+ }
+
  /* ----- LINKS ----- */
 
  .no-underline a: {
