@@ -148,7 +148,6 @@ body {
 
 .bottom-border {
   border-bottom: 1px solid #C0C0C0;
-
   margin: 10px auto;
 }
 
@@ -252,18 +251,20 @@ td {
    color: blue;
  }
 
- .no-underline a:visited {
+.no-underline a:visited {
    color: black;
  }
 
 .js-previous-trip,
-.js-previous-city {
+.js-previous-city,
+.js-previous-country {
   float: left;
   color: #339966;
 }
 
 .js-next-trip,
-.js-next-city {
+.js-next-city,
+.js-next-country {
   float: right;
   color: #339966;
 }

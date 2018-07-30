@@ -1,13 +1,10 @@
-<div class="page-container list-details">
-  <h4><%= @country.name %></h4>
-  <p>Read reviews of <%= pluralize(@country.cities.count, "city") %> from <%= pluralize(@country.trips.count, "traveler") %></p>
-    <% @country.cities.each do |city| %>
-      <div class="underlined-list">
-      <p class="no-underline bold-text"><%= link_to city.name, city_path(city) %></p>
-      <%= pluralize(city.users.count, "traveler") %><br>
-      <% if !city.users.empty? %>
-        <p>Last reviewed by <%= city.users.last.name %></p>
-      <% end %>
-    </div>
-  <% end %>
+<div class="page-container prev-next">
+  <a href="#" class="js-previous-country" data-country-id="<%= @country.id %>">&laquo; Previous</a>
+  <a href="#" class="js-next-country" data-country-id="<%= @country.id %>">Next &raquo;</a>
+
+  <h3 class="countryName"><%= @country.name %></h3>
+  <p><span class="bold-text">Total Cities: </span><span class="countryCityCount"><%= @country.cities.count %></span></p>
+
+  <a href="#" class="js-display-cities" data-country-id="<%= @country.id %>">Show Cities</a><br><br>
+  <div id="js-country-cities"></div>
 </div>

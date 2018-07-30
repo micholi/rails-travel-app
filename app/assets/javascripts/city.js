@@ -62,30 +62,28 @@ $(function() {
       $("#js-city-comments").append(cityHtml)
     })
   event.preventDefault()
-})
-
-
-// gets index of city and adds or subtracts 1 based on value passed from next/previous click
-// updated index is used to retrieve city id, which is then passed to loadTrip function
-function getNewCityId(cityId, op) {
-  $.get("/cities.json", function(data) {
-    citiesArray = data
-    cityIndex = citiesArray.map(c => c.id).indexOf(cityId)
-    if (op === "add") {
-      cityIndex += 1
-    } else if (op === "sub") {
-      cityIndex -= 1
-    }
-    newCityId = citiesArray[cityIndex]["id"]
-    loadCity(newCityId)
   })
-}
+
+  // gets index of city and adds or subtracts 1 based on value passed from next/previous click
+  // updated index is used to retrieve city id, which is then passed to loadCity function
+  function getNewCityId(cityId, op) {
+    $.get("/cities.json", function(data) {
+      citiesArray = data
+      cityIndex = citiesArray.map(c => c.id).indexOf(cityId)
+      if (op === "add") {
+        cityIndex += 1
+      } else if (op === "sub") {
+        cityIndex -= 1
+      }
+      newCityId = citiesArray[cityIndex]["id"]
+      loadCity(newCityId)
+    })
+  }
 
   // renders updated info for next or previous city selected
   function loadCity(newCityId) {
     $("#js-city-comments").empty()
     $.get(`/cities/${newCityId}.json`, function(data) {
-      $("#js-city-comments").empty()
       const city = new City(data.id, data.name, data.country, data.trips)
       $(".cityName").text(city.name);
       $(".countryName").text(city.country.name);
