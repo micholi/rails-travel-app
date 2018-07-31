@@ -4,13 +4,11 @@ function User(data) {
 
 /* prototype formats html to display trips index on current user show page */
 User.prototype.formatUserIndex = function(currentUserId) {
-  let tripsHtml = `<div id="my-trips-index"><p class="blue-bold">My Trips</p>`
+  let tripsHtml = `<div id="my-trips-index"><p class="blue-bold">Trip List</p>`
   this.trips.forEach(function(trip) {
     let userTripId = trip.id;
     let city = trip.city.name;
     let country = trip.city.country.name
-    //let rating = trip.rating
-    //let fave = trip.fave_attraction;
     let comment = trip.comment
     tripsHtml +=`<div id="index-trip-${userTripId}" class="bottom-border"><p class="no-underline bold-text"> <a href="/users/${currentUserId}/trips/${userTripId}">${city}</a></p><p>${comment}</p></div>`
   })
@@ -19,12 +17,10 @@ User.prototype.formatUserIndex = function(currentUserId) {
 }
 
 // prototype formats html for rendering trip info on travelers (aka users) index page
-User.prototype.formatTravelerTrips = function(travelerId) {
+User.prototype.formatTravelerTrips = function() {
   let travelerString = `<ul>`
   this.trips.forEach(function(trip) {
-    let city = trip.city.name
-    let fave = trip.fave_attraction
-    travelerString += `<li><span class="bold-text">${city}</span> - ${fave}</li>`
+    travelerString += `<li>${trip.city.name}</li>`
   })
   travelerString += `</ul>`
   return travelerString
@@ -47,7 +43,7 @@ $(function() {
     let travelerId = $(this).data("traveler-id");
     $.get(`/users/${travelerId}/trips.json`, function(data) {
       const traveler = new User(data);
-      let travelerHtml = traveler.formatTravelerTrips(travelerId)
+      let travelerHtml = traveler.formatTravelerTrips()
       $("#traveler-" + travelerId).append(travelerHtml)
     })
     event.preventDefault()
