@@ -291,3 +291,7 @@ div.prev-next a:hover, a:hover:visited {
  ul {
     list-style-type: circle;
 }
+
+.italic {
+  font-style: italic;
+}

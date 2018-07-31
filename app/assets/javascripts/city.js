@@ -11,7 +11,7 @@ City.prototype.displayComments = function(cityId) {
   this.trips.forEach(function(trip) {
      let cityTripUser = trip.user.name;
      let cityComment = trip.comment;
-     cityString += `<li>${cityComment} - ${cityTripUser}`
+     cityString += `<li>${cityComment}<br><span class="italic">-${cityTripUser}</span>`
    })
    cityString += `</ul>`
    return cityString
