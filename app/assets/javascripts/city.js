@@ -35,8 +35,8 @@ City.prototype.avgRating = function() {
 }
 
 $(function() {
-  var cityId
-  var newCityId
+  let cityId
+  let newCityId
   let cityIndex = 0
   let citiesArray = []
 

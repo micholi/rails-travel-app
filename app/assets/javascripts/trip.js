@@ -26,9 +26,9 @@ Trip.prototype.cityCountry = function() {
 }
 
 $(function() {
-  var tripUserId
-  var tripId
-  var op
+  let tripUserId
+  let tripId
+  let op
   let tripIndex = 0
   let tripsArray = []
 

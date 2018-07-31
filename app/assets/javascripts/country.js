@@ -8,7 +8,7 @@ function Country(id, name, cities) {
 Country.prototype.displayCities = function(countryId) {
   let countryString = `<ul class="no-underline">`
   this.cities.forEach(function(city) {
-     countryString += `<li><a href="/cities/${city.id}" target="_blank">${city.name}</a> - ${city.trips.length} trips`
+     countryString += `<li><a href="/cities/${city.id}" target="_blank"><span class="bold-text">${city.name}</span></a><p>Total Trips: ${city.trips.length}`
    })
    countryString += `</ul>`
    return countryString
@@ -20,8 +20,8 @@ Country.prototype.cityCount = function() {
 }
 
 $(function() {
-  var countryId
-  var newCountryId
+  let countryId
+  let newCountryId
   let countryIndex = 0
   let countriesArray = []
 
