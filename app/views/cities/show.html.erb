@@ -1,6 +1,15 @@
 <div class="page-container prev-next">
-  <a href="#" class="js-previous-city" data-city-id="<%= @city.id %>">&laquo; Previous</a>
-  <a href="#" class="js-next-city" data-city-id="<%= @city.id %>">Next &raquo;</a>
+  <% if City.all.order(:name).first.id == @city.id %>
+    <a href="#" class="js-previous-city" style="display:none;" data-city-id="<%= @city.id %>">&laquo; Previous</a>
+  <% else %>
+    <a href="#" class="js-previous-city" data-city-id="<%= @city.id %>">&laquo; Previous</a>
+  <% end %>
+
+  <% if City.all.order(:name).last.id == @city.id %>
+    <a href="#" class="js-next-city" style="display:none;" data-city-id="<%= @city.id %>">Next &raquo;</a>
+  <% else %>
+    <a href="#" class="js-next-city" data-city-id="<%= @city.id %>">Next &raquo;</a>
+  <% end %>
 
   <h3 class="cityName"><%= @city.name %></h3>
   <p><span class="bold-text">Country: </span><span class="countryName"><%= @city.country.name %></span></p>

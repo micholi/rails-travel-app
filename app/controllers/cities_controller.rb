@@ -2,7 +2,7 @@ class CitiesController < ApplicationController
   before_action :require_login
 
   def index
-    @cities = City.all
+    @cities = City.all.order(:name)
     respond_to do |format|
       format.html { render :index }
       format.json { render json: @cities }

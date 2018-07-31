@@ -66,8 +66,27 @@ $(function() {
     })
   }
 
+  function nextCountryCheck() {
+    if (newCountryId === countriesArray[countriesArray.length -1]["id"]) {
+      $(".js-next-country").hide()
+    } else {
+      $(".js-next-country").show()
+    }
+  }
+
+  function prevCountryCheck() {
+    if (newCountryId === countriesArray[0]["id"]) {
+      $(".js-previous-country").hide()
+    } else {
+      $(".js-previous-country").show()
+    }
+  }
+
   // renders updated info for next or previous country selected
   function loadCountry(newCountryId) {
+    nextCountryCheck()
+    prevCountryCheck()
+
     $("#js-country-cities").empty()
     $.get(`/countries/${newCountryId}.json`, function(data) {
       const country = new Country(data.id, data.name, data.cities)

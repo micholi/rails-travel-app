@@ -102,8 +102,27 @@ $(function() {
     })
   }
 
+  function nextTripCheck() {
+    if (newTripId === tripsArray[tripsArray.length -1]["id"]) {
+      $(".js-next-trip").hide()
+    } else {
+      $(".js-next-trip").show()
+    }
+  }
+
+  function prevTripCheck() {
+    if (newTripId === tripsArray[0]["id"]) {
+      $(".js-previous-trip").hide()
+    } else {
+      $(".js-previous-trip").show()
+    }
+  }
+
   // renders updated info for next or previous trip selected
   function loadTrip(tripUserId, newTripId) {
+    nextTripCheck()
+    prevTripCheck()
+
     $.get(`/users/${tripUserId}/trips/${newTripId}.json`, function(data) {
       const trip = new Trip(data.id, data.user, data.city, data.rating, data.fave_attraction, data.comment)
       $(".tripCity").text(trip.cityCountry());

@@ -1,6 +1,15 @@
 <div class="page-container prev-next">
-  <a href="#" class="js-previous-trip" data-user-id="<%= @user.id %>" data-trip-id="<%= @trip.id %>">&laquo; Previous</a>
-  <a href="#" class="js-next-trip" data-user-id="<%= @user.id %>" data-trip-id="<%= @trip.id %>">Next &raquo;</a>
+  <% if @user.trips.all.first.id == @trip.id %>
+    <a href="#" class="js-previous-trip" style="display:none;" data-user-id="<%= @user.id %>" data-trip-id="<%= @trip.id %>">&laquo; Previous</a>
+  <% else %>
+    <a href="#" class="js-previous-trip" data-user-id="<%= @user.id %>" data-trip-id="<%= @trip.id %>">&laquo; Previous</a>
+  <% end %>
+
+  <% if @user.trips.all.last.id == @trip.id %>
+    <a href="#" class="js-next-trip" style="display:none;" data-user-id="<%= @user.id %>" data-trip-id="<%= @trip.id %>">Next &raquo;</a>
+  <% else %>
+    <a href="#" class="js-next-trip" data-user-id="<%= @user.id %>" data-trip-id="<%= @trip.id %>">Next &raquo;</a>
+  <% end %>
 
   <h3><span class="tripCity"><%= @trip.city.city_plus_country %></span></h3>
   <p><span class="bold-text">Rating: </span><span class="tripRating"><%= @trip.rating %></span></p>

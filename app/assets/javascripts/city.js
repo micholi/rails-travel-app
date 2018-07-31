@@ -80,8 +80,27 @@ $(function() {
     })
   }
 
+  function nextCityCheck() {
+    if (newCityId === citiesArray[citiesArray.length -1]["id"]) {
+      $(".js-next-city").hide()
+    } else {
+      $(".js-next-city").show()
+    }
+  }
+
+  function prevCityCheck() {
+    if (newCityId === citiesArray[0]["id"]) {
+      $(".js-previous-city").hide()
+    } else {
+      $(".js-previous-city").show()
+    }
+  }
+
   // renders updated info for next or previous city selected
   function loadCity(newCityId) {
+    nextCityCheck()
+    prevCityCheck()
+
     $("#js-city-comments").empty()
     $.get(`/cities/${newCityId}.json`, function(data) {
       const city = new City(data.id, data.name, data.country, data.trips)
