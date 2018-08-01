@@ -1,42 +1,42 @@
 <p class="blue-bold">Add New Trip</p>
 
+<div class="form-errors">
+  <% if @trip.errors.any? %>
+    <div id="error_explanation">
+      <p><%= pluralize(@trip.errors.count, "error") %> occurred:</p>
+      <ul>
+        <% @trip.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+</div>
+
 <%= form_for :trip, url: user_trips_path(@user), :html => {:id => "new-trip-form"}, data: { disable_with: false } do |f| %>
 
-<%= f.label :city, "Select City" %>
-<%= f.collection_select :city_id, City.order('name ASC'), :id, :city_plus_country, :include_blank => true %>
-<p>* OR add a new city by entering details below:</p>
-<%= f.fields_for :city_attributes do |city_attr| %>
-  <%= f.label :city, "City Name" %>
-  <%= city_attr.text_field :city %><br>
-  <%= f.label :country, "Select Country" %>
-  <%= city_attr.collection_select :country_id, Country.order('name ASC'), :id, :name, :include_blank => true %>
-  <%= f.label :country, "Add New Country" %>
-  <%= city_attr.text_field :country %><br><br>
+  <%= f.label :city, "Select City" %>
+  <%= f.collection_select :city_id, City.order('name ASC'), :id, :city_plus_country, :include_blank => true %>
+  <p>* OR add a new city by entering details below:</p>
+  <%= f.fields_for :city_attributes do |city_attr| %>
+    <%= f.label :city, "City Name" %>
+    <%= city_attr.text_field :city %><br>
+    <%= f.label :country, "Select Country" %>
+    <%= city_attr.collection_select :country_id, Country.order('name ASC'), :id, :name, :include_blank => true %>
+    <%= f.label :country, "Add New Country" %>
+    <%= city_attr.text_field :country %><br><br>
+    <% end %>
+
+    <%= f.hidden_field :user_id, value: @user.id %>
+
+    <%= f.label :rating, "Rating (Scale of 1-5)" %>
+    <%= f.text_field :rating %><br><br>
+
+    <%= f.label :fave_attraction, "Must See Attraction" %>
+    <%= f.text_field :fave_attraction %><br><br>
+
+    <%= f.label :comment, "Share Additional Details" %><br><br>
+    <%= f.text_area :comment, :size => "35x5" %><br><br>
+
+    <%= f.submit "Add Trip", :class => 'btn btn-sm btn-success' %>
   <% end %>
-
-  <%= f.hidden_field :user_id, value: @user.id %>
-
-  <%= f.label :rating, "Rating (Scale of 1-5)" %>
-  <%= f.text_field :rating %><br><br>
-
-  <%= f.label :fave_attraction, "Must See Attraction" %>
-  <%= f.text_field :fave_attraction %><br><br>
-
-  <%= f.label :comment, "Share Additional Details" %><br><br>
-  <%= f.text_area :comment, :size => "35x5" %><br><br>
-
-  <%= f.submit "Add Trip", :class => 'btn btn-sm btn-success' %>
-<% end %>
-
-<div class="form-errors">
-<% if @trip.errors.any? %>
-  <div id="error_explanation">
-    <p><%= pluralize(@trip.errors.count, "error") %> occurred:</p>
-    <ul>
-      <% @trip.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-</div>
