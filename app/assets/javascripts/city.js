@@ -17,6 +17,17 @@ City.prototype.displayComments = function(cityId) {
    return cityString
 }
 
+// prototype formats html for new city to be appended to cities index page
+City.prototype.getNewCity = function() {
+  let newCityString
+  if (this.name === undefined) {
+    newCityString = "error"
+  } else {
+   newCityString = `<div id="index-city-${this.id}" class="underlined-list"><p class="no-underline bold-text"><a href="/cities/${this.id}">${this.name}</a></p><span>Total Trips: 0</span></div>`
+}
+  return newCityString
+}
+
 City.prototype.tripCount = function() {
   let count = this.trips.length
   return count
@@ -113,5 +124,33 @@ $(function() {
       $(".js-display-comments").attr("data-city-id", city.id);
     })
   }
+
+  // ajax request to create new trip and append to index on user show page
+  $('form#new-city-form').on("submit", function(event) {
+    event.preventDefault();
+    var $form = $(this)
+    var action = $form.attr("action")
+    var params = $form.serialize()
+    $.ajax({
+      url: action,
+      data: params,
+      datatype: "json",
+      method: "POST"
+    }).success(function(json) {
+      const newCity = new City(json.id, json.name, json.country, json.trips);
+      let newCityHtml = newCity.getNewCity()
+      if (newCityHtml === "error") {
+        location.reload()
+      }
+      $("#cities-index").append(newCityHtml)
+      // reset form post-submit
+      $("#new-city-form")[0].reset();
+      // re-enable button auto-disabled by Rails
+      var selectors = [Rails.linkDisableSelector, Rails.formEnableSelector].join(', ');
+      $(selectors).each(function() {
+        Rails.enableElement(this);
+      })
+    })
+  })
 
 })

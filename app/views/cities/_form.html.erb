@@ -1,0 +1,17 @@
+<div class="underlined-list"></div>
+  <p class="blue-bold">Add New City</p><br>
+  <%= form_for @city, :html => {:id => "new-city-form"}, data: { disable_with: false } do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %><br><br>
+
+    <%= f.label :country, "Select Country" %>
+    <%= f.collection_select :country_id, Country.order('name ASC'), :id, :name, :include_blank => true %>
+
+    <%= f.fields_for :country_name do |ctry_name| %>
+      <%= f.label :country, "Or Add New Country" %>
+      <%= ctry_name.text_field :country %><br><br>
+      <% end %>
+
+    <%= f.submit "Add City", :class => 'btn btn-sm btn-success' %>
+  <% end %>
+</div>

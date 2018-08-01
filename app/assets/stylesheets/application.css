@@ -295,3 +295,7 @@ div.prev-next a:hover, a:hover:visited {
 .italic {
   font-style: italic;
 }
+
+.trip-exists {
+  color: #009933;
+}

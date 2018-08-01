@@ -3,6 +3,7 @@ class CitiesController < ApplicationController
 
   def index
     @cities = City.all.order(:name)
+    @city = City.new
     respond_to do |format|
       format.html { render :index }
       format.json { render json: @cities }
@@ -32,7 +33,8 @@ class CitiesController < ApplicationController
   def create
     @city = City.create(city_params)
     if @city.save
-      redirect_to cities_path, :flash => { :success => "You've successfully added this city!"}
+      render json: @city
+      #redirect_to cities_path, :flash => { :success => "You've successfully added this city!"}
     else
       render :new
     end

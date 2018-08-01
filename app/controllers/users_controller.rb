@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    #set_user
+  #  set_user
     @user = User.find_by(id: params[:id])
     @trip = @user.trips.build unless @user != current_user
     respond_to do |format|

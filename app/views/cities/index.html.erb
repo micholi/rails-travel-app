@@ -1,25 +1,22 @@
-<div class="table-container" id="cities-index">
-  <h4 class="align-table">Explore Cities</h4>
-  <span class="align-table"><%= link_to "Check Out the Most Reviewed City", most_visited_url %></span><br>
-  <span class="align-table"><%= link_to "View Our Highest Rated Cities", highly_rated_url %></span><br><br>
-  <table>
-    <thead>
-      <tr>
-        <th>City</th>
-        <th>Average Rating</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @cities.each do |city| %>
-      <tr class="border-bottom">
-        <td class="no-underline"><%= link_to city.city_plus_country, city_path(city) %></td>
-        <td><%= city.avg_rating %></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <br>
-  <div class="button-below-table">
-    <%= link_to "Add New City", new_city_url, :class => 'btn btn-sm btn-primary btn-rounded' %>
+<div class="page-container list-details">
+  <h4>Explore Cities</h4>
+  <%= link_to "Check Out the Most Reviewed City", most_visited_url %><br>
+  <%= link_to "View Our Highest Rated Cities", highly_rated_url %><br><br>
+
+  <div id="cities-index">
+    <% @cities.each do |city| %>
+      <div id="index-city-<%= city.id %>" class="underlined-list">
+        <p class="no-underline bold-text"><%= link_to city.name, city_path(city) %></p>
+        <span>Total Trips: <%= city.trip_count %></span><br>
+
+        <% if Trip.exists?(user_id: current_user.id, city_id: city.id) %>
+          <span class="trip-exists">I've added to my trips!</span>
+        <% end %>
+
+      </div>
+    <% end %>
   </div>
+
+  <%= render partial: 'form', locals: {city: @city} %>
+
 </div>
