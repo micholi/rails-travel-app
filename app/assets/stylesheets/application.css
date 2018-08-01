@@ -1,6 +1,5 @@
 body {
    margin: 0;
-  /* background-color: #ECECEB; */
    font-family: 'Open Sans', sans-serif;
    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/assets/venice.jpg') no-repeat center center;
    background-size: cover;
@@ -297,5 +296,5 @@ div.prev-next a:hover, a:hover:visited {
 }
 
 .trip-exists {
-  color: #009933;
+  color: #339966;
 }

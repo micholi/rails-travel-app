@@ -10,13 +10,7 @@ class UsersController < ApplicationController
   end
 
   def show
-  #  set_user
     @user = User.find_by(id: params[:id])
-    @trip = @user.trips.build unless @user != current_user
-    respond_to do |format|
-      format.html { render :show }
-      format.json { render json: @user }
-    end
   end
 
   def most_trips

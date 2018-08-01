@@ -4,7 +4,7 @@ function User(data) {
 
 /* prototype formats html to display trips index on current user show page */
 User.prototype.formatUserIndex = function(currentUserId) {
-  let tripsHtml = `<div id="my-trips-index"><p class="blue-bold">Trip List</p>`
+  let tripsHtml = `<div id="my-trips-index"><p class="blue-bold underlined-list">Trip List</p>`
   this.trips.forEach(function(trip) {
     let userTripId = trip.id;
     let city = trip.city.name;
@@ -33,7 +33,7 @@ $(function() {
     $.get(`/users/${currentUserId}/trips.json`, function(data) {
       const currentUser = new User(data);
       let userIndexHtml = currentUser.formatUserIndex(currentUserId)
-      $("#my-trips").append(userIndexHtml);
+      $("#view-trips").append(userIndexHtml);
     })
       event.preventDefault()
   })

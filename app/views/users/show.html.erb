@@ -1,26 +1,26 @@
 <div class="page-container user-show">
   <% if @user == current_user %>
     <h4>Welcome, <%= @user.name %>!</h4>
+
     <% if @user.trips.count == 0 %>
       <p>You haven't added any trips yet.</p><br>
-      <%= link_to "Explore Destinations", cities_path, :class => 'btn btn-sm btn-secondary' %><br><br>
-      <div class="underlined-list"></div>
-      <div id="my-trips-index"></div>
+      <%= link_to "Explore Destinations", cities_path, :class => 'btn btn-sm btn-secondary' %>
+      <span class="index-buttons"><%= link_to "Add New Trip", new_user_trip_url(@user), :class => 'btn btn-sm btn-outline-info color-fix' %></span>
+
     <% else %>
       <%= link_to "See 5-Star Trips", five_star_url %><br>
-      <span class="bold-text">Total Trips: </span><%= @user.trips.count %><br><br>
-      <button href="#" class="js-load-trips btn btn-sm btn-outline-dark" data-user-id="<%= @user.id %>" >View My Trips</button><br><br>
-      <div class="underlined-list"></div>
-      <div id="my-trips"></div>
+      <span class="bold-text">Total Trips: </span><%= @user.trips.count %><br>
+      <span class="bold-text">Last Trip Added: </span><%= current_user.trips.last.city.name %><br><br>
+      <button href="#" class="js-load-trips btn btn-sm btn-dark" data-user-id="<%= @user.id %>" >View My Trips</button>
+      <span class="index-buttons"><%= link_to "Add New Trip", new_user_trip_url(@user), :class => 'btn btn-sm btn-info color-fix' %></span><br><br>
+      <div id="view-trips"></div>
     <% end %>
-
-    <%= render partial: "trips/form", locals: {user: @user, trip: @trip} %>
 
   <% else %>
     <h4><%= @user.name %></h4>
-    <span class="bold-text">Total Trips: </span><%= @user.trips.count %><br><br>
-    <button href="#" class="js-load-trips btn btn-sm btn-outline-dark" data-user-id="<%= @user.id %>" >View Trips</button><br><br>
-    <div class="underlined-list"></div>
-    <div id="my-trips"></div>
+    <span class="bold-text">Total Trips: </span><%= @user.trips.count %><br>
+    <span class="bold-text">Last Trip Added: </span><%= @user.trips.last.city.name %><br><br>
+    <button href="#" class="js-load-trips btn btn-sm btn-dark" data-user-id="<%= @user.id %>" >View Trips</button><br><br>
+    <div id="view-trips"></div>
   <% end %>
 </div>

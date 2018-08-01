@@ -24,15 +24,19 @@ class TripsController < ApplicationController
   end
 
   def new
+    set_user
+    # find_city
+    @trip = Trip.new
   end
 
   def create
     set_user
+    find_city
     @trip = @user.trips.build(trip_params)
     if @trip.save
-      render json: @trip
+      redirect_to user_trips_path(@user), :flash => { :success => "You've successfully added this trip!"}
     else
-      render 'users/show'
+      render :new
     end
   end
 

@@ -7,20 +7,6 @@ function Trip(id, user, city, rating, fave_attraction, comment) {
   this.comment = comment
 }
 
-// prototype formats html for new trip to be appended to user show page
-Trip.prototype.getNewTrip = function() {
-  let newTripString = `<div id="index-trip-${this.id}" class="bottom-border"><p class="no-underline bold-text"><a href="/users/${this.user.id}/trips/${this.id}">${this.city.name}</a></p><p>${this.comment}</p></div>`
-  return newTripString
-}
-
-/* no longer needed since index page was changed, but keeping for future reference)
-// prototype formats html for show more feature on user trips index page
-Trip.prototype.showMore = function() {
-  let moreTripString = `<p>${this.comment}</p><p><span class="bold-text">Rating: </span>${this.rating}</p><p><span class="bold-text">Must See Attraction: </span>${this.fave_attraction}</p>`;
-  return moreTripString
-}
-*/
-
 Trip.prototype.cityCountry = function() {
   return this.city.name + ", " + this.city.country.name
 }
@@ -47,44 +33,6 @@ $(function() {
     event.preventDefault()
     getNewTripId(tripUserId, tripId, op)
     })
-
-  /* no longer needed since index page was changed, but keeping for future reference)
-  $(".js-more").on("click", function(event) {
-    let moreTripId = $(this).data("more-trip-id")
-    $.get(`trips/${moreTripId}.json`, function(data) {
-      const moreTrip = new Trip(data.id, data.user, data.city, data.rating, data.fave_attraction, data.comment)
-      let moreTripHtml = moreTrip.showMore()
-      $("#trip-" + moreTripId).html(moreTripHtml);
-      $("#more-" + moreTripId).hide()
-    })
-    event.preventDefault()
-  })
-  */
-
-  // ajax request to create new trip and append to index on user show page
-  $('form#new-trip-form').on("submit", function(event) {
-    event.preventDefault();
-    var $form = $(this)
-    var action = $form.attr("action")
-    var params = $form.serialize()
-    $.ajax({
-      url: action,
-      data: params,
-      datatype: "json",
-      method: "POST"
-    }).success(function(json) {
-      const newTrip = new Trip(json.id, json.user, json.city, json.rating, json.fave_attraction, json.comment);
-      let newTripHtml = newTrip.getNewTrip()
-      $("#my-trips-index").append(newTripHtml)
-      // reset form post-submit
-      $("#new-trip-form")[0].reset();
-      // re-enable button auto-disabled by Rails
-      var selectors = [Rails.linkDisableSelector, Rails.formEnableSelector].join(', ');
-      $(selectors).each(function() {
-        Rails.enableElement(this);
-      })
-    })
-  })
 
   // gets index of trip and adds or subtracts 1 based on value passed from next/previous click
   // updated index is used to retrieve trip id, which is then passed to loadTrip function
