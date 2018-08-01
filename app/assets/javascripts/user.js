@@ -3,14 +3,13 @@ function User(data) {
 }
 
 /* prototype formats html to display trips index on current user show page */
-User.prototype.formatUserIndex = function(currentUserId) {
+User.prototype.formatUserIndex = function(userId) {
   let tripsHtml = `<div id="my-trips-index"><p class="blue-bold underlined-list">Trip List</p>`
   this.trips.forEach(function(trip) {
     let userTripId = trip.id;
     let city = trip.city.name;
-    let country = trip.city.country.name
     let comment = trip.comment
-    tripsHtml +=`<div id="index-trip-${userTripId}" class="bottom-border"><p class="no-underline bold-text"> <a href="/users/${currentUserId}/trips/${userTripId}">${city}</a></p><p>${comment}</p></div>`
+    tripsHtml +=`<div id="index-trip-${userTripId}" class="bottom-border"><p class="no-underline bold-text"> <a href="/users/${userId}/trips/${userTripId}">${city}</a></p><p>${comment}</p></div>`
   })
   tripsHtml += '</div>'
   return tripsHtml
@@ -18,9 +17,9 @@ User.prototype.formatUserIndex = function(currentUserId) {
 
 // prototype formats html for rendering trip info on travelers (aka users) index page
 User.prototype.formatTravelerTrips = function() {
-  let travelerString = `<ul>`
+  let travelerString = `<p>Cities Visited + Must See Attractions</p><ul>`
   this.trips.forEach(function(trip) {
-    travelerString += `<li>${trip.city.name}</li>`
+    travelerString += `<li><span class="bold-text">${trip.city.name} - </span>${trip.fave_attraction}</li>`
   })
   travelerString += `</ul>`
   return travelerString
@@ -29,10 +28,10 @@ User.prototype.formatTravelerTrips = function() {
 // on first click, invokes formatUserIndex prototype and appends index of all user's trips on show page
 $(function() {
   $(".js-load-trips").one("click", function(event) {
-    let currentUserId = $(this).data("user-id");
-    $.get(`/users/${currentUserId}/trips.json`, function(data) {
-      const currentUser = new User(data);
-      let userIndexHtml = currentUser.formatUserIndex(currentUserId)
+    let userId = $(this).data("user-id");
+    $.get(`/users/${userId}/trips.json`, function(data) {
+      const user = new User(data);
+      let userIndexHtml = user.formatUserIndex(userId)
       $("#view-trips").append(userIndexHtml);
     })
       event.preventDefault()

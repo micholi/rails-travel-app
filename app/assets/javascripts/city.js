@@ -1,8 +1,8 @@
-function City(id, name, country, trips) {
-  this.id = id
-  this.name = name
-  this.country = country
-  this.trips = trips
+function City(data) {
+  this.id = data.id
+  this.name = data.name
+  this.country = data.country
+  this.trips = data.trips
 }
 
 // prototype to format comments to display on city show pages
@@ -68,7 +68,7 @@ $(function() {
   $(".js-display-comments").on("click", function(event) {
     cityId = parseInt($(".js-display-comments").attr("data-city-id"))
     $.get(`/cities/${cityId}.json`, function(data) {
-      const cityTrips = new City(data.id, data.name, data.country, data.trips)
+      const cityTrips = new City(data)
       let cityHtml = cityTrips.displayComments(cityId)
       $("#js-city-comments").append(cityHtml)
     })
@@ -114,7 +114,7 @@ $(function() {
 
     $("#js-city-comments").empty()
     $.get(`/cities/${newCityId}.json`, function(data) {
-      const city = new City(data.id, data.name, data.country, data.trips)
+      const city = new City(data)
       $(".cityName").text(city.name);
       $(".countryName").text(city.country.name);
       $(".cityTripCount").text(city.tripCount());
@@ -137,7 +137,8 @@ $(function() {
       datatype: "json",
       method: "POST"
     }).success(function(json) {
-      const newCity = new City(json.id, json.name, json.country, json.trips);
+      //const newCity = new City(json.id, json.name, json.country, json.trips);
+      const newCity = new City(json);
       let newCityHtml = newCity.getNewCity()
       if (newCityHtml === "error") {
         location.reload()
