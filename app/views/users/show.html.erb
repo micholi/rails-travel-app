@@ -8,7 +8,7 @@
       <span class="index-buttons"><%= link_to "Add New Trip", new_user_trip_url(@user), :class => 'btn btn-sm btn-outline-info color-fix' %></span>
 
     <% else %>
-      <%= link_to "See 5-Star Trips", five_star_url %><br>
+      <p><%= link_to "See 5-Star Trips", five_star_url %></p>
       <span class="bold-text">Total Trips: </span><%= @user.trips.count %><br>
       <span class="bold-text">Last Trip Added: </span><%= current_user.trips.last.city.name %><br><br>
       <button href="#" class="js-load-trips btn btn-sm btn-dark" data-user-id="<%= @user.id %>" >View My Trips</button>

@@ -20,11 +20,11 @@ City.prototype.displayComments = function(cityId) {
 // prototype formats html for new city to be appended to cities index page
 City.prototype.getNewCity = function() {
   let newCityString
-  if (this.name === undefined) {
+  if (this.id === undefined) {
     newCityString = "error"
   } else {
    newCityString = `<div id="index-city-${this.id}" class="underlined-list"><p class="no-underline bold-text"><a href="/cities/${this.id}">${this.name}</a></p><span>Total Trips: 0</span></div>`
-}
+  }
   return newCityString
 }
 
@@ -147,7 +147,9 @@ $(function() {
       var selectors = [Rails.linkDisableSelector, Rails.formEnableSelector].join(', ');
       $(selectors).each(function() {
         Rails.enableElement(this);
+
       })
+
     })
   })
 
