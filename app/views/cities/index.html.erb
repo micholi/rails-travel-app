@@ -1,16 +1,16 @@
 <div class="page-container list-details">
   <h4>Explore Cities</h4>
   <%= link_to "Check Out the Most Reviewed City", most_visited_url %><br>
-  <%= link_to "View Our Highest Rated Cities", highly_rated_url %><br><br>
+  <%= link_to "View Our Highest Rated Cities", highly_rated_url %><br>
 
   <div id="cities-index">
     <% @cities.each do |city| %>
       <div id="index-city-<%= city.id %>" class="underlined-list">
-        <p class="no-underline bold-text"><%= link_to city.name, city_path(city) %></p>
-        <span>Total Trips: <%= city.trip_count %></span><br>
+        <span class="no-underline bold-text"><%= link_to city.name, city_path(city) %></span>
+        <span> (Total Trips: <%= city.trip_count %>)</span>
 
         <% if Trip.exists?(user_id: current_user.id, city_id: city.id) %>
-          <span class="trip-exists">I've added to my trips!</span>
+          <br><span class="trip-exists">I've added to my trips!</span>
         <% end %>
 
       </div>
@@ -18,5 +18,5 @@
   </div>
 
   <%= render partial: 'form', locals: {city: @city} %>
-  
+
 </div>

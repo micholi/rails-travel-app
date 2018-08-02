@@ -1,4 +1,5 @@
 <div class="underlined-list"></div>
+<br>
   <p class="blue-bold">Add New City</p><br>
   <%= form_for @city, :html => {:id => "new-city-form"}, data: { disable_with: false } do |f| %>
     <%= f.label :name %>
@@ -13,6 +14,8 @@
       <% end %>
 
     <%= f.submit "Add City", :class => 'btn btn-sm btn-success' %><br>
-    
+    <br>
+    <br>
+    <br>
   <% end %>
 </div>

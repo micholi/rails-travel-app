@@ -23,7 +23,7 @@ City.prototype.getNewCity = function() {
   if (this.id === undefined) {
     newCityString = "error"
   } else {
-   newCityString = `<div id="index-city-${this.id}" class="underlined-list"><p class="no-underline bold-text"><a href="/cities/${this.id}">${this.name}</a></p><span>Total Trips: 0</span></div>`
+   newCityString = `<div id="index-city-${this.id}" class="underlined-list"><span class="no-underline bold-text"><a href="/cities/${this.id}">${this.name}</a></span><span> (Total Trips: 0)</span></div>`
   }
   return newCityString
 }
@@ -76,6 +76,7 @@ $(function() {
   // updated index is used to retrieve city id, which is then passed to loadCity function
   function getNewCityId(cityId, op) {
     $.get("/cities.json", function(data) {
+      debugger
       citiesArray = data
       let cityIndex = citiesArray.map(c => c.id).indexOf(cityId)
       if (op === "add") {

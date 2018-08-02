@@ -17,11 +17,15 @@ User.prototype.formatUserIndex = function(userId) {
 
 // prototype formats html for rendering trip info on travelers (aka users) index page
 User.prototype.formatTravelerTrips = function() {
-  let travelerString = `<p>Cities Visited + Must See Attractions</p><ul>`
+  let travelerString = `<ul>`
+  if (this.trips.length === 0) {
+    travelerString += `<li>This user hasn't added any trips yet.</li></ul>`
+  } else {
   this.trips.forEach(function(trip) {
     travelerString += `<li><span class="bold-text">${trip.city.name} - </span>${trip.fave_attraction}</li>`
   })
   travelerString += `</ul>`
+}
   return travelerString
 }
 

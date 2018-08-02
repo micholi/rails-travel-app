@@ -5,7 +5,7 @@
     <% if @user.trips.count == 0 %>
       <p>You haven't added any trips yet.</p><br>
       <%= link_to "Explore Destinations", cities_path, :class => 'btn btn-sm btn-secondary' %>
-      <span class="index-buttons"><%= link_to "Add New Trip", new_user_trip_url(@user), :class => 'btn btn-sm btn-outline-info color-fix' %></span>
+      <span class="index-buttons"><%= link_to "Add New Trip", new_user_trip_url(@user), :class => 'btn btn-sm btn-info color-fix' %></span>
 
     <% else %>
       <p><%= link_to "See 5-Star Trips", five_star_url %></p>
