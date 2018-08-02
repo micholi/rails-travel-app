@@ -80,6 +80,8 @@ body {
 
 .user-errors {
   color: red;
+  font-size: 0.9em;
+  text-align: left;
   padding-top: 15px;
   padding-bottom: 5px;
 }
@@ -161,6 +163,7 @@ body {
 
 .form-errors {
   color: red;
+  font-size: 0.9em;
 }
 
 /* ----- TABLES ----- */

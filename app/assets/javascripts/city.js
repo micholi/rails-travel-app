@@ -46,27 +46,24 @@ City.prototype.avgRating = function() {
 }
 
 $(function() {
-  let cityId
-  let newCityId
-  let cityIndex = 0
-  let citiesArray = []
+  var citiesArray = []
 
   $(".js-next-city").on("click", function(event) {
-    cityId = parseInt($(".js-next-city").attr("data-city-id"))
-    op = "add"
+    let cityId = parseInt($(".js-next-city").attr("data-city-id"))
+    let op = "add"
     event.preventDefault()
     getNewCityId(cityId, op)
   })
 
   $(".js-previous-city").on("click", function(event) {
-    cityId = parseInt($(".js-previous-city").attr("data-city-id"))
-    op = "sub"
+    let cityId = parseInt($(".js-previous-city").attr("data-city-id"))
+    let op = "sub"
     event.preventDefault()
     getNewCityId(cityId, op)
   })
 
   $(".js-display-comments").on("click", function(event) {
-    cityId = parseInt($(".js-display-comments").attr("data-city-id"))
+    let cityId = parseInt($(".js-display-comments").attr("data-city-id"))
     $.get(`/cities/${cityId}.json`, function(data) {
       const cityTrips = new City(data)
       let cityHtml = cityTrips.displayComments(cityId)
@@ -80,7 +77,7 @@ $(function() {
   function getNewCityId(cityId, op) {
     $.get("/cities.json", function(data) {
       citiesArray = data
-      cityIndex = citiesArray.map(c => c.id).indexOf(cityId)
+      let cityIndex = citiesArray.map(c => c.id).indexOf(cityId)
       if (op === "add") {
         cityIndex += 1
       } else if (op === "sub") {
@@ -91,7 +88,7 @@ $(function() {
     })
   }
 
-  function nextCityCheck() {
+  function nextCityCheck(newCityId) {
     if (newCityId === citiesArray[citiesArray.length -1]["id"]) {
       $(".js-next-city").hide()
     } else {
@@ -99,7 +96,7 @@ $(function() {
     }
   }
 
-  function prevCityCheck() {
+  function prevCityCheck(newCityId) {
     if (newCityId === citiesArray[0]["id"]) {
       $(".js-previous-city").hide()
     } else {
@@ -109,8 +106,8 @@ $(function() {
 
   // renders updated info for next or previous city selected
   function loadCity(newCityId) {
-    nextCityCheck()
-    prevCityCheck()
+    nextCityCheck(newCityId)
+    prevCityCheck(newCityId)
 
     $("#js-city-comments").empty()
     $.get(`/cities/${newCityId}.json`, function(data) {

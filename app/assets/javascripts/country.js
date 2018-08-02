@@ -20,21 +20,18 @@ Country.prototype.cityCount = function() {
 }
 
 $(function() {
-  let countryId
-  let newCountryId
-  let countryIndex = 0
-  let countriesArray = []
+  var countriesArray = []
 
   $(".js-next-country").on("click", function(event) {
     countryId = parseInt($(".js-next-country").attr("data-country-id"))
-    op = "add"
+    let op = "add"
     event.preventDefault()
     getNewCountryId(countryId, op)
   })
 
   $(".js-previous-country").on("click", function(event) {
     countryId = parseInt($(".js-previous-country").attr("data-country-id"))
-    op = "sub"
+    let op = "sub"
     event.preventDefault()
     getNewCountryId(countryId, op)
   })
@@ -55,7 +52,7 @@ $(function() {
     $.get("/countries.json", function(data) {
 
       countriesArray = data
-      countryIndex = countriesArray.map(c => c.id).indexOf(countryId)
+      let countryIndex = countriesArray.map(c => c.id).indexOf(countryId)
       if (op === "add") {
         countryIndex += 1
       } else if (op === "sub") {
@@ -66,7 +63,7 @@ $(function() {
     })
   }
 
-  function nextCountryCheck() {
+  function nextCountryCheck(newCountryId) {
     if (newCountryId === countriesArray[countriesArray.length -1]["id"]) {
       $(".js-next-country").hide()
     } else {
@@ -74,7 +71,7 @@ $(function() {
     }
   }
 
-  function prevCountryCheck() {
+  function prevCountryCheck(newCountryId) {
     if (newCountryId === countriesArray[0]["id"]) {
       $(".js-previous-country").hide()
     } else {
@@ -84,8 +81,8 @@ $(function() {
 
   // renders updated info for next or previous country selected
   function loadCountry(newCountryId) {
-    nextCountryCheck()
-    prevCountryCheck()
+    nextCountryCheck(newCountryId)
+    prevCountryCheck(newCountryId)
 
     $("#js-country-cities").empty()
     $.get(`/countries/${newCountryId}.json`, function(data) {

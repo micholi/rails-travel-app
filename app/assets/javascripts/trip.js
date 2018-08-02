@@ -12,24 +12,20 @@ Trip.prototype.cityCountry = function() {
 }
 
 $(function() {
-  let tripUserId
-  let tripId
-  let op
-  let tripIndex = 0
-  let tripsArray = []
+  var tripsArray = []
 
   $(".js-next-trip").on("click", function(event) {
-    tripUserId = parseInt($(".js-next-trip").attr("data-user-id"))
-    tripId = parseInt($(".js-next-trip").attr("data-trip-id"))
-    op = "add"
+    let tripUserId = parseInt($(".js-next-trip").attr("data-user-id"))
+    let tripId = parseInt($(".js-next-trip").attr("data-trip-id"))
+    let op = "add"
     event.preventDefault()
     getNewTripId(tripUserId, tripId, op)
     })
 
   $(".js-previous-trip").on("click", function(event) {
-    tripUserId = parseInt($(".js-previous-trip").attr("data-user-id"))
-    tripId = parseInt($(".js-previous-trip").attr("data-trip-id"))
-    op = "sub"
+    let tripUserId = parseInt($(".js-previous-trip").attr("data-user-id"))
+    let tripId = parseInt($(".js-previous-trip").attr("data-trip-id"))
+    let op = "sub"
     event.preventDefault()
     getNewTripId(tripUserId, tripId, op)
     })
@@ -39,7 +35,7 @@ $(function() {
   function getNewTripId(tripUserId, tripId, op) {
     $.get(`/users/${tripUserId}/trips.json`, function(data) {
       tripsArray = data
-      tripIndex = tripsArray.map(t => t.id).indexOf(tripId)
+      let tripIndex = tripsArray.map(t => t.id).indexOf(tripId)
       if (op === "add") {
         tripIndex += 1
       } else if (op === "sub") {
@@ -50,7 +46,7 @@ $(function() {
     })
   }
 
-  function nextTripCheck() {
+  function nextTripCheck(newTripId) {
     if (newTripId === tripsArray[tripsArray.length -1]["id"]) {
       $(".js-next-trip").hide()
     } else {
@@ -58,7 +54,7 @@ $(function() {
     }
   }
 
-  function prevTripCheck() {
+  function prevTripCheck(newTripId) {
     if (newTripId === tripsArray[0]["id"]) {
       $(".js-previous-trip").hide()
     } else {
@@ -68,8 +64,8 @@ $(function() {
 
   // renders updated info for next or previous trip selected
   function loadTrip(tripUserId, newTripId) {
-    nextTripCheck()
-    prevTripCheck()
+    nextTripCheck(newTripId)
+    prevTripCheck(newTripId)
 
     $.get(`/users/${tripUserId}/trips/${newTripId}.json`, function(data) {
       const trip = new Trip(data)

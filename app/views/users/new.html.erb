@@ -1,19 +1,6 @@
 <div class="start-pages signup-login">
   <h4>Sign Up for TripTracker!</h4>
 
-  <div class="user-errors">
-    <% if @user.errors.any? %>
-      <div id="error_explanation">
-          <%= pluralize(@user.errors.count, "error") %> prohibited this account from being created:
-        <ul>
-          <% @user.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-  </div>
-
     <%= form_for @user do |f| %>
       <%= f.text_field :email, placeholder: "Email", :size => 30 %><br><br>
       <%= f.text_field :name, placeholder: "Username", :size => 30 %><br><br>
@@ -21,6 +8,14 @@
       <%= f.submit "Create Account", :class => 'btn btn-block btn-success' %>
     <% end %>
 
-
+    <div class="user-errors">
+      <% if @user.errors.any? %>
+        <div id="error_explanation">
+            <% @user.errors.full_messages.each do |msg| %>
+              <%= msg %><br>
+            <% end %>
+        </div>
+      <% end %>
+    </div>
 
 </div>
