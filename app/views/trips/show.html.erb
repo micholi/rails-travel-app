@@ -16,4 +16,9 @@
   <p><span class="bold-text">Rating: </span><span class="tripRating"><%= @trip.rating %></span></p>
   <p><span class="bold-text">Must See Attraction: </span><span class="tripMustSee"><%= @trip.fave_attraction %></span></p>
   <p><span class="bold-text">Review: </span><span class="tripReview"><%= @trip.comment %></span></p><br>
+
+  <% if @user == current_user %>
+    <span class="index-buttons"><%= link_to "Edit", edit_user_trip_url(@user, @trip), :method => 'get', :class => 'btn btn-sm btn-outline-primary color-fix', :id => 'edit-button' %></span>
+    <span class="index-buttons"><%= link_to "Delete", user_trip_path(@user, @trip), :method => 'delete', data: { confirm: "Are you sure?" }, :class => 'btn btn-sm btn-outline-secondary color-fix', :id => 'delete-button' %></span>
+  <% end %>
 </div>

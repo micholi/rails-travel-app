@@ -76,6 +76,9 @@ $(function() {
       // re-set the id to current on the link
       $(".js-previous-trip").attr("data-trip-id", trip.id);
       $(".js-next-trip").attr("data-trip-id", trip.id);
+      // updates edit and delete buttons with new trip id
+      $("a#edit-button").attr("href", `/users/${tripUserId}/trips/${newTripId}/edit`);
+      $("a#delete-button").attr("href", `/users/${tripUserId}/trips/${newTripId}`);
     })
   }
 
