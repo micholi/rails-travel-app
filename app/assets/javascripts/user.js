@@ -1,9 +1,9 @@
-function User(data) {
+function UserTrip(data) {
   this.trips = data
 }
 
 /* prototype formats html to display trips index on current user show page */
-User.prototype.formatUserIndex = function(userId) {
+UserTrip.prototype.formatUserIndex = function(userId) {
   let tripsHtml = `<div id="my-trips-index"><p class="blue-bold underlined-list">Trip List</p>`
   this.trips.forEach(function(trip) {
     let userTripId = trip.id;
@@ -16,7 +16,7 @@ User.prototype.formatUserIndex = function(userId) {
 }
 
 // prototype formats html for rendering trip info on travelers (aka users) index page
-User.prototype.formatTravelerTrips = function() {
+UserTrip.prototype.formatTravelerTrips = function() {
   let travelerString = `<ul>`
   if (this.trips.length === 0) {
     travelerString += `<li>This user hasn't added any trips yet.</li></ul>`
@@ -35,9 +35,9 @@ $(function() {
     $("#view-trips").empty();
     let userId = $(this).data("user-id");
     $.get(`/users/${userId}/trips.json`, function(data) {
-      const user = new User(data);
-      let userIndexHtml = user.formatUserIndex(userId)
-      $("#view-trips").append(userIndexHtml);
+      const userTrips = new UserTrip(data);
+      let userShowHtml = userTrips.formatUserIndex(userId)
+      $("#view-trips").append(userShowHtml);
     })
       event.preventDefault()
   })
@@ -61,9 +61,9 @@ $(function() {
         return 0;
       });
 
-      const newUser = new User(data);
-      let sortedTripsHtml = newUser.formatUserIndex()
-      $("#view-trips").append(sortedTripsHtml)
+      const userTrips = new UserTrip(data);
+      let sortedHtml = userTrips.formatUserIndex()
+      $("#view-trips").append(sortedHtml)
     })
     event.preventDefault()
   })
@@ -72,9 +72,9 @@ $(function() {
   $(".js-display-traveler-trips").one("click", function(event) {
     let travelerId = $(this).data("traveler-id");
     $.get(`/users/${travelerId}/trips.json`, function(data) {
-      const traveler = new User(data);
-      let travelerHtml = traveler.formatTravelerTrips()
-      $("#traveler-" + travelerId).append(travelerHtml)
+      const travelerTrips = new UserTrip(data);
+      let travelerTripsHtml = travelerTrips.formatTravelerTrips()
+      $("#traveler-" + travelerId).append(travelerTripsHtml)
     })
     event.preventDefault()
   })
