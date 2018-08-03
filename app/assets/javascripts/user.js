@@ -31,7 +31,8 @@ User.prototype.formatTravelerTrips = function() {
 
 // on first click, invokes formatUserIndex prototype and appends index of all user's trips on show page
 $(function() {
-  $(".js-load-trips").one("click", function(event) {
+  $(".js-load-trips").on("click", function(event) {
+    $("#view-trips").empty();
     let userId = $(this).data("user-id");
     $.get(`/users/${userId}/trips.json`, function(data) {
       const user = new User(data);
@@ -39,6 +40,32 @@ $(function() {
       $("#view-trips").append(userIndexHtml);
     })
       event.preventDefault()
+  })
+
+  // From Assessment:
+  // View trips sorted alphabetically by city
+  $(".js-sort-trips").on("click", function(event) {
+    $("#view-trips").empty()
+    let userId = $(this).data("user-id");
+    $.get(`/users/${userId}/trips.json`, function(data) {
+      // sort json data alphabetically by city
+      data.sort(function(a, b) {
+        var nameA = a.city.name.toUpperCase();
+        var nameB = b.city.name.toUpperCase();
+        if (nameA < nameB) {
+          return -1;
+        }
+        if (nameA > nameB) {
+          return 1;
+        }
+        return 0;
+      });
+
+      const newUser = new User(data);
+      let sortedTripsHtml = newUser.formatUserIndex()
+      $("#view-trips").append(sortedTripsHtml)
+    })
+    event.preventDefault()
   })
 
   // invokes formatTravelerTrips prototype and appends html for that traveler(aka user) on Travelers index page

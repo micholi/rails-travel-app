@@ -12,6 +12,7 @@
       <span class="bold-text">Total Trips: </span><%= @user.trips.count %><br>
       <span class="bold-text">Last Trip Added: </span><%= current_user.trips.last.city.name %><br><br>
       <button href="#" class="js-load-trips btn btn-sm btn-dark" data-user-id="<%= @user.id %>" >View My Trips</button>
+      <button href="#" class="js-sort-trips btn btn-sm btn-primary" data-user-id="<%= @user.id %>" >Sort Trips</button>
       <span class="index-buttons"><%= link_to "Add New Trip", new_user_trip_url(@user), :class => 'btn btn-sm btn-info color-fix' %></span><br><br>
       <div id="view-trips"></div>
     <% end %>
@@ -21,6 +22,7 @@
     <span class="bold-text">Total Trips: </span><%= @user.trips.count %><br>
     <span class="bold-text">Last Trip Added: </span><%= @user.trips.last.city.name %><br><br>
     <button href="#" class="js-load-trips btn btn-sm btn-dark" data-user-id="<%= @user.id %>" >View Trips</button><br><br>
+
     <div id="view-trips"></div>
   <% end %>
 </div>
