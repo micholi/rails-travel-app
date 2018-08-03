@@ -80,7 +80,6 @@ $(function() {
   // updated index is used to retrieve city id, which is then passed to loadCity function
   function getNewCityId(cityId, op) {
     $.get("/cities.json", function(data) {
-      debugger
       citiesArray = data
       let cityIndex = citiesArray.map(c => c.id).indexOf(cityId)
       if (op === "add") {
