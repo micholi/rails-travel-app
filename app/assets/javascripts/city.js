@@ -49,6 +49,19 @@ City.prototype.avgRating = function() {
   return average
 }
 
+/* FILTER BY FIRST LETTER OF CITY
+var cities = ["Barcelona", "London", "Miami", "Nashville", "New York", "New Orleans", "Paris", "Madrid"];
+
+function filterFirstLetter(array, letter) {
+  var filteredCities = cities.filter(function(city) {
+    return city[0] === letter;
+  });
+  return filteredCities
+}
+
+filterFirstLetter(cities, "N")
+*/
+
 $(function() {
   var citiesArray = []
 
