@@ -8,12 +8,16 @@ function City(data) {
 // prototype to format comments to display on city show pages
 City.prototype.displayComments = function(cityId) {
   let cityString = `<ul>`
+  if (this.trips.length === 0) {
+    cityString += `<li>There are currently no reviews for this city.</li></ul>`
+  } else {
   this.trips.forEach(function(trip) {
      let cityTripUser = trip.user.name;
      let cityComment = trip.comment;
      cityString += `<li>${cityComment}<br><span class="italic">-${cityTripUser}</span>`
    })
    cityString += `</ul>`
+ }
    return cityString
 }
 
@@ -23,7 +27,7 @@ City.prototype.getNewCity = function() {
   if (this.id === undefined) {
     newCityString = "error"
   } else {
-   newCityString = `<div id="index-city-${this.id}" class="underlined-list"><span class="no-underline bold-text"><a href="/cities/${this.id}">${this.name}</a></span><span> (Total Trips: 0)</span></div>`
+   newCityString = `<div id="index-city-${this.id}" class="underlined-list"><span class="no-underline"><a href="/cities/${this.id}">${this.name}, ${this.country.name}</a></span></div>`
   }
   return newCityString
 }
@@ -41,7 +45,7 @@ City.prototype.avgRating = function() {
   let sum = ratings.reduce((a, b) => a + b, 0)
   if (sum > 0) {
     average = parseFloat(sum / ratings.length).toFixed(1)
-  } else average = "Cannot calculate average for cities with 0 trips"
+  } else average = "Not Yet Rated"
   return average
 }
 

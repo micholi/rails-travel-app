@@ -6,8 +6,7 @@
   <div id="cities-index">
     <% @cities.each do |city| %>
       <div id="index-city-<%= city.id %>" class="underlined-list">
-        <span class="no-underline bold-text"><%= link_to city.name, city_path(city) %></span>
-        <span> (Total Trips: <%= city.trip_count %>)</span>
+        <span class="no-underline"><%= link_to city.city_plus_country, city_path(city) %></span>
 
         <% if Trip.exists?(user_id: current_user.id, city_id: city.id) %>
           <br><span class="trip-exists">I've added to my trips!</span>
