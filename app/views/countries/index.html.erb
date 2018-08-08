@@ -1,19 +1,32 @@
-<div class="table-container">
-  <h4 class="align-table">Explore Countries</h4>
-  <table>
-    <thead>
-      <tr>
-        <th>Country</th>
-        <th>Recommended Attraction</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @countries.each do |country| %>
-      <tr class="border-bottom">
-        <td class="no-underline"><%= link_to country.name, country_path(country) %></td>
-        <td><%= country.random_attraction %></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
+<div class="page-container list-details">
+  <h4>Explore Countries</h4>
+  <br>
+  <input type="text" id="myInput" onkeyup="mySearchFunction()" placeholder="Filter by Country Name">
+  <br><br>
+  <ul id="countryUl">
+    <% @countries.each do |country| %>
+      <li class="no-underline"><%= link_to country.name, country_path(country) %></li>
+    <% end %>
+  </ul>
 </div>
+
+<script>
+function mySearchFunction() {
+    // Declare variables
+    var input, filter, ul, li, a, i;
+    input = document.getElementById('myInput');
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("countryUl");
+    li = ul.getElementsByTagName('li');
+
+    // Loop through all list items, and hide those who don't match the search query
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        if (a.innerHTML.toUpperCase().indexOf(filter) === 0) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+</script>
