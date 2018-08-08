@@ -31,24 +31,21 @@ UserTrip.prototype.formatTravelerTrips = function() {
 
 // on first click, invokes formatUserIndex prototype and appends index of all user's trips on show page
 $(function() {
-  $(".js-load-trips").on("click", function(event) {
-    $("#view-trips").empty();
+  $(".js-load-trips").one("click", function(event) {
     let userId = $(this).data("user-id");
     $.get(`/users/${userId}/trips.json`, function(data) {
       const userTrips = new UserTrip(data);
       let userShowHtml = userTrips.formatUserIndex(userId)
-      $("#view-trips").append(userShowHtml);
+      $("#view-trips").html(userShowHtml);
     })
       event.preventDefault()
   })
 
   // From Assessment:
   // View trips sorted alphabetically by city
-  $(".js-sort-trips").on("click", function(event) {
-    $("#view-trips").empty()
+  $(".js-sort-trips").one("click", function(event) {
     let userId = $(this).data("user-id");
     $.get(`/users/${userId}/trips.json`, function(data) {
-      // sort json data alphabetically by city
       data.sort(function(a, b) {
         var nameA = a.city.name.toUpperCase();
         var nameB = b.city.name.toUpperCase();
@@ -63,7 +60,8 @@ $(function() {
 
       const userTrips = new UserTrip(data);
       let sortedHtml = userTrips.formatUserIndex()
-      $("#view-trips").append(sortedHtml)
+      //$("#view-trips").append(sortedHtml)
+      $("#view-trips").html(sortedHtml)
     })
     event.preventDefault()
   })

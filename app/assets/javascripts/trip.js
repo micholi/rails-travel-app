@@ -11,6 +11,15 @@ Trip.prototype.cityCountry = function() {
   return this.city.name + ", " + this.city.country.name
 }
 
+/* ITERATE OVER TRIPS AND FILTER BASED ON FIRST LETTER
+function filterFirstLetter(tripsArray, letter) {
+  var filteredCities = tripsArray.filter(function(trip) {
+    return trip.city.name[0] === letter;
+  });
+  return filteredCities
+}
+*/
+
 $(function() {
   var tripsArray = []
 
