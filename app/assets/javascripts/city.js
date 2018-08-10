@@ -49,19 +49,6 @@ City.prototype.avgRating = function() {
   return average
 }
 
-/* FILTER BY FIRST LETTER OF CITY
-var cities = ["Barcelona", "London", "Miami", "Nashville", "New York", "New Orleans", "Paris", "Madrid"];
-
-function filterFirstLetter(array, letter) {
-  var filteredCities = cities.filter(function(city) {
-    return city[0] === letter;
-  });
-  return filteredCities
-}
-
-filterFirstLetter(cities, "N")
-*/
-
 $(function() {
   var citiesArray = []
 
@@ -142,16 +129,15 @@ $(function() {
   // ajax request to create new trip and append to index on user show page
   $('form#new-city-form').on("submit", function(event) {
     event.preventDefault();
-    var $form = $(this)
-    var action = $form.attr("action")
-    var params = $form.serialize()
+    var form = $(this)
+    var action = form.attr("action")
+    var params = form.serialize()
     $.ajax({
       url: action,
       data: params,
       datatype: "json",
       method: "POST"
     }).success(function(json) {
-      //const newCity = new City(json.id, json.name, json.country, json.trips);
       const newCity = new City(json);
       let newCityHtml = newCity.getNewCity()
       if (newCityHtml === "error") {
@@ -164,9 +150,7 @@ $(function() {
       var selectors = [Rails.linkDisableSelector, Rails.formEnableSelector].join(', ');
       $(selectors).each(function() {
         Rails.enableElement(this);
-
       })
-
     })
   })
 
