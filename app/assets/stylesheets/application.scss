@@ -266,22 +266,21 @@ td {
  .index-buttons a:visited:hover.color-fix {
    color: white;
  }
- .topnav a.logo,
- .topnav a:hover.logo
+
  /* ----- LINKS ----- */
 
- a.no-underline {
+ .underline-list a.no-underline {
    font-size: 1.05em;
    text-decoration: none;
    color: black;
  }
 
- a:hover.no-underline,
- a:visited:hover.no-underline {
+ .underlined-list a:hover.no-underline,
+ .underlined-list a:visited:hover.no-underline {
    color: blue;
  }
 
- a:visited.no-underline {
+ .underlined-list a:visited.no-underline {
    color: black;
  }
 
