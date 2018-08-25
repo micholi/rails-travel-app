@@ -270,6 +270,7 @@ td {
  /* ----- LINKS ----- */
 
  .list-details a,
+ .table-container a,
  #view-trips a {
    font-size: 1.05em;
    text-decoration: none;
@@ -279,12 +280,15 @@ td {
 
  .list-details a:hover,
  .list-details a:visited:hover,
+ .table-container a:hover,
+ .table-container a:visited:hover,
  #view-trips a:hover,
  #view-trips a:visited:hover {
    color: blue;
  }
 
  .list-details a:visited,
+ .table-container a:visited,
  #view-trips a:visited {
    color: black;
  }
