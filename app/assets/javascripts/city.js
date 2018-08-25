@@ -129,9 +129,9 @@ $(function() {
   // ajax request to create new trip and append to index on user show page
   $('form#new-city-form').on("submit", function(event) {
     event.preventDefault();
-    var form = (this)
-    var action = form.attr("action")
-    var params = form.serialize()
+    var $form = $(this)
+    var action = $form.attr("action")
+    var params = $form.serialize()
     $.ajax({
       url: action,
       data: params,
