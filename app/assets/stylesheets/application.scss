@@ -269,18 +269,23 @@ td {
 
  /* ----- LINKS ----- */
 
- .underline-list a {
+ .list-details a,
+ #view-trips a {
    font-size: 1.05em;
    text-decoration: none;
    color: black;
  }
 
- .underlined-list a:hover,
- .underlined-list a:visited:hover {
+
+ .list-details a:hover,
+ .list-details a:visited:hover,
+ #view-trips a:hover,
+ #view-trips a:visited:hover {
    color: blue;
  }
 
- .underlined-list a:visited {
+ .list-details a:visited,
+ #view-trips a:visited {
    color: black;
  }
 
