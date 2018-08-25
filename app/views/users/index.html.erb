@@ -2,7 +2,7 @@
   <h4>Travelers</h4>
   <% @users.each do |user| %>
     <div class="underlined-list">
-      <span class="no-underline bold-text"><%= link_to user.name, user_path(user) %> </span><br>
+      <span class="bold-text"><%= link_to user.name, user_path(user) %> </span><br>
       <a href="#" class="js-display-traveler-trips" data-traveler-id="<%= user.id %>">Show Trips</a><br>
       <div id="traveler-<%= user.id %>"></div>
     </div>

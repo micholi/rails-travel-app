@@ -9,7 +9,7 @@ UserTrip.prototype.formatUserIndex = function(userId) {
     let userTripId = trip.id;
     let city = trip.city.name;
     let comment = trip.comment
-    tripsHtml +=`<div id="index-trip-${userTripId}" class="bottom-border"><p class="no-underline bold-text"> <a href="/users/${userId}/trips/${userTripId}">${city}</a></p><p>${comment}</p></div>`
+    tripsHtml +=`<div id="index-trip-${userTripId}" class="bottom-border"><p class="bold-text"> <a href="/users/${userId}/trips/${userTripId}">${city}</a></p><p>${comment}</p></div>`
   })
   tripsHtml += '</div>'
   return tripsHtml
