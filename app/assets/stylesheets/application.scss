@@ -266,27 +266,25 @@ td {
  .index-buttons a:visited:hover.color-fix {
    color: white;
  }
-
+ .topnav a.logo,
+ .topnav a:hover.logo
  /* ----- LINKS ----- */
-/*
- .no-underline a: {
-   font-size: 1.05em;
- }
 
- .no-underline a:link {
+ a.no-underline {
+   font-size: 1.05em;
    text-decoration: none;
    color: black;
  }
 
-.no-underline a:hover,
-.no-underline a:visited: hover {
+ a:hover.no-underline,
+ a:visited:hover.no-underline {
    color: blue;
  }
 
-.no-underline a:visited {
+ a:visited.no-underline {
    color: black;
  }
-*/
+
 .js-previous-trip,
 .js-previous-city,
 .js-previous-country {
