@@ -25,7 +25,6 @@ class TripsController < ApplicationController
 
   def new
     set_user
-    # find_city
     @trip = Trip.new
   end
 
