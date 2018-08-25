@@ -199,18 +199,18 @@ td {
    border-bottom: 1px solid #C0C0C0;
  }
 
-.table-container a.no-underline {
+td.no-underline a {
    font-size: 1.05em;
    text-decoration: none;
    color: black;
  }
 
- .table-container a:hover.no-underline,
- .table-container a:visited:hover.no-underline {
+ td.no-underline a:hover,
+ td.no-underline a:visited:hover {
    color: blue;
  }
 
- .table-container a:visited.no-underline {
+ td.no-underline a:visited {
    color: black;
  }
 
