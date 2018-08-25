@@ -47,6 +47,8 @@ gem 'dotenv-rails'
 gem 'jquery-rails'
 gem 'active_model_serializers'
 
+gem 'rails_12factor'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
