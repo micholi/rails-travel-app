@@ -268,7 +268,7 @@ td {
  }
 
  /* ----- LINKS ----- */
-
+/*
  .no-underline a: {
    font-size: 1.05em;
  }
@@ -279,14 +279,14 @@ td {
  }
 
 .no-underline a:hover,
-.no-underline a:visited:hover {
+.no-underline a:visited: hover {
    color: blue;
  }
 
 .no-underline a:visited {
    color: black;
  }
-
+*/
 .js-previous-trip,
 .js-previous-city,
 .js-previous-country {
