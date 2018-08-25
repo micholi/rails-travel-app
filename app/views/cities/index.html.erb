@@ -1,8 +1,6 @@
 <div class="page-container list-details">
   <h4>Explore Cities</h4>
-  <%= link_to "Check Out the Most Reviewed City", most_visited_url %><br>
-  <%= link_to "View Our Highest Rated Cities", highly_rated_url %><br>
-
+  
   <div id="cities-index">
     <% @cities.each do |city| %>
       <div id="index-city-<%= city.id %>" class="underlined-list">
