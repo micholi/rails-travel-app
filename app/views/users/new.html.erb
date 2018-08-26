@@ -5,7 +5,7 @@
       <%= f.text_field :email, placeholder: "Email", :size => 40 %><br><br>
       <%= f.text_field :name, placeholder: "Username", :size => 40 %><br><br>
       <%= f.password_field :password, placeholder: "Password", :size => 40 %><br><br>
-      <%= f.submit "Create Account", :class => 'btn btn-block btn-success' %><br><br>
+      <%= f.submit "Create Account", :class => 'btn btn-block btn-success' %><br>
       <%= link_to "Sign Up with Facebook", '/auth/facebook', :class => 'btn btn-block btn-primary start-button' %>
     <% end %>
 
